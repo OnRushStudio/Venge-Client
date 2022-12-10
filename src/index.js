@@ -19,7 +19,6 @@ const settings = new Store();
 const DiscordRPC = require('discord-rpc');
 const clientId = '727533470594760785';
 const RPC = new DiscordRPC.Client({ transport: 'ipc' });
-RPC.login({ clientId }).catch(console.error);
 DiscordRPC.register(clientId);
 const rpc_script = require('./rpc.js');
 
@@ -53,11 +52,11 @@ const createWindow = () => {
     win.maximize();
     win.setFullScreen(settings.get('Fullscreen'));
 
-    globalShortcut.register('F6', () => win.loadURL('https://venge.io/'));
     globalShortcut.register('F5', () => win.reload());
+    globalShortcut.register('CTRL+R', () => win.reload());
     globalShortcut.register('Escape', () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
-    globalShortcut.register('F7', () => win.webContents.toggleDevTools());
     globalShortcut.register('F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
+    globalShortcut.register('F12', () => win.webContents.toggleDevTools());
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
@@ -68,9 +67,6 @@ const createWindow = () => {
     //Swapper
 
     //Auto Update
-
-    console.log("hello")
-    console.log(process.platform)
 
     if (process.platform == "win32") {
         autoUpdater.checkForUpdates();
@@ -191,7 +187,7 @@ app.whenReady().then(() => {
             path: path.normalize(request.url.replace(/^swap:/, ''))
         });
     });
-
+    
     createWindow()
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
@@ -205,3 +201,5 @@ app.on("window-all-closed", () => {
         app.quit();
     }
 });
+
+RPC.login({ clientId }).catch(console.error);
