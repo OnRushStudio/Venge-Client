@@ -68,6 +68,13 @@ const createWindow = () => {
 
     //Auto Update
 
+    autoUpdater.setFeedURL({
+        owner: "MetaHumanREAL",
+        repo: "VengeClient",
+        provider: "github",
+        updaterCacheDirName: "vengeclient-updater",
+    });
+
     if (process.platform == "win32") {
         autoUpdater.checkForUpdates();
 
