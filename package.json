@@ -1,5 +1,5 @@
 {
-  "name": "vengeclient",
+  "name": "venge-client",
   "version": "1.0.7",
   "description": "",
   "main": "./src/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MetaHumanREAL/VengeClient.git"
+    "url": "git+https://github.com/MetaHumanREAL/Venge-Client.git"
   },
   "author": "OnRush Studio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MetaHumanREAL/VengeClient/issues"
+    "url": "https://github.com/MetaHumanREAL/Venge-Client/issues"
   },
-  "homepage": "https://github.com/MetaHumanREAL/VengeClient#readme",
+  "homepage": "https://github.com/MetaHumanREAL/Venge-Client#readme",
   "build": {
     "appId": "com.venge.client",
     "productName": "Venge.io",
