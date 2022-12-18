@@ -5,8 +5,10 @@ const official_settings = ['Unlimited FPS'];
 
 //auto update
 const { autoUpdater } = require("electron-updater")
+const { MacUpdater } = require("electron-updater")
 let updateLoaded = false;
 let updateNow = false;
+
 
 //Settings
 const Store = require('electron-store');
@@ -17,7 +19,6 @@ const settings = new Store();
 const DiscordRPC = require('discord-rpc');
 const clientId = '727533470594760785';
 const RPC = new DiscordRPC.Client({ transport: 'ipc' });
-RPC.login({ clientId }).catch(console.error);
 DiscordRPC.register(clientId);
 const rpc_script = require('./rpc.js');
 
@@ -53,25 +54,11 @@ const createWindow = () => {
     win.maximize();
     win.setFullScreen(settings.get('Fullscreen'));
 
-    globalShortcut.register('F6', () => win.loadURL('https://venge.io/'));
     globalShortcut.register('F5', () => win.reload());
+    globalShortcut.register('CTRL+R', () => win.reload());
     globalShortcut.register('Escape', () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
-    globalShortcut.register('F7', () => win.webContents.toggleDevTools());
     globalShortcut.register('F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
-    globalShortcut.register('F2', () => {      
-        let linkMenuWindow = new BrowserWindow({
-            width: 1200,
-            height: 800,
-            backgroundColor: '#202020',
-            webPreferences: {
-                nodeIntegration: false,
-                preload: __dirname + '/userscript/script.js',
-            },
-            
-            title: 'Userscript'
-        });
-        linkMenuWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
-    });
+    globalShortcut.register('F12', () => win.webContents.toggleDevTools());
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
@@ -82,33 +69,72 @@ const createWindow = () => {
     //Swapper
 
     //Auto Update
-    autoUpdater.checkForUpdates();
 
-    autoUpdater.on('update-available', () => {
+    autoUpdater.setFeedURL({
+        owner: "MetaHumanREAL",
+        repo: "Venge-Client",
+        provider: "github",
+        updaterCacheDirName: "venge-client-updater",
+    });
 
-        const options = {
-            title: "Client Update",
-            buttons: ["Now", "Later"],
-            message: "Client Update available, do you want to install it now or after the next restart?",
-            icon: __dirname + "/icon.ico"
-        }
-        dialog.showMessageBox(options).then((result) => {
-            if (result.response === 0) {
-                updateNow = true;
-                if (updateLoaded) {
-                    autoUpdater.quitAndInstall();
-                }
+    if (process.platform == "win32") {
+        autoUpdater.checkForUpdates();
+
+        autoUpdater.on('update-available', () => {
+
+            const options = {
+                title: "Client Update",
+                buttons: ["Now", "Later"],
+                message: "Client Update available, do you want to install it now or after the next restart?",
+                icon: __dirname + "/icon.ico"
             }
+            dialog.showMessageBox(options).then((result) => {
+                if (result.response === 0) {
+                    updateNow = true;
+                    if (updateLoaded) {
+                        autoUpdater.quitAndInstall();
+                    }
+                }
+            });
+
         });
 
-    });
+        autoUpdater.on('update-downloaded', () => {
+            updateLoaded = true;
+            if (updateNow) {
+                autoUpdater.quitAndInstall(true, true);
+            }
+        });
+    }
 
-    autoUpdater.on('update-downloaded', () => {
-        updateLoaded = true;
-        if (updateNow) {
-            autoUpdater.quitAndInstall(true, true);
-        }
-    });
+    if (process.platform == "darwin") {
+        MacUpdater.checkForUpdates();
+
+        MacUpdater.on('update-available', () => {
+            const options = {
+                title: "Client Update",
+                buttons: ["Now", "Later"],
+                message: "Client Update available, do you want to install it now or after the next restart?",
+                icon: __dirname + "/icon.ico"
+            }
+            dialog.showMessageBox(options).then((result) => {
+                if (result.response === 0) {
+                    updateNow = true;
+                    if (updateLoaded) {
+                        autoUpdater.quitAndInstall();
+                    }
+                }
+            });
+
+        });
+
+        MacUpdater.on('update-downloaded', () => {
+            updateLoaded = true;
+            if (updateNow) {
+                MacUpdater.quitAndInstall();
+            }
+        });
+    }
 
     ipcMain.on('loadScripts', function (event) {
         swapper.runScripts(win, app);
@@ -118,9 +144,9 @@ const createWindow = () => {
     swapper.replaceResources(win, app);
     for(var i = 0; i < ScriptLink.length; i += 1) {
         swapper.UrlScriptExec(win, app, ScriptLink[i])
-        console.log(ScriptLink[i])
     }
 
+    
     //Discord RPC
 
     ipcMain.on('loadRPC', (event, data) => {
@@ -174,7 +200,7 @@ app.whenReady().then(() => {
             path: path.normalize(request.url.replace(/^swap:/, ''))
         });
     });
-
+    
     createWindow()
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
@@ -188,3 +214,5 @@ app.on("window-all-closed", () => {
         app.quit();
     }
 });
+
+RPC.login({ clientId }).catch(console.error);
