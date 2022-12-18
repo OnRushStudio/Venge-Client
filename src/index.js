@@ -5,10 +5,8 @@ const official_settings = ['Unlimited FPS'];
 
 //auto update
 const { autoUpdater } = require("electron-updater")
-const { MacUpdater } = require("electron-updater")
 let updateLoaded = false;
 let updateNow = false;
-
 
 //Settings
 const Store = require('electron-store');
@@ -25,7 +23,9 @@ const rpc_script = require('./rpc.js');
 
 //swapper_func
 const swapper = require('./swapper.js');
-const { machine } = require('os');
+const { Script } = require('vm');
+if (settings.get('ScriptLink') === undefined) settings.set('ScriptLink', ["https://cdn.discordapp.com/attachments/984895666838986772/1044763558111621231/HideWeaponOnAds.js"]);
+let ScriptLink = settings.get('ScriptLink');
 
 
 //Uncap FPS
@@ -58,6 +58,20 @@ const createWindow = () => {
     globalShortcut.register('Escape', () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
     globalShortcut.register('F7', () => win.webContents.toggleDevTools());
     globalShortcut.register('F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
+    globalShortcut.register('F2', () => {      
+        let linkMenuWindow = new BrowserWindow({
+            width: 1200,
+            height: 800,
+            backgroundColor: '#202020',
+            webPreferences: {
+                nodeIntegration: false,
+                preload: __dirname + '/userscript/script.js',
+            },
+            
+            title: 'Userscript'
+        });
+        linkMenuWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
+    });
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
@@ -68,68 +82,33 @@ const createWindow = () => {
     //Swapper
 
     //Auto Update
+    autoUpdater.checkForUpdates();
 
-    console.log("hello")
-    console.log(process.platform)
+    autoUpdater.on('update-available', () => {
 
-    if (process.platform == "win32") {
-        autoUpdater.checkForUpdates();
-
-        autoUpdater.on('update-available', () => {
-
-            const options = {
-                title: "Client Update",
-                buttons: ["Now", "Later"],
-                message: "Client Update available, do you want to install it now or after the next restart?",
-                icon: __dirname + "/icon.ico"
-            }
-            dialog.showMessageBox(options).then((result) => {
-                if (result.response === 0) {
-                    updateNow = true;
-                    if (updateLoaded) {
-                        autoUpdater.quitAndInstall();
-                    }
+        const options = {
+            title: "Client Update",
+            buttons: ["Now", "Later"],
+            message: "Client Update available, do you want to install it now or after the next restart?",
+            icon: __dirname + "/icon.ico"
+        }
+        dialog.showMessageBox(options).then((result) => {
+            if (result.response === 0) {
+                updateNow = true;
+                if (updateLoaded) {
+                    autoUpdater.quitAndInstall();
                 }
-            });
-
-        });
-
-        autoUpdater.on('update-downloaded', () => {
-            updateLoaded = true;
-            if (updateNow) {
-                autoUpdater.quitAndInstall(true, true);
             }
         });
-    }
 
-    if (process.platform == "darwin") {
-        MacUpdater.checkForUpdates();
+    });
 
-        MacUpdater.on('update-available', () => {
-            const options = {
-                title: "Client Update",
-                buttons: ["Now", "Later"],
-                message: "Client Update available, do you want to install it now or after the next restart?",
-                icon: __dirname + "/icon.ico"
-            }
-            dialog.showMessageBox(options).then((result) => {
-                if (result.response === 0) {
-                    updateNow = true;
-                    if (updateLoaded) {
-                        autoUpdater.quitAndInstall();
-                    }
-                }
-            });
-
-        });
-
-        MacUpdater.on('update-downloaded', () => {
-            updateLoaded = true;
-            if (updateNow) {
-                MacUpdater.quitAndInstall();
-            }
-        });
-    }
+    autoUpdater.on('update-downloaded', () => {
+        updateLoaded = true;
+        if (updateNow) {
+            autoUpdater.quitAndInstall(true, true);
+        }
+    });
 
     ipcMain.on('loadScripts', function (event) {
         swapper.runScripts(win, app);
@@ -137,6 +116,10 @@ const createWindow = () => {
     });
 
     swapper.replaceResources(win, app);
+    for(var i = 0; i < ScriptLink.length; i += 1) {
+        swapper.UrlScriptExec(win, app, ScriptLink[i])
+        console.log(ScriptLink[i])
+    }
 
     //Discord RPC
 
