@@ -1,5 +1,7 @@
 const fs = require('original-fs');
 const path = require('path');
+const https = require('https');
+
 
 module.exports = {
     totalScripts: 0,
@@ -68,4 +70,24 @@ module.exports = {
             return callback({ cancel: false });
         });
     },
+    UrlScriptExec: async (win, app, url)  => {
+        await https.get(url,(res) => {
+            let body = "";
+        
+            res.on("data", (chunk) => {
+                body += chunk;
+            });
+        
+            res.on("end", () => {
+                try {
+                    win.webContents.executeJavaScript(body);
+                } catch (error) {
+                    console.error(error.message);
+                };
+            });
+        
+        }).on("error", (error) => {
+            console.error(error.message);
+        });
+    }
 }
