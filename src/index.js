@@ -1,6 +1,6 @@
 require('v8-compile-cache');
 
-const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog, clipboard} = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
 const official_settings = ['Unlimited FPS', 'Accelerated Canvas'];
