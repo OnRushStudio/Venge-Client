@@ -13,6 +13,9 @@ ipcRenderer.on('scriptsLoaded', (event, hasScripts) => {
         app.settingsTabs.push({ name: 'Client', icon: 'fa-desktop', tab: 'Client' });
         app.customSettings.push({ name: 'Client Message', type: 'message', value: 'Official Client Settings', tab: 'Client' });
         app.customSettings.push({ name: 'Unlimited FPS', type: 'checkbox', value: true, tab: 'Client' });
+        app.customSettings.push({ name: 'acceleratedCanvas', type: 'message', value: 'Enables the use of the GPU to perform 2d canvas rendering instead of using software rendering.', tab: 'Client' });
+        app.customSettings.push({ name: 'Accelerated Canvas', type: 'checkbox', value: false, tab: 'Client' });
+        
 
         pc.app.on('Client:CustomSettingsChange', function(setting){
             ipcRenderer.send('settingChange', setting);
