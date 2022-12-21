@@ -42,6 +42,7 @@ if (settings.get('Accelerated Canvas')) {
     app.commandLine.appendSwitch('enable-accelerated-2d-canvas');
 }
 
+app.commandLine.appendSwitch('ignore-gpu-blacklist');
 
 //main Client Code
 const createWindow = () => {
