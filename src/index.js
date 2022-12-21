@@ -1,3 +1,5 @@
+require('v8-compile-cache');
+
 const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog } = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
