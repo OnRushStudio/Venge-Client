@@ -44,7 +44,8 @@
   "dependencies": {
     "discord-rpc": "^4.0.1",
     "electron-store": "^8.1.0",
-    "electron-updater": "^5.3.0"
+    "electron-updater": "^5.3.0",
+    "v8-compile-cache": "^2.3.0"
   },
   "devDependencies": {
     "electron": "^9.0.0",
