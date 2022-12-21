@@ -59,7 +59,9 @@ const createWindow = () => {
     win.removeMenu();
     win.maximize();
     win.setFullScreen(settings.get('Fullscreen'));
-
+    
+    //Shortcuts
+    globalShortcut.register('F4', () => {if(clipboard.readText().includes("venge.io")){win.loadURL(clipboard.readText())}});
     globalShortcut.register('F5', () => win.reload());
     globalShortcut.register('CTRL+R', () => win.reload());
     globalShortcut.register('Escape', () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
