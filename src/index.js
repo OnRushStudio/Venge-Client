@@ -1,7 +1,7 @@
 const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog } = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
-const official_settings = ['Unlimited FPS'];
+const official_settings = ['Unlimited FPS', 'Accelerated Canvas'];
 
 //auto update
 const { autoUpdater } = require("electron-updater")
@@ -32,6 +32,12 @@ if (settings.get('Unlimited FPS') === undefined) settings.set('Unlimited FPS', t
 if (settings.get('Unlimited FPS')) {
     app.commandLine.appendSwitch('disable-frame-rate-limit');
     app.commandLine.appendSwitch('disable-gpu-vsync');
+}
+
+//acceleratedCanvas
+if (settings.get('Accelerated Canvas') === undefined) settings.set('Accelerated Canvas', false);
+if (settings.get('Accelerated Canvas')) {
+    app.commandLine.appendSwitch('enable-accelerated-2d-canvas');
 }
 
 
