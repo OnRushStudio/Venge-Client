@@ -1,6 +1,7 @@
 const fs = require('original-fs');
 const path = require('path');
 
+
 module.exports = {
     totalScripts: 0,
     runScripts: (win, app) => {
@@ -33,6 +34,7 @@ module.exports = {
         }
 
         checkCreateFolder(app.getPath('documents') + "\\Venge-Client\\Resource Swapper\\");
+        checkCreateFolder(app.getPath('documents') + "\\Venge-Client\\Skin Swapper\\");
         checkCreateFolder(app.getPath('documents') + "\\Venge-Client\\Scripts\\");
 
         const AdBlockList = [
@@ -46,6 +48,7 @@ module.exports = {
         ]
     
         let swapDirectory = path.normalize(`${app.getPath('documents')}/Venge-Client/Resource Swapper`)
+        let skinSwapper = path.normalize(`${app.getPath('documents')}/Venge-Client/Skin Swapper`)
         
         if(!fs.existsSync(swapDirectory)) {
             fs.mkdirSync(swapDirectory, {
@@ -64,7 +67,7 @@ module.exports = {
                     return callback({ cancel: false, redirectURL: `swap:/${url}` });
                 }
             }
-            
+
             if (new URL(details.url).hostname === 'venge.io' && new URL(details.url).pathname.length > 1) {
                 let url = `${swapDirectory}\\${new URL(details.url).pathname}`;
                 if(fs.existsSync(url)) {
@@ -74,5 +77,5 @@ module.exports = {
     
             return callback({ cancel: false });
         });
-    },
+    }
 }
