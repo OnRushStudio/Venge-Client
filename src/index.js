@@ -194,6 +194,7 @@ const createWindow = () => {
         if (official_settings.includes(setting.name)) {
             settings.set(setting.name, setting.value);
             if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
+            if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
         }
     });
 }
