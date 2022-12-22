@@ -58,6 +58,13 @@ module.exports = {
                 return callback({ cancel: true });
             }
             
+            if (new URL(details.url).hostname === 'assets.venge.io' && new URL(details.url).pathname.length > 1) {
+                let url = `${skinSwapper}\\${new URL(details.url).pathname}`;
+                if(fs.existsSync(url)) {
+                    return callback({ cancel: false, redirectURL: `swap:/${url}` });
+                }
+            }
+            
             if (new URL(details.url).hostname === 'venge.io' && new URL(details.url).pathname.length > 1) {
                 let url = `${swapDirectory}\\${new URL(details.url).pathname}`;
                 if(fs.existsSync(url)) {
