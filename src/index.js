@@ -5,6 +5,8 @@ app.startedAt = Date.now();
 const path = require('path');
 const official_settings = ['Unlimited FPS', 'Accelerated Canvas'];
 
+const shortcuts = require('electron-localshortcut');    
+
 //auto update
 const { autoUpdater } = require("electron-updater")
 const { MacUpdater } = require("electron-updater")
@@ -62,12 +64,12 @@ const createWindow = () => {
     win.setFullScreen(settings.get('Fullscreen'));
     
     //Shortcuts
-    globalShortcut.register('F4', () => {if(clipboard.readText().includes("venge.io")){win.loadURL(clipboard.readText())}});
-    globalShortcut.register('F5', () => win.reload());
-    globalShortcut.register('CTRL+R', () => win.reload());
-    globalShortcut.register('Escape', () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
-    globalShortcut.register('F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
-    globalShortcut.register('F12', () => win.webContents.toggleDevTools());
+    shortcuts.register(win, "F4", () => win.loadURL('https://venge.io/'));
+    shortcuts.register(win, "F5", () => win.reload());
+    shortcuts.register(win, "F6", () => {if(clipboard.readText().includes("venge.io")){win.loadURL(clipboard.readText())}})
+    shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
+    shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
+    shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
