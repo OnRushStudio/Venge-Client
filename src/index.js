@@ -122,18 +122,6 @@ const createWindow = () => {
     shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
-    // win.webContents.on('will-navigate', function() {
-    //     var theUrl = url;
-    //     var dWindow = new BrowserWindow({
-    //         width: 800,
-    //         height: 600,
-    //         frame: false
-    //     });
-    //     dWindow.setPosition(200, 200);
-    //     dWindow.setMenu(null);
-    //     dWindow.loadURL(theUrl);
-    // })
-
 
     //Auto Update
 
