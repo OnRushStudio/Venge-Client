@@ -34,14 +34,7 @@ const swapper = require('./swapper.js');
 const { machine } = require('os');
 
 
-//Uncap FPS
-const commandSwitch = ['enable-webgl2-compute-context', 'enable-quic', 'disable-breakpad', 'enable-javascript-harmony', 'smooth-scrolling', 'disable-backgrounding-occluded-windows', 'disable-site-isolation-trials', 'ignore-certificate-errors', 'in-process-gpu']
-
-// const gato = ['force_high_performance_gpu', 'force-high-performance-gpu', 'disable-breakpad', 'disable-component-update', 'disable-print-preview', 'disable-metrics', 'disable-metrics-repo', 'enable-javascript-harmony', 'enable-future-v8-vm-features', 'enable-webgl2-compute-context', 'disable-hang-monitor', 'no-referrers', 'enable-quic','disable-2d-canvas-clip-aa', 'disable-bundled-ppapi-flash', 'disable-logging', 'disable-web-security', '"webrtc-max-cpu-consumption-percentage=100']
-// gato.forEach((switches) => {
-//     app.commandLine.appendSwitch(switches)
-// })
-
+//Performance improving switches
 app.commandLine.appendSwitch("force_high_performance_gpu");
 app.commandLine.appendSwitch("in-process-gpu");
 app.commandLine.appendSwitch("disable-backgrounding-occluded-windows");
@@ -69,7 +62,7 @@ app.commandLine.appendSwitch("disable-web-security");
 app.commandLine.appendSwitch("webrtc-max-cpu-consumption-percentage=100");
 app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage', '100')
 
-
+//Uncap FPS
 if (settings.get('Unlimited FPS')) {
     app.commandLine.appendSwitch('disable-frame-rate-limit');
     app.commandLine.appendSwitch('disable-gpu-vsync');
