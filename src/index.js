@@ -1,15 +1,14 @@
 require('v8-compile-cache');
 
-const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog, clipboard} = require('electron');
+const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog, clipboard } = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
 const official_settings = ['Unlimited FPS', 'Accelerated Canvas'];
 
-const shortcuts = require('electron-localshortcut');    
+const shortcuts = require('electron-localshortcut');
 
 //auto update
 const { autoUpdater } = require("electron-updater")
-const { MacUpdater } = require("electron-updater")
 let updateLoaded = false;
 let updateNow = false;
 
@@ -17,7 +16,11 @@ let updateNow = false;
 //Settings
 const Store = require('electron-store');
 Store.initRenderer();
-const settings = new Store();
+const settings = new Store({
+    defaults: {
+        'Unlimited FPS': true
+    }
+});
 
 //Discord RPC
 const DiscordRPC = require('discord-rpc');
@@ -31,12 +34,40 @@ const swapper = require('./swapper.js');
 const { machine } = require('os');
 
 
+//Performance improving switches
+app.commandLine.appendSwitch("force_high_performance_gpu");
+app.commandLine.appendSwitch("in-process-gpu");
+app.commandLine.appendSwitch("disable-backgrounding-occluded-windows");
+app.commandLine.appendSwitch("smooth-scrolling");
+app.commandLine.appendSwitch("force-high-performance-gpu");
+app.commandLine.appendSwitch("disable-breakpad");
+app.commandLine.appendSwitch("disable-component-update");
+app.commandLine.appendSwitch("disable-print-preview");
+app.commandLine.appendSwitch("disable-metrics");
+app.commandLine.appendSwitch("disable-metrics-repo");
+app.commandLine.appendSwitch("enable-javascript-harmony");
+app.commandLine.appendSwitch("enable-future-v8-vm-features");
+app.commandLine.appendSwitch("enable-webgl2-compute-context");
+app.commandLine.appendSwitch("disable-hang-monitor");
+app.commandLine.appendSwitch("no-referrers");
+app.commandLine.appendSwitch("renderer-process-limit", 100);
+app.commandLine.appendSwitch("max-active-webgl-contexts", 100);
+app.commandLine.appendSwitch("enable-quic");
+app.commandLine.appendSwitch("high-dpi-support", 1);
+app.commandLine.appendSwitch("ignore-gpu-blacklist");
+app.commandLine.appendSwitch("disable-2d-canvas-clip-aa");
+app.commandLine.appendSwitch("disable-bundled-ppapi-flash");
+app.commandLine.appendSwitch("disable-logging");
+app.commandLine.appendSwitch("disable-web-security");
+app.commandLine.appendSwitch("webrtc-max-cpu-consumption-percentage=100");
+app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage', '100')
+
 //Uncap FPS
-if (settings.get('Unlimited FPS') === undefined) settings.set('Unlimited FPS', true);
 if (settings.get('Unlimited FPS')) {
     app.commandLine.appendSwitch('disable-frame-rate-limit');
     app.commandLine.appendSwitch('disable-gpu-vsync');
 }
+
 
 //acceleratedCanvas
 if (settings.get('Accelerated Canvas') === undefined) settings.set('Accelerated Canvas', false);
@@ -62,22 +93,35 @@ const createWindow = () => {
     win.removeMenu();
     win.maximize();
     win.setFullScreen(settings.get('Fullscreen'));
-    
-    //Shortcuts
-    shortcuts.register(win, "F4", () => win.loadURL('https://venge.io/'));
-    shortcuts.register(win, "F5", () => win.reload());
-    shortcuts.register(win, "F6", () => {if(clipboard.readText().includes("venge.io")){win.loadURL(clipboard.readText())}})
-    shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
-    shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
-    shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
+
+    win.loadURL('https://venge.io')
+        .catch((error) => console.log(error))
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
     });
+    win.webContents.on('will-prevent-unload', (event) => event.preventDefault())
 
-    win.loadURL('https://venge.io/');
+    win.webContents.on('unresponsive', () => {
+        console.log('Client is unresponsive...')
+        win.webContents.forcefullyCrashRenderer()
+        win.webContents.reload()
+    })
 
-    //Swapper
+    win.webContents.on('render-process-gone', () => {
+        console.log('Client\'s renderer is gone...')
+        win.webContents.forcefullyCrashRenderer()
+        win.webContents.reload()
+    })
+
+    //Shortcuts
+    shortcuts.register(win, "F4", () => win.loadURL('https://venge.io/'));
+    shortcuts.register(win, "F5", () => win.reload());
+    shortcuts.register(win, "F6", () => { if (clipboard.readText().includes("venge.io")) { win.loadURL(clipboard.readText()) } })
+    shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
+    shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
+    shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
+
 
     //Auto Update
 
@@ -88,71 +132,45 @@ const createWindow = () => {
         updaterCacheDirName: "venge-client-updater",
     });
 
-    if (process.platform == "win32") {
-        autoUpdater.checkForUpdates();
 
-        autoUpdater.on('update-available', () => {
+    autoUpdater.checkForUpdates();
 
-            const options = {
-                title: "Client Update",
-                buttons: ["Now", "Later"],
-                message: "Client Update available, do you want to install it now or after the next restart?",
-                icon: __dirname + "/icon.ico"
-            }
-            dialog.showMessageBox(options).then((result) => {
-                if (result.response === 0) {
-                    updateNow = true;
-                    if (updateLoaded) {
-                        autoUpdater.quitAndInstall();
-                    }
+    autoUpdater.on('update-available', () => {
+
+        const options = {
+            title: "Client Update",
+            buttons: ["Now", "Later"],
+            message: "Client Update available, do you want to install it now or after the next restart?",
+            icon: __dirname + "/icon.ico"
+        }
+        dialog.showMessageBox(options).then((result) => {
+            if (result.response === 0) {
+                updateNow = true;
+                if (updateLoaded) {
+                    autoUpdater.quitAndInstall();
                 }
-            });
-
-        });
-
-        autoUpdater.on('update-downloaded', () => {
-            updateLoaded = true;
-            if (updateNow) {
-                autoUpdater.quitAndInstall(true, true);
             }
         });
-    }
 
-    if (process.platform == "darwin") {
-        MacUpdater.checkForUpdates();
-
-        MacUpdater.on('update-available', () => {
-            const options = {
-                title: "Client Update",
-                buttons: ["Now", "Later"],
-                message: "Client Update available, do you want to install it now or after the next restart?",
-                icon: __dirname + "/icon.ico"
-            }
-            dialog.showMessageBox(options).then((result) => {
-                if (result.response === 0) {
-                    updateNow = true;
-                    if (updateLoaded) {
-                        autoUpdater.quitAndInstall();
-                    }
-                }
-            });
-
-        });
-
-        MacUpdater.on('update-downloaded', () => {
-            updateLoaded = true;
-            if (updateNow) {
-                MacUpdater.quitAndInstall();
-            }
-        });
-    }
-
-    ipcMain.on('loadScripts', function (event) {
-        swapper.runScripts(win, app);
-        event.sender.send('scriptsLoaded', true);
     });
 
-    swapper.replaceResources(win, app);
+    autoUpdater.on('update-downloaded', () => {
+        updateLoaded = true;
+        if (updateNow) {
+            autoUpdater.quitAndInstall(true, true);
+        }
+    });
+
+    //Swapper
+    win.webContents.on('dom-ready', () => {
+        ipcMain.on('loadScripts', function (event) {
+            swapper.runScripts(win, app);
+            event.sender.send('scriptsLoaded', true);
+        });
+
+        swapper.replaceResources(win, app);
+    })
+
 
     //Discord RPC
 
@@ -208,13 +226,14 @@ app.whenReady().then(() => {
             path: path.normalize(request.url.replace(/^swap:/, ''))
         });
     });
-    
+
     createWindow()
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+
 })
 
 app.on("window-all-closed", () => {
