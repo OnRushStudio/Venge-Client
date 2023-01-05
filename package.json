@@ -1,6 +1,6 @@
 {
   "name": "vengeclient",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
@@ -39,6 +39,11 @@
     "nsis": {
       "oneClick": true,
       "allowToChangeInstallationDirectory": false
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "MetaHumanREAL",
+      "repo": "VengeClient"
     }
   },
   "dependencies": {

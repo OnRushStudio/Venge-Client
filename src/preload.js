@@ -3,6 +3,7 @@ const { ipcRenderer } = require('electron');
 let loadChecker = setInterval(() => {
     if(app.page && app.session.map && pc !== undefined) {
         ipcRenderer.send('loadScripts');
+        ipcRenderer.send('loadRPC', { area: 'menu' });
         clearInterval(loadChecker);
     }
 }, 500);

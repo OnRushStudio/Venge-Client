@@ -19,6 +19,7 @@ Store.initRenderer();
 const settings = new Store({
     defaults: {
         'Unlimited FPS': true,
+        'Accelerated Canvas': false,
         'Game Capture': false
     }
 });
