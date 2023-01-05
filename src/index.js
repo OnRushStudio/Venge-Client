@@ -3,7 +3,7 @@ require('v8-compile-cache');
 const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog, clipboard } = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
-const official_settings = ['Unlimited FPS', 'Accelerated Canvas'];
+const official_settings = ['Unlimited FPS', 'Accelerated Canvas', 'Game Capture'];
 
 const shortcuts = require('electron-localshortcut');
 
@@ -18,7 +18,8 @@ const Store = require('electron-store');
 Store.initRenderer();
 const settings = new Store({
     defaults: {
-        'Unlimited FPS': true
+        'Unlimited FPS': true,
+        'Game Capture': false
     }
 });
 
@@ -34,7 +35,7 @@ const swapper = require('./swapper.js');
 const { machine } = require('os');
 
 
-//Performance improving switches
+//Uncap FPS
 app.commandLine.appendSwitch("force_high_performance_gpu");
 app.commandLine.appendSwitch("in-process-gpu");
 app.commandLine.appendSwitch("disable-backgrounding-occluded-windows");
@@ -62,20 +63,24 @@ app.commandLine.appendSwitch("disable-web-security");
 app.commandLine.appendSwitch("webrtc-max-cpu-consumption-percentage=100");
 app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage', '100')
 
-//Uncap FPS
+
 if (settings.get('Unlimited FPS')) {
     app.commandLine.appendSwitch('disable-frame-rate-limit');
     app.commandLine.appendSwitch('disable-gpu-vsync');
 }
 
+if (settings.get("Game Capture")) {
+    const os = require('os');
+    if (os.cpus()[0].model.indexOf('AMD') > -1)
+        app.commandLine.appendSwitch('enable-zero-copy');
+    app.commandLine.appendSwitch('disable-direct-composition');
+}
 
 //acceleratedCanvas
 if (settings.get('Accelerated Canvas') === undefined) settings.set('Accelerated Canvas', false);
 if (settings.get('Accelerated Canvas')) {
     app.commandLine.appendSwitch('enable-accelerated-2d-canvas');
 }
-
-app.commandLine.appendSwitch('ignore-gpu-blacklist');
 
 //main Client Code
 const createWindow = () => {
@@ -215,6 +220,9 @@ const createWindow = () => {
             settings.set(setting.name, setting.value);
             if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
             if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
+            if (setting.name == 'Game Capture') { app.exit(); app.relaunch(); }
+            
+            console.log(setting.name)
         }
     });
 }

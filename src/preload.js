@@ -3,7 +3,6 @@ const { ipcRenderer } = require('electron');
 let loadChecker = setInterval(() => {
     if(app.page && app.session.map && pc !== undefined) {
         ipcRenderer.send('loadScripts');
-        ipcRenderer.send('loadRPC', { area: 'menu' });
         clearInterval(loadChecker);
     }
 }, 500);
@@ -15,8 +14,9 @@ ipcRenderer.on('scriptsLoaded', (event, hasScripts) => {
         app.customSettings.push({ name: 'Unlimited FPS', type: 'checkbox', value: true, tab: 'Client' });
         app.customSettings.push({ name: 'acceleratedCanvas', type: 'message', value: 'Enables the use of the GPU to perform 2d canvas rendering instead of using software rendering.', tab: 'Client' });
         app.customSettings.push({ name: 'Accelerated Canvas', type: 'checkbox', value: false, tab: 'Client' });
+        app.customSettings.push({ name: 'GameCapture', type: 'message', value: 'Gives better peroformance if you are recording/streaming your game.', tab: 'Client' });
+        app.customSettings.push({ name: 'Game Capture', type: 'checkbox', value: false, tab: 'Client' });
         
-
         pc.app.on('Client:CustomSettingsChange', function(setting){
             ipcRenderer.send('settingChange', setting);
         });
