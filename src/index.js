@@ -1,9 +1,11 @@
 require('v8-compile-cache');
 
-const { app, BrowserWindow, globalShortcut, protocol, ipcMain, dialog, clipboard } = require('electron');
+const { app, BrowserWindow, protocol, ipcMain, dialog, clipboard} = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
 const official_settings = ['Unlimited FPS', 'Accelerated Canvas', 'Game Capture'];
+const fs = require('fs')
+var downloadPath = path.normalize(`${app.getPath('appData')}\\vengeclient\\userscript\\`);
 
 const shortcuts = require('electron-localshortcut');
 
@@ -19,8 +21,8 @@ Store.initRenderer();
 const settings = new Store({
     defaults: {
         'Unlimited FPS': true,
-        'Accelerated Canvas': false,
-        'Game Capture': false
+        'Game Capture': false,
+        'userscript': downloadPath
     }
 });
 
@@ -34,7 +36,11 @@ const rpc_script = require('./rpc.js');
 //swapper_func
 const swapper = require('./swapper.js');
 const { machine } = require('os');
+const { download } = require('electron-dl');
 
+
+
+console.log('exists: '+ fs.existsSync(downloadPath + 'HideWeaponOnAds.js'))
 
 //Uncap FPS
 app.commandLine.appendSwitch("force_high_performance_gpu");
@@ -64,6 +70,8 @@ app.commandLine.appendSwitch("disable-web-security");
 app.commandLine.appendSwitch("webrtc-max-cpu-consumption-percentage=100");
 app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage', '100')
 
+app.commandLine.appendSwitch("enable-features", "PointerLockOptions");
+
 
 if (settings.get('Unlimited FPS')) {
     app.commandLine.appendSwitch('disable-frame-rate-limit');
@@ -74,7 +82,9 @@ if (settings.get("Game Capture")) {
     const os = require('os');
     if (os.cpus()[0].model.indexOf('AMD') > -1)
         app.commandLine.appendSwitch('enable-zero-copy');
-    app.commandLine.appendSwitch('disable-direct-composition');
+    app.commandLine.appendSwitch('disable-gpu-compositing')
+    app.commandLine.appendSwitch('disable-accelerated-video-decode')
+    app.commandLine.appendSwitch('disable-accelerated-video-encode')
 }
 
 //acceleratedCanvas
@@ -126,8 +136,25 @@ const createWindow = () => {
     shortcuts.register(win, "F6", () => { if (clipboard.readText().includes("venge.io")) { win.loadURL(clipboard.readText()) } })
     shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
     shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
+    shortcuts.register('F2', async () => {
+        let linkMenuWindow = new BrowserWindow({
+            width: 1200,
+            height: 800,
+            title: `Venge Client`,
+            backgroundColor: '#202020',
+            icon: __dirname + "/icon.ico",
+            webPreferences: {
+                preload: __dirname + '/userscript/script.js',
+                nodeIntegration: false,
+            }
+        });
+        linkMenuWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
+        linkMenuWindow.savedTitle = 'URL Menu';
+        windows.push(linkMenuWindow);
+    });
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
+    
 
     //Auto Update
 
@@ -171,12 +198,18 @@ const createWindow = () => {
     win.webContents.on('dom-ready', () => {
         ipcMain.on('loadScripts', function (event) {
             swapper.runScripts(win, app);
+            swapper.initScripts(win, app)
             event.sender.send('scriptsLoaded', true);
         });
 
         swapper.replaceResources(win, app);
     })
 
+    ipcMain.on('click', (event, data) => {
+        download(win, data.url, {"directory":downloadPath})
+    })
+
+    
 
     //Discord RPC
 
@@ -222,10 +255,12 @@ const createWindow = () => {
             if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
             if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
             if (setting.name == 'Game Capture') { app.exit(); app.relaunch(); }
-            
+
             console.log(setting.name)
         }
     });
+
+
 }
 
 
@@ -245,10 +280,8 @@ app.whenReady().then(() => {
 
 })
 
-app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-        app.quit();
-    }
-});
+app.on('window-all-closed', () => {
+    app.quit()
+})
 
 RPC.login({ clientId }).catch(console.error);
