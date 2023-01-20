@@ -1,6 +1,6 @@
 require('v8-compile-cache');
 
-const { app, BrowserWindow, protocol, ipcMain, dialog, clipboard} = require('electron');
+const { app, BrowserWindow, protocol, ipcMain, dialog, clipboard } = require('electron');
 app.startedAt = Date.now();
 const path = require('path');
 const official_settings = ['Unlimited FPS', 'Accelerated Canvas', 'Game Capture'];
@@ -38,10 +38,6 @@ const swapper = require('./swapper.js');
 const { machine } = require('os');
 const { download } = require('electron-dl');
 
-
-
-console.log('exists: '+ fs.existsSync(downloadPath + 'HideWeaponOnAds.js'))
-
 //Uncap FPS
 app.commandLine.appendSwitch("force_high_performance_gpu");
 app.commandLine.appendSwitch("in-process-gpu");
@@ -70,9 +66,7 @@ app.commandLine.appendSwitch("disable-web-security");
 app.commandLine.appendSwitch("webrtc-max-cpu-consumption-percentage=100");
 app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage', '100')
 
-app.commandLine.appendSwitch("enable-features", "PointerLockOptions");
-
-
+//Uncap FPS
 if (settings.get('Unlimited FPS')) {
     app.commandLine.appendSwitch('disable-frame-rate-limit');
     app.commandLine.appendSwitch('disable-gpu-vsync');
@@ -154,7 +148,7 @@ const createWindow = () => {
     });
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
-    
+
 
     //Auto Update
 
@@ -206,10 +200,10 @@ const createWindow = () => {
     })
 
     ipcMain.on('click', (event, data) => {
-        download(win, data.url, {"directory":downloadPath})
+        download(win, data.url, { "directory": downloadPath })
     })
 
-    
+
 
     //Discord RPC
 
