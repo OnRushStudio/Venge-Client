@@ -265,7 +265,7 @@ function loadHub() {
         }
     });
 
-    HubWindow.removeMenu()
+    //HubWindow.removeMenu()
     HubWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
     HubWindow.savedTitle = 'URL Menu';
 }
