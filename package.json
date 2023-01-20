@@ -1,6 +1,6 @@
 {
   "name": "vengeclient",
-  "version": "1.1.0",
+  "version": "2.0.1",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MetaHumanREAL/VengeClient.git"
+    "url": "https://github.com/Classy08/Venge-Client.git"
   },
   "author": "OnRush Studio",
   "license": "ISC",
@@ -39,22 +39,18 @@
     "nsis": {
       "oneClick": true,
       "allowToChangeInstallationDirectory": false
-    },
-    "publish": {
-      "provider": "github",
-      "owner": "MetaHumanREAL",
-      "repo": "VengeClient"
     }
   },
   "dependencies": {
     "discord-rpc": "^4.0.1",
+    "electron-dl": "^3.5.0",
     "electron-localshortcut": "^3.2.1",
     "electron-store": "^8.1.0",
     "electron-updater": "^5.3.0",
     "v8-compile-cache": "^2.3.0"
   },
   "devDependencies": {
-    "electron": "^9.4.4",
+    "electron": "^9.0.0",
     "electron-builder": "^23.6.0"
   }
 }
