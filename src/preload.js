@@ -3,10 +3,29 @@ const { ipcRenderer } = require('electron');
 let loadChecker = setInterval(() => {
     if(app.page && app.session.map && pc !== undefined) {
         ipcRenderer.send('loadScripts');
-        ipcRenderer.send('loadRPC', { area: 'menu' });
         clearInterval(loadChecker);
     }
 }, 500);
+
+window.onload = () => {
+    changePage(app.page, app.tab);
+}
+
+function changePage(page, tab) {
+    if(page == 'Home') {
+        if(!document.getElementById('ClientExit')) {
+            var div = document.getElementsByClassName('menu-button shop')[0];
+            if(div) div.parentElement.insertAdjacentHTML('beforeend', '<a aria-label="Exit" id="ClientExit" class="menu-button settings hint--left button-sound" style="cursor: pointer;"><img src="images/Close-Icon.png"></a>')
+
+            var div = document.getElementsByClassName('menu-button shop')[0];
+
+            if(div) div.parentElement.insertAdjacentHTML('beforeend', '<a aria-label="Client Hub" id="ClientHub" class="menu-button settings hint--left button-sound" style="cursor: pointer;"><img src="https://cdn.discordapp.com/attachments/925622910570336296/1066011519478931567/4703487_1.png"></a>')
+
+            document.getElementById('ClientExit').onclick = function () {ipcRenderer.send("exit")}
+            document.getElementById('ClientHub').onclick = function () {ipcRenderer.send("LoadHub")}
+        }
+    }
+}
 
 ipcRenderer.on('scriptsLoaded', (event, hasScripts) => {
     if(hasScripts) {
