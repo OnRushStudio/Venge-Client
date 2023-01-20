@@ -22,7 +22,9 @@ const settings = new Store({
     defaults: {
         'Unlimited FPS': true,
         'Game Capture': false,
-        'userscript': downloadPath
+        'userscript': downloadPath,
+        'Accelerated Canvas': false,
+        'Game Capture': false
     }
 });
 
