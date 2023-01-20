@@ -133,20 +133,7 @@ const createWindow = () => {
     shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
     shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
     shortcuts.register('F2', async () => {
-        let linkMenuWindow = new BrowserWindow({
-            width: 1200,
-            height: 800,
-            title: `Venge Client`,
-            backgroundColor: '#202020',
-            icon: __dirname + "/icon.ico",
-            webPreferences: {
-                preload: __dirname + '/userscript/script.js',
-                nodeIntegration: false,
-            }
-        });
-        linkMenuWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
-        linkMenuWindow.savedTitle = 'URL Menu';
-        windows.push(linkMenuWindow);
+        loadHub();
     });
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
@@ -205,7 +192,13 @@ const createWindow = () => {
         download(win, data.url, { "directory": downloadPath })
     })
 
+    ipcMain.on('exit', () => {
+        app.exit();
+    });
 
+    ipcMain.on('LoadHub', () => {
+        loadHub(    )
+    })
 
     //Discord RPC
 
@@ -259,6 +252,23 @@ const createWindow = () => {
 
 }
 
+function loadHub() {
+    let HubWindow = new BrowserWindow({
+        width: 1200,
+        height: 800,
+        title: `Venge Client`,
+        backgroundColor: '#202020',
+        icon: __dirname + "/icon.ico",
+        webPreferences: {
+            preload: __dirname + '/userscript/script.js',
+            nodeIntegration: false,
+        }
+    });
+
+    HubWindow.removeMenu()
+    HubWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
+    HubWindow.savedTitle = 'URL Menu';
+}
 
 app.whenReady().then(() => {
     protocol.registerFileProtocol('swap', (request, callback) => {
