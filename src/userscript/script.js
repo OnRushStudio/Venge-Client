@@ -1,4 +1,3 @@
-const script_json = require('./userscripts.json')
 var main;
 const path = require('path');
 const Store = require('electron-store');
