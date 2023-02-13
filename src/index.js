@@ -117,6 +117,8 @@ if (settings.get("Game Capture")) {
     app.commandLine.appendSwitch('disable-accelerated-video-encode')
 }
 
+app.allowRendererProcessReuse = true;
+
 //main Client Code
 const createWindow = () => {
     const win = new BrowserWindow({
