@@ -211,7 +211,6 @@ const createWindow = () => {
     win.webContents.on('dom-ready', () => {
         ipcMain.on('loadScripts', function (event) {
             swapper.runScripts(win, app);
-            swapper.initScripts(win, app)
             event.sender.send('scriptsLoaded', true);
         });
 
