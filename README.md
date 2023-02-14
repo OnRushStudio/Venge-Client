@@ -9,3 +9,5 @@ F6 - Join link
 F11 - Toggle fullscreen
 
 F12 - Toggle dev tools
+
+F2 - Client Hub
