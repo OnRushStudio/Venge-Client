@@ -25,26 +25,6 @@ module.exports = {
             win.webContents.executeJavaScript(script);
         });
     },
-    initScripts: (win, app) => {
-        var scriptDirectory = path.normalize(`${app.getPath('appData')}\\vengeclient\\userscript\\`);
-    
-        if(!fs.existsSync(scriptDirectory)) {
-            fs.mkdirSync(scriptDirectory, {
-                recursive: true
-            });
-        }
-    
-        let files = fs.readdirSync(scriptDirectory, { withFileTypes: true });
-        this.totalScripts = files.length;
-        
-        if(files.length == 0) return;
-    
-        files.forEach(file => {
-            if(!file.name.includes('js')) return;
-            let script = fs.readFileSync(scriptDirectory + '/' + file.name, { encoding: 'utf-8' });
-            win.webContents.executeJavaScript(script);
-        });
-    },
     replaceResources: (win, app) => {
 
         function checkCreateFolder(folder) {
