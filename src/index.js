@@ -208,10 +208,10 @@ const createWindow = () => {
 
     //Swapper
     win.webContents.on('dom-ready', () => {
-        ipcMain.on('loadScripts', function (event) {
-            swapper.runScripts(win, app);
-            event.sender.send('scriptsLoaded', true);
-        });
+//         ipcMain.on('loadScripts', function (event) {
+//             swapper.runScripts(win, app);
+//             event.sender.send('scriptsLoaded', true);
+//         });
 
         swapper.replaceResources(win, app);
     });
