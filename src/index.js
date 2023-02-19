@@ -24,7 +24,6 @@ const settings = new Store({
         'Game Capture': false,
         'userscript': downloadPath,
         'Accelerated Canvas': false,
-        'Game Capture': false,
         'remove-useless': true,
         'helpful-flag': true,
         'flag-limit-increase': true,
@@ -162,9 +161,9 @@ const createWindow = () => {
     shortcuts.register(win, "F6", () => { if (clipboard.readText().includes("venge.io")) { win.loadURL(clipboard.readText()) } })
     shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
     shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
-    shortcuts.register('F2', async () => {
-        loadHub();
-    });
+    // shortcuts.register('F2', async () => {
+    //     loadHub();
+    // });
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
 
@@ -211,24 +210,23 @@ const createWindow = () => {
     win.webContents.on('dom-ready', () => {
         ipcMain.on('loadScripts', function (event) {
             swapper.runScripts(win, app);
-            swapper.initScripts(win, app)
             event.sender.send('scriptsLoaded', true);
         });
 
         swapper.replaceResources(win, app);
-    })
-
-    ipcMain.on('click', (event, data) => {
-        download(win, data.url, { "directory": downloadPath })
-    })
-
-    ipcMain.on('exit', () => {
-        app.exit();
     });
 
-    ipcMain.on('LoadHub', () => {
-        loadHub()
-    })
+    // ipcMain.on('click', (event, data) => {
+    //     download(win, data.url, { "directory": downloadPath })
+    // })
+
+    // ipcMain.on('exit', () => {
+    //     app.exit();
+    // });
+
+    // ipcMain.on('LoadHub', () => {
+    //     loadHub()
+    // })
 
     //Discord RPC
 
@@ -282,23 +280,23 @@ const createWindow = () => {
 
 }
 
-function loadHub() {
-    let HubWindow = new BrowserWindow({
-        width: 1200,
-        height: 800,
-        title: `Venge Client`,
-        backgroundColor: '#202020',
-        icon: __dirname + "/icon.ico",
-        webPreferences: {
-            preload: __dirname + '/userscript/script.js',
-            nodeIntegration: false,
-        }
-    });
+// function loadHub() {
+//     let HubWindow = new BrowserWindow({
+//         width: 1200,
+//         height: 800,
+//         title: `Venge Client`,
+//         backgroundColor: '#202020',
+//         icon: __dirname + "/icon.ico",
+//         webPreferences: {
+//             preload: __dirname + '/userscript/script.js',
+//             nodeIntegration: false,
+//         }
+//     });
 
-    //HubWindow.removeMenu()
-    HubWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
-    HubWindow.savedTitle = 'URL Menu';
-}
+//     //HubWindow.removeMenu()
+//     HubWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
+//     HubWindow.savedTitle = 'URL Menu';
+// }
 
 app.whenReady().then(() => {
     protocol.registerFileProtocol('swap', (request, callback) => {
