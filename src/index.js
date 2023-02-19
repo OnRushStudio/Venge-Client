@@ -24,7 +24,6 @@ const settings = new Store({
         'Game Capture': false,
         'userscript': downloadPath,
         'Accelerated Canvas': false,
-        'Game Capture': false,
         'remove-useless': true,
         'helpful-flag': true,
         'flag-limit-increase': true,
@@ -162,9 +161,9 @@ const createWindow = () => {
     shortcuts.register(win, "F6", () => { if (clipboard.readText().includes("venge.io")) { win.loadURL(clipboard.readText()) } })
     shortcuts.register(win, 'F11', () => { win.fullScreen = !win.fullScreen; settings.set('Fullscreen', win.fullScreen) });
     shortcuts.register(win, "F12", () => win.webContents.toggleDevTools());
-    shortcuts.register('F2', async () => {
-        loadHub();
-    });
+    // shortcuts.register('F2', async () => {
+    //     loadHub();
+    // });
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
 
 
@@ -209,96 +208,95 @@ const createWindow = () => {
 
     //Swapper
     win.webContents.on('dom-ready', () => {
-        ipcMain.on('loadScripts', function (event) {
-            swapper.runScripts(win, app);
-            swapper.initScripts(win, app)
-            event.sender.send('scriptsLoaded', true);
-        });
+//         ipcMain.on('loadScripts', function (event) {
+//             swapper.runScripts(win, app);
+//             event.sender.send('scriptsLoaded', true);
+//         });
 
-        swapper.replaceResources(win, app);
-    })
-
-    ipcMain.on('click', (event, data) => {
-        download(win, data.url, { "directory": downloadPath })
-    })
-
-    ipcMain.on('exit', () => {
-        app.exit();
+        // swapper.replaceResources(win, app);
     });
 
-    ipcMain.on('LoadHub', () => {
-        loadHub()
-    })
+    // ipcMain.on('click', (event, data) => {
+    //     download(win, data.url, { "directory": downloadPath })
+    // })
+
+    // ipcMain.on('exit', () => {
+    //     app.exit();
+    // });
+
+    // ipcMain.on('LoadHub', () => {
+    //     loadHub()
+    // })
 
     //Discord RPC
 
-    ipcMain.on('loadRPC', (event, data) => {
-        if (data.area == 'game') {
-            rpc_script.setActivity(RPC, {
-                state: 'In a game',
-                startTimestamp: data.now,
-                largeImageKey: data.maps.includes(data.map) ? data.map.toLowerCase() : 'custom',
-                largeImageText: data.mapText == undefined ? data.map + ' - CUSTOM MATCH' : data.mapText,
-                smallImageKey: data.weapon.toLowerCase(),
-                smallImageText: data.weapon,
-                instance: false,
-                buttons: [
-                    {
-                        label: 'Download Client',
-                        url: 'https://social.venge.io/client.html'
-                    }
-                ]
-            });
-        }
+    // ipcMain.on('loadRPC', (event, data) => {
+    //     if (data.area == 'game') {
+    //         rpc_script.setActivity(RPC, {
+    //             state: 'In a game',
+    //             startTimestamp: data.now,
+    //             largeImageKey: data.maps.includes(data.map) ? data.map.toLowerCase() : 'custom',
+    //             largeImageText: data.mapText == undefined ? data.map + ' - CUSTOM MATCH' : data.mapText,
+    //             smallImageKey: data.weapon.toLowerCase(),
+    //             smallImageText: data.weapon,
+    //             instance: false,
+    //             buttons: [
+    //                 {
+    //                     label: 'Download Client',
+    //                     url: 'https://social.venge.io/client.html'
+    //                 }
+    //             ]
+    //         });
+    //     }
 
-        if (data.area == 'menu') {
-            rpc_script.setActivity(RPC, {
-                state: 'On the menu',
-                startTimestamp: app.startedAt,
-                largeImageKey: 'menu',
-                largeImageText: 'Venge.io',
-                instance: false,
-                buttons: [
-                    {
-                        label: 'Download Client',
-                        url: 'https://social.venge.io/client.html'
-                    }
-                ]
-            });
-        }
-    });
+    //     if (data.area == 'menu') {
+    //         rpc_script.setActivity(RPC, {
+    //             state: 'On the menu',
+    //             startTimestamp: app.startedAt,
+    //             largeImageKey: 'menu',
+    //             largeImageText: 'Venge.io',
+    //             instance: false,
+    //             buttons: [
+    //                 {
+    //                     label: 'Download Client',
+    //                     url: 'https://social.venge.io/client.html'
+    //                 }
+    //             ]
+    //         });
+    //     }
+    // });
 
-    ipcMain.on('settingChange', function (event, setting) {
-        if (official_settings.includes(setting.name)) {
-            settings.set(setting.name, setting.value);
-            if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
-            if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
-            if (setting.name == 'Game Capture') { app.exit(); app.relaunch(); }
+    // ipcMain.on('settingChange', function (event, setting) {
+    //     if (official_settings.includes(setting.name)) {
+    //         settings.set(setting.name, setting.value);
+    //         if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
+    //         if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
+    //         if (setting.name == 'Game Capture') { app.exit(); app.relaunch(); }
 
-            console.log(setting.name)
-        }
-    });
+    //         console.log(setting.name)
+    //     }
+    // });
 
 
 }
 
-function loadHub() {
-    let HubWindow = new BrowserWindow({
-        width: 1200,
-        height: 800,
-        title: `Venge Client`,
-        backgroundColor: '#202020',
-        icon: __dirname + "/icon.ico",
-        webPreferences: {
-            preload: __dirname + '/userscript/script.js',
-            nodeIntegration: false,
-        }
-    });
+// function loadHub() {
+//     let HubWindow = new BrowserWindow({
+//         width: 1200,
+//         height: 800,
+//         title: `Venge Client`,
+//         backgroundColor: '#202020',
+//         icon: __dirname + "/icon.ico",
+//         webPreferences: {
+//             preload: __dirname + '/userscript/script.js',
+//             nodeIntegration: false,
+//         }
+//     });
 
-    //HubWindow.removeMenu()
-    HubWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
-    HubWindow.savedTitle = 'URL Menu';
-}
+//     //HubWindow.removeMenu()
+//     HubWindow.loadFile(path.join(__dirname, 'userscript/index.html'));
+//     HubWindow.savedTitle = 'URL Menu';
+// }
 
 app.whenReady().then(() => {
     protocol.registerFileProtocol('swap', (request, callback) => {
