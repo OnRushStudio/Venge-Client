@@ -1,11 +1,11 @@
-const { ipcRenderer } = require('electron');
+// const { ipcRenderer } = require('electron');
 
-let loadChecker = setInterval(() => {
-    if (app.page && app.session.map && pc !== undefined) {
-        ipcRenderer.send('loadScripts');
-        clearInterval(loadChecker);
-    }
-}, 500);
+// let loadChecker = setInterval(() => {
+//     if (app.page && app.session.map && pc !== undefined) {
+//         ipcRenderer.send('loadScripts');
+//         clearInterval(loadChecker);
+//     }
+// }, 500);
 
 // window.onload = () => {
 //     changePage(app.page, app.tab);

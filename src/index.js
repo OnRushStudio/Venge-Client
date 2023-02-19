@@ -213,7 +213,7 @@ const createWindow = () => {
 //             event.sender.send('scriptsLoaded', true);
 //         });
 
-        swapper.replaceResources(win, app);
+        // swapper.replaceResources(win, app);
     });
 
     // ipcMain.on('click', (event, data) => {
@@ -230,52 +230,52 @@ const createWindow = () => {
 
     //Discord RPC
 
-    ipcMain.on('loadRPC', (event, data) => {
-        if (data.area == 'game') {
-            rpc_script.setActivity(RPC, {
-                state: 'In a game',
-                startTimestamp: data.now,
-                largeImageKey: data.maps.includes(data.map) ? data.map.toLowerCase() : 'custom',
-                largeImageText: data.mapText == undefined ? data.map + ' - CUSTOM MATCH' : data.mapText,
-                smallImageKey: data.weapon.toLowerCase(),
-                smallImageText: data.weapon,
-                instance: false,
-                buttons: [
-                    {
-                        label: 'Download Client',
-                        url: 'https://social.venge.io/client.html'
-                    }
-                ]
-            });
-        }
+    // ipcMain.on('loadRPC', (event, data) => {
+    //     if (data.area == 'game') {
+    //         rpc_script.setActivity(RPC, {
+    //             state: 'In a game',
+    //             startTimestamp: data.now,
+    //             largeImageKey: data.maps.includes(data.map) ? data.map.toLowerCase() : 'custom',
+    //             largeImageText: data.mapText == undefined ? data.map + ' - CUSTOM MATCH' : data.mapText,
+    //             smallImageKey: data.weapon.toLowerCase(),
+    //             smallImageText: data.weapon,
+    //             instance: false,
+    //             buttons: [
+    //                 {
+    //                     label: 'Download Client',
+    //                     url: 'https://social.venge.io/client.html'
+    //                 }
+    //             ]
+    //         });
+    //     }
 
-        if (data.area == 'menu') {
-            rpc_script.setActivity(RPC, {
-                state: 'On the menu',
-                startTimestamp: app.startedAt,
-                largeImageKey: 'menu',
-                largeImageText: 'Venge.io',
-                instance: false,
-                buttons: [
-                    {
-                        label: 'Download Client',
-                        url: 'https://social.venge.io/client.html'
-                    }
-                ]
-            });
-        }
-    });
+    //     if (data.area == 'menu') {
+    //         rpc_script.setActivity(RPC, {
+    //             state: 'On the menu',
+    //             startTimestamp: app.startedAt,
+    //             largeImageKey: 'menu',
+    //             largeImageText: 'Venge.io',
+    //             instance: false,
+    //             buttons: [
+    //                 {
+    //                     label: 'Download Client',
+    //                     url: 'https://social.venge.io/client.html'
+    //                 }
+    //             ]
+    //         });
+    //     }
+    // });
 
-    ipcMain.on('settingChange', function (event, setting) {
-        if (official_settings.includes(setting.name)) {
-            settings.set(setting.name, setting.value);
-            if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
-            if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
-            if (setting.name == 'Game Capture') { app.exit(); app.relaunch(); }
+    // ipcMain.on('settingChange', function (event, setting) {
+    //     if (official_settings.includes(setting.name)) {
+    //         settings.set(setting.name, setting.value);
+    //         if (setting.name == 'Unlimited FPS') { app.exit(); app.relaunch(); }
+    //         if (setting.name == 'Accelerated Canvas') { app.exit(); app.relaunch(); }
+    //         if (setting.name == 'Game Capture') { app.exit(); app.relaunch(); }
 
-            console.log(setting.name)
-        }
-    });
+    //         console.log(setting.name)
+    //     }
+    // });
 
 
 }
