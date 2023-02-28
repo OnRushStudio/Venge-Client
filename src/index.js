@@ -213,7 +213,7 @@ const createWindow = () => {
 //             event.sender.send('scriptsLoaded', true);
 //         });
 
-        // swapper.replaceResources(win, app);
+        swapper.replaceResources(win, app);
     });
 
     // ipcMain.on('click', (event, data) => {
