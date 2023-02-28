@@ -1,59 +1,57 @@
-// const { ipcRenderer } = require('electron');
+const { ipcRenderer } = require('electron');
 
-// let loadChecker = setInterval(() => {
-//     if (app.page && app.session.map && pc !== undefined) {
-//         ipcRenderer.send('loadScripts');
-//         clearInterval(loadChecker);
-//     }
-// }, 500);
+new MutationObserver(mutationRecords => {
+    if (window.location.href === "https://venge.io/") {
+        if (document.querySelector("#menu-items")) {
+            if (!document.getElementById("closeClient")) {
+                let menuCont = document.querySelector("#menu-items")
+                let closeClient = document.createElement("li")
+                closeClient.id = "closeClient";
+                closeClient.innerHTML = `<i aria-hidden="true" class="fa fa-times"></i>`
+                menuCont.appendChild(closeClient)
+                closeClient.onclick = () => {
+                    ipcRenderer.send("exit")
+                }
+                console.log(closeClient)
+            }
+        }
+        
+    }
+    // try {
+    //     mutationRecords.forEach(record => {
+    //         record.addedNodes.forEach(el => {
+    //             console.log(el.id)
+    //             if (el.id == "settings") {
+    //                 if (!document.getElementById("clientSettings")) {
+    //                     let tabs = document.querySelector("#content > div > div.tabs")
+    //                     let clientSettings = document.createElement("li")
+    //                     clientSettings.id = "clientSettings"
+    //                     clientSettings.innerHTML = `Client Settings`
+    //                     tabs.appendChild(clientSettings)
 
-// window.onload = () => {
-//     changePage(app.page, app.tab);
-// }
+    //                     clientSettings.onclick = () => {
+    //                         clientSettings.classList.add("active")
+    //                         let tabCont = document.querySelector("#content > div > div.tab-content")
+    //                         let settingHTML = `
+    //                         <div class="field field-checkbox"><label for="uncapFPS">Uncap FPS</label>
+    //                             <div class="field-toggle-wrapper"><input type="checkbox" id="uncapFPS" class="toggle"> <label for="Uncap Fps"></label></div>
+    //                         </div>
+    //                         <div class="field field-checkbox"><label for="uncapFPS">Low Latency</label>
+    //                             <div class="field-toggle-wrapper"><input type="checkbox" id="low_latency" class="toggle"> <label for="Low Latency"></label></div>
+    //                         </div>
+    //                         <div class="field field-checkbox"><label for="Experimental Flags">Uncap FPS</label>
+    //                             <div class="field-toggle-wrapper"><input type="checkbox" id="expFlags" class="toggle"> <label for="Experimental Flags"></label></div>
+    //                         </div>
+    //                         <div class="field field-checkbox"><label for="uncapFPS">Gpu Rasterization</label>
+    //                             <div class="field-toggle-wrapper"><input type="checkbox" id="gpu-rasterization" class="toggle"> <label for="Gpu Rasterization"></label></div>
+    //                         </div>`
+    //                         tabCont.innerHTML = settingHTML;
+    //                     }
+    //                 }
+    //             }
+    //         })
+    //     })
+    // } catch (error) {
 
-// function changePage(page, tab) {
-//     if (page == 'Home') {
-//         if (!document.getElementById('ClientExit')) {
-//             var div = document.getElementsByClassName('menu-button shop')[0];
-//             if (div) div.parentElement.insertAdjacentHTML('beforeend', '<a aria-label="Exit" id="ClientExit" class="menu-button settings hint--left button-sound" style="cursor: pointer;"><img src="images/Close-Icon.png"></a>')
-
-//             var div = document.getElementsByClassName('menu-button shop')[0];
-
-//             if (div) div.parentElement.insertAdjacentHTML('beforeend', '<a aria-label="Client Hub" id="ClientHub" class="menu-button settings hint--left button-sound" style="cursor: pointer;"><img src="https://cdn.discordapp.com/attachments/925622910570336296/1066011519478931567/4703487_1.png"></a>')
-
-//             document.getElementById('ClientExit').onclick = function () { ipcRenderer.send("exit") }
-//             document.getElementById('ClientHub').onclick = function () { ipcRenderer.send("LoadHub") }
-//         }
-//     }
-// }
-
-// ipcRenderer.on('scriptsLoaded', (event, hasScripts) => {
-//     if (hasScripts) {
-//         app.settingsTabs.push({ name: 'Client', icon: 'fa-desktop', tab: 'Client' });
-//         app.customSettings.push({ name: 'Client Message', type: 'message', value: 'Official Client Settings', tab: 'Client' });
-//         app.customSettings.push({ name: 'Unlimited FPS', type: 'checkbox', value: true, tab: 'Client' });
-//         app.customSettings.push({ name: 'info-flags', type: 'message', value: 'Performance Settins of the client', tab: 'Client' });
-//         app.customSettings.push({ name: 'Gpu Rasterization', type: 'checkbox', value: true, tab: 'Client' });
-//         app.customSettings.push({ name: 'flag-limit-increase', type: 'checkbox', value: true, tab: 'Client' });
-//         app.customSettings.push({ name: 'low latency', type: 'checkbox', value: false, tab: 'Client' });
-//         app.customSettings.push({ name: 'Experimental Flags', type: 'checkbox', value: false, tab: 'Client' });
-//         app.customSettings.push({ name: 'GameCapture', type: 'message', value: 'Gives better peroformance if you are recording/streaming your game.', tab: 'Client' });
-//         app.customSettings.push({ name: 'Game Capture', type: 'checkbox', value: false, tab: 'Client' });
-
-//         pc.app.on('Client:CustomSettingsChange', function (setting) {
-//             ipcRenderer.send('settingChange', setting);
-//         });
-
-//         pc.app.on('Player:Leave', function () {
-//             ipcRenderer.send('loadRPC', { area: 'menu' });
-//         }, this);
-
-//         pc.app.on('Overlay:Weapon', function (weapon) {
-//             let maps = app.session.defaultMaps.map((map) => map.split(' - ')[0]);
-//             ipcRenderer.send('loadRPC', { area: 'game', now: Date.now(), weapon: weapon, map: app.session.map, maps: maps, mapText: app.session.defaultMaps.filter((map) => map.split(' - ')[0] == app.session.map)[0] });
-//         }, this);
-
-
-//         console.log('----------\nScripts Loaded\n----------');
-//     }
-// });
+    // }
+}).observe(document, { childList: true, subtree: true });
