@@ -44,6 +44,10 @@ const rpc_script = require('./rpc.js');
 const swapper = require('./swapper.js');
 const { machine } = require('os');
 const { download } = require('electron-dl');
+//exit
+ipcMain.on('exit', () => {
+    app.exit();
+});
 
 //Flags
 
