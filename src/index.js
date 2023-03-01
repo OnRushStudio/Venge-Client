@@ -219,7 +219,7 @@ const createWindow = () => {
 
         swapper.replaceResources(win, app);
     });
-
+    swapper.initStyles(win, app)
     // ipcMain.on('click', (event, data) => {
     //     download(win, data.url, { "directory": downloadPath })
     // })
