@@ -24,6 +24,58 @@ module.exports = {
             win.webContents.executeJavaScript(script);
         });
     },
+    initStyles: (win, app) => {
+        let cssDirectory = path.normalize(`${app.getPath('documents')}/Phoenix-Client/CSS`);
+    
+        if(!fs.existsSync(cssDirectory)) {
+            fs.mkdirSync(cssDirectory, {
+                recursive: true
+            });
+        }
+
+        let files = fs.readdirSync(cssDirectory, { withFileTypes: true });        
+        if(files.length == 0) return;
+    
+        files.forEach(file => {
+            if(!file.name.includes('css')) return;
+            let css = fs.readFileSync(cssDirectory + '/' + file.name, { encoding: 'utf-8' });
+            try {
+                script = `
+                    var style = document.createElement('style');
+                    style.innerHTML = ${css};
+                    document.getElementsByTagName('head')[0].appendChild(style);
+                `
+                win.webContents.executeJavaScript(script);
+            } catch (error) {
+                console.log(error)
+            }
+        });
+    },
+    initStyles: (win, app) => {
+        let cssDirectory = path.normalize(`${app.getPath('documents')}/Venge-Client/CSS`);
+    
+        if(!fs.existsSync(cssDirectory)) {
+            fs.mkdirSync(cssDirectory, {
+                recursive: true
+            });
+        }
+
+        let files = fs.readdirSync(cssDirectory, { withFileTypes: true });        
+        if(files.length == 0) return;
+    
+        files.forEach(file => {
+            if(!file.name.includes('css')) return;
+            let css = fs.readFileSync(cssDirectory + '/' + file.name, { encoding: 'utf-8' });
+            console.log(css)
+            try {
+                win.webContents.on('did-finish-load', () => {
+                    win.webContents.insertCSS(css)
+                  })                  
+            } catch (error) {
+                console.log(error)
+            }
+        });
+    },
     replaceResources: (win, app) => {
 
         function checkCreateFolder(folder) {
