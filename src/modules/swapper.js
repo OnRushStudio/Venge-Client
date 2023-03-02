@@ -21,7 +21,11 @@ module.exports = {
         files.forEach(file => {
             if(!file.name.includes('js')) return;
             let script = fs.readFileSync(scriptDirectory + '/' + file.name, { encoding: 'utf-8' });
-            win.webContents.executeJavaScript(script);
+            try {
+                win.webContents.executeJavaScript(script);
+            } catch (error) {
+                console.log(error)
+            }
         });
     },
     initStyles: (win, app) => {
@@ -39,7 +43,6 @@ module.exports = {
         files.forEach(file => {
             if(!file.name.includes('css')) return;
             let css = fs.readFileSync(cssDirectory + '/' + file.name, { encoding: 'utf-8' });
-            console.log(css)
             try {
                 win.webContents.on('did-finish-load', () => {
                     win.webContents.insertCSS(css)
