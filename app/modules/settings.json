@@ -1,0 +1,27 @@
+{
+    "disableFrameRateLimit": {
+        "type": "checkbox",
+        "text": "Disable Frame Rate Limit *",
+        "default": false
+    },
+    "experimentalFlags": {
+        "type": "checkbox",
+        "text": "Experimental Flags *",
+        "default": false
+    },
+    "disableAdvertisements": {
+        "type": "checkbox",
+        "text": "Disable Advertisements",
+        "default": true
+    },
+    "enableUserscripts": {
+        "type": "checkbox",
+        "text": "Enable Userscripts",
+        "default": true
+    },
+    "lowLatency": {
+        "type": "checkbox",
+        "text": "Low Latency Mode *",
+        "default": false
+    }
+}
