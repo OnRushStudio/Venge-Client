@@ -1,7 +1,5 @@
 # Venge Client
 
-F2 - Client Hub
-
 F4 - Leave game and back to homepage i.e https://venge.io/
 
 F5 - Reload
