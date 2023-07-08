@@ -237,7 +237,7 @@ class Client {
         ]
 
         const swapDirectory = path.normalize(`${app.getPath('documents')}/Venge Client/Resource Swapper`)
-        const skinSwapper = path.normalize(`${app.getPath('documents')}/Venge-Client/Skin Swapper`)
+        const skinSwapper = path.normalize(`${app.getPath('documents')}/Venge Client/Skin Swapper`)
 
         if (!fs.existsSync(swapDirectory)) {
             fs.mkdirSync(swapDirectory, {
