@@ -1,0 +1,62 @@
+<div class="field">
+    <label for="text">{{translate('Select Emoji')}}</label>
+    <div class="field-btn-wrap">
+        <select name="emoji" id="emoji" v-model="emoji.selected" v-on:change="setEmoji()">
+            <option
+                    v-for="item in emoji.list" 
+                    :value="item.value">
+                    {{item.text}}
+            </option>
+        </select>
+        <button type="button" class="btn btn-secondary" v-on:click="setEmoji()">
+            {{translate('Select')}} 
+            <img :src="getImage('Caret-Icon.png')" alt="">
+        </button>
+    </div>
+</div>
+
+<div class="field">
+    <label for="text">{{translate('Kill Message')}}</label>
+    <div class="field-btn-wrap">
+        <select id="killMessage" :placeholder="translate('Kill Message')" v-model="killMessage.message" v-on:change="setKillMessage()">
+            <option :selected="item == killMessage.message" 
+                    v-for="item in killMessage.list" 
+                    :value="item">
+                    {{item}}
+            </option>
+        </select>
+        <button type="button" class="btn btn-secondary" v-on:click="setKillMessage()">
+            {{translate('Update')}}
+            <img :src="getImage('Caret-Icon.png')" alt="">
+        </button>
+    </div>
+</div>
+
+<hr>
+
+<div class="field-wrap">
+    <div class="field">
+        <label for="password">{{translate('New Password')}}</label>
+        <input type="password" id="password" :placeholder="translate('Password')" v-model="form.newPassword">
+    </div>
+    <div class="field">
+        <label for="text">{{translate('E-mail')}}</label>
+        <input type="text" id="email" :placeholder="translate('E-mail')" v-model="form.email">
+    </div>
+</div>
+
+<div class="field with-input-text">
+    <label for="text">{{translate('Twitch Username')}}</label>
+    <div class="with-text-wrapper">
+        <input type="text" id="twitchUsername" placeholder="Venge" v-model="form.twitchUsername">
+        <span class="input-text">https://twitch.tv/</span>
+    </div>
+    
+</div>
+
+<div class="field button-wrap">
+    <button type="button" class="btn btn-primary" v-on:click="setProfileSettings()">
+        {{translate('Update')}}
+        <img :src="getImage('Caret-Icon.png')" alt="">
+    </button>
+</div>

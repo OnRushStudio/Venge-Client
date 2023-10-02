@@ -1,0 +1,750 @@
+@import "Common.css";
+@import "Table.css";
+@import "Form.css";
+@import "Clan.css";
+@import "Chat.css";
+@import "Animate.css";
+@import "Hint.css";
+@import "Popup.css";
+
+
+#account-wrapper{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: rgb(27, 27, 27);
+    width: 100%;
+    height: 100%;
+     z-index: 100;
+}
+
+#account-wrapper p {
+    font-size: 20px;
+}
+
+.account-left-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.account-button-box{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.login-register-wrapper{
+    position: absolute;
+    width: 90%;
+    max-width: 1000px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#content .login-register-wrapper form{
+    width: 100%;
+}
+
+.logout-button{
+    float: right;
+    width: 100px;
+    text-align: center;
+    background: transparent;
+    font-size: 17px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.profile-username-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-username-header a{
+    display: inline-block;
+}
+
+.change-username-button{
+    font-size: 21px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.profile-content{
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.profile-content h4 {
+    font-size: 16px;
+    color: #fff;
+}
+
+.stats-col {
+    width: 100%;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-right: 50px;
+}
+
+.stats-col:last-child{
+	margin-right: 0;
+}
+
+.stats-col h4{
+    color: #ccc;
+}
+
+.stats-col li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #4e4e4e;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-size: 18px;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+}
+
+.stats-col li img{
+	width: 20px;
+	margin: -3px 5px 0 0;
+}
+
+.stats-col li:nth-child(even) {
+    background: #929292;
+}
+
+.stats-col li.badges-area{
+	background: transparent;
+	justify-content: flex-start;
+	padding: 0;
+}
+
+.stats-col li i {
+    margin-right: 10px;
+}
+
+.stats-col li .label {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	line-height: 1;
+}
+
+.stats-col li .value {
+    float: right;
+    font-weight: bold;
+}
+
+.stats-col li .profile-badge {
+    height: 48px;
+    width: 48px;
+    margin-top: 5px;
+    margin-right: 0;
+}
+
+
+
+#tribe-logo{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+}
+
+.clan-logo{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+    float: left;
+}
+
+.slug{
+    color: yellow;
+}
+
+#clan-hub .clan-logo{
+    margin-right: 20px;
+    margin-top: -5px;
+}
+
+.layer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    mask-size: 100%;
+    -webkit-mask-size: 100%;
+}
+
+.red{
+    background-color: #ff0000;
+}
+
+.blue{
+    background-color: #0059ff;
+}
+
+.green{
+    background-color: #a6c400;
+}
+
+.yellow{
+    background-color: #d9ff00;
+}
+
+.orange{
+    background-color: #ff7b00;
+}
+
+.white{
+    background-color: #ffffff;
+}
+
+.black{
+    background-color: #000000;
+}
+
+.form-logo .select-option{
+    float: right;
+    height: 80px;
+}
+
+.form-logo .select-option button{
+    float: left;
+}
+
+.form-logo .select-option span{
+    float: left;
+    width: 150px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.form-logo .select-option span img, .form-logo .select-option span b{
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: solid 2px #fff;
+}
+
+.form-logo #tribe-logo{
+    float: left;
+}
+
+.form-logo{
+    height: 300px;
+}
+
+.clan-slug{
+    color: yellow;
+}
+
+.clan-header{
+    background-color: rgb(58, 58, 58);
+    padding: 10px 20px;
+    height: 90px;
+}
+
+.clan-header .clan-logo{
+    width: 100px;
+    height: 100px;
+}
+
+.clan-header p, .clan-header h1{
+    margin: 0px;
+    padding: 0px;
+}
+
+.clan-header h1{
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+.clan-header p{
+    color: rgb(155, 155, 155);
+}
+
+.clan-header .discord-link{
+    float: right;
+    background-color: rgb(73,100,233);
+    padding: 5px 20px;
+    border-radius: 2px;
+    margin-top: -20px;
+}
+
+.clan-members-table{
+    margin-top: 20px;
+}
+
+.clan-members-table .fa{
+    margin-right: 0px;
+}
+
+.mini-bar{
+    width: 150px;
+    height: 4px;
+    border: solid 2px #000;
+    background-color: #666;
+    margin-top: 10px;
+}
+
+.mini-bar .fill{
+    width: 1px;
+    max-width: 100%;
+    height: 4px;
+    background-color: #fff;
+}
+
+.stats-col li .profile-badge {
+  height: 48px;
+  width: 48px;
+  margin-top: 5px;
+  margin-right: 0;
+}
+
+.badge-icon {
+    width: 85px;
+    text-align: center;
+    background: #9729fe;
+    border-radius: 5px;
+    margin: 0 10px 10px 0;
+}
+
+.badge-icon p {
+    height: 25px;
+    background: #7621c5;
+    padding: 0px;
+    margin: 0px;
+    line-height: 25px;
+    font-size: 13px !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.level {
+    float: left;
+    background: #ddd;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    background: url('Level-Icon.png') no-repeat;
+    color: #fff;
+    padding-top: 16px;
+    text-shadow: 0px 1px 2px #8c5b1b;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+.level span {
+    font-size: 11px;
+    color: #000;
+    font-weight: bold;
+    display: block;
+}
+
+.profile-exp-wrapper{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.profile-exp-wrapper p{
+	margin: 0 0 0 10px;
+	color: #fff;
+}
+
+.profile-exp-bar{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	width: 200px;
+	height: 4px;
+	background: #535353;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.profile-exp-bar span{
+	background: #ff9502;
+	width: 0;
+	height: 100%;
+}
+
+#quests-table .quest-img{
+    width: 64px;
+}
+
+#quests-table .quest-icon{
+    width: 32px;
+    float: left;
+    margin-top: -7px;
+    margin-right: 12px;
+}
+
+.quest-progress {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 15px;
+}
+
+.quest-progress p {
+	margin: 0;
+	color: #a7a3a3;
+}
+
+.quest-experience-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	width: 200px;
+	height: 12px;
+	background: #222222;
+	border-radius: 5px;
+	overflow: hidden;
+	margin-right: 10px;
+}
+
+.quest-experience-bar span {
+	background: #719700;
+	width: 0;
+	height: 100%;
+	transition: ease all 0.3s;
+}
+
+.quest-claim {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 0;
+	border: 0;
+	background: #4C9800;
+	color: #fff;
+	font-size: 12px;
+	padding: 4px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.quest-claimed {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	right: 0;
+	font-size: 12px;
+}
+
+.quest-claimed p {
+	margin: 0;
+	color: #fff;
+}
+
+.quest-claim img,
+.quest-claimed img {
+	width: 13px;
+	margin-right: 3px;
+}
+
+
+/* ================ Mobile Devices ================ */
+
+/* Account - Guest */
+.mobile .login-register-wrapper{
+    width: 83%;
+    top: 20px;
+    transform: translate(-50%, 0);
+}
+
+.mobile .login-register-wrapper #alert{
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
+.mobile .logout-button{
+    width: 80px;
+}
+
+.mobile #account-wrapper p{
+    font-size: 15px;
+}
+
+.mobile .account-left-box{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mobile .tos-text{
+    width: 48%;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.mobile .link-text{
+    width: 48%;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.mobile .account-button-box{
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.mobile .account-button-box .btn{
+    width: 48%;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.mobile .account-button-box .btn:hover{
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Account - Login */
+.mobile .profile-content h4{
+    margin: 10px 0;
+    text-transform: capitalize;
+}
+
+.mobile .profile-username-header h1{
+ margin-bottom: 10px;
+}
+
+.mobile .account-username-wrap{
+    font-size: 25px;
+}
+
+.mobile .level{
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    background-size: contain;
+    line-height: 15px;
+    padding-top: 10px;
+}
+
+.mobile .stats-col li i {
+  margin-right: 10px;
+}
+
+.mobile .stats-col li .label,
+.mobile .stats-col li .value  {
+    font-size: 15px;
+}
+
+.mobile .stats-col li.badges-area{
+	background: transparent;
+	justify-content: flex-start;
+	padding: 0;
+}
+
+.mobile .badge-icon {
+   width: 70px;
+}
+
+.mobile .stats-col li .profile-badge {
+  height: 38px;
+  width: 38px;
+  margin-top: 5px;
+  margin-right: 0;
+}
+
+
+/*Quests*/
+.mobile table#quests-table td, 
+.mobile table#quests-table tr th {
+    text-align: left;
+}
+
+.mobile table#quests-table td, 
+.mobile table#quests-table tr th{
+    padding: 10px 5px;
+}
+
+.mobile #quests-table .quest-img{
+    width: 50px;
+    border-radius: 5px;
+}
+
+.mobile .quest-experience-bar{
+    width: 140px;
+}
+
+.mobile #quests-table .quest-icon{
+    width: 25px;
+    margin-right: 5px;
+}
+
+/*Clan*/
+.mobile #clan-home,
+.mobile #clan-matches,
+.mobile #clan-bank,
+.mobile #clan-members,
+.mobile #clan-settings,
+.mobile #messages,
+.mobile #following-table,
+.mobile #add-friend{
+    padding-bottom: 30px;
+}
+
+.mobile .clan-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: initial;
+}
+
+.mobile .clan-owner{
+    font-size: 19px;
+}
+
+.mobile .clan-level img {
+    width: 45px;
+}
+
+.mobile #clan-hub {
+    display: flex;
+    flex-direction: row;
+}
+
+.mobile .clan-content{
+    margin-top: 10px;
+}
+
+.mobile .clan-details ul li{
+    height: 45px;
+    font-size: 17px;
+}
+
+.mobile #clan-home .chat-box{
+    height: 165px;
+}
+
+.mobile .clan-level p{
+    font-size: 20px!important;
+    margin-top: -5px;
+}
+
+.mobile .clan-levels {
+    margin: 25px 0 0 0;
+}
+
+.mobile .top-donator .top-donator-head h2{
+    font-size: 20px;
+}
+
+.mobile #account-wrapper table button.btn-table{
+    font-size: 16px!important;
+    padding: 5px 15px!important;
+}
+
+.mobile .clan-member-roles table{
+    width: 95%;
+    display: table;
+}
+
+.mobile .clan-roles .role-form{
+    padding: 0;
+}
+
+.mobile .clan-roles .field-wrap{
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mobile .clan-roles .role-form .field{
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: solid 2px #383838;
+}
+
+.mobile .clan-roles .role-form .field.right-align{
+    margin-top: 10px;
+}
+
+.mobile .clan-roles .role-form .field:last-child{
+    border-bottom: 0;
+}
+
+
+.mobile .field-info.half {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 0;
+}
+
+.mobile #clan-hub .tab-scroll {
+    /*height: calc(75vh - 75px);*/
+    height: initial;
+}
+
+/* Inbox */
+.mobile .account-username{
+    font-size: 18px;
+}
+
+.mobile .change-username-button{
+    font-size: 12px;
+    padding: 9px;
+    background: #282828;
+    border-radius: 100%;
+}
+
+.mobile #message-send-to{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mobile #message-send-to input{
+    width: 100%;
+}
+
+.mobile #message-send-to span{
+    width: initial;
+}
+
+.mobile #message-inbox .message .username{
+    padding: 5px;
+}

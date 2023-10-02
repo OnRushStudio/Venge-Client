@@ -1,0 +1,114 @@
+@import "Common.css";
+
+#connecting{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+#connecting #logo{
+    margin-top: 30px;
+    z-index: 50;
+    position: absolute;
+    height: 70px;
+    margin-left: 50px;
+}
+
+#connecting .loading-bar{
+    color: #8f8f8f;
+    position: absolute;
+    left: 0px;
+    bottom: 120px;
+    font-size: 40px;
+    line-height: 75px;
+    width: 100%;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+#connecting .loading-bar .fill{
+    width: 0%;
+    height: 70px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#connecting .loading-bar h3{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 30px;
+}
+
+#connecting .loading-bar .lds-ring{
+    float: left;
+    transform: scale(0.8);
+    margin-top: -5px;
+    margin-right: 15px;
+}
+
+#connecting h3 b{
+    color: #fff;
+}
+
+#connecting #map-image{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 100%;
+    z-index: 0;
+    opacity: 0.00;
+    animation: focusOn 20s linear;
+    animation-fill-mode: forwards;
+    filter: grayscale(1);
+}
+
+@keyframes focusOn{
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+#connecting #map-name{
+    position: absolute;
+    left: 50px;
+    bottom: 130px;
+    text-transform: uppercase;
+    font-size: 100px;
+    color: #fff;
+    font-style: italic;
+}
+
+#lock-mouse{
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url('ClickToPlay.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#lock-mouse p{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+}

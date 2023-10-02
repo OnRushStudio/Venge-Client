@@ -1,0 +1,60 @@
+<div class="field">
+    <label>{{translate('Aim Down Sight Sensivity')}}</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.adsSensivity}}
+        </div>
+        
+        <input v-on:change="onSettingsChange()" 
+            type="range" min="0" max="200" 
+            v-model="settings.adsSensivity">
+    </div>
+</div>
+
+<div class="field">
+    <label>{{translate('Mouse Sensivity')}}</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.sensivity}}
+        </div>
+        
+        <input v-on:change="onSettingsChange()" 
+            type="range" min="0" max="200" 
+            v-model="settings.sensivity">
+    </div>
+</div>
+
+
+<div class="field-wrap">
+    <div class="field field-checkbox">
+        <label for="invertMouse">{{translate('Invert Mouse (Vertical Axis)')}}</label>
+
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="invertMouse"
+            v-model="settings.invertMouse">
+            <label for="invertMouse"></label>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<table class="table table-multiple-buttons">
+    <tr>
+        <th>{{translate('Function')}}</th>
+        <th>{{translate('Key')}}</th>
+        <th>{{translate('Action')}}</th>
+    </tr>
+
+    <tr v-for="item in keyboardConfiguration">
+        <td><span v-if="!item.waiting">{{item.function}}</span>{{item.waiting ? translate('PRESS ANY KEY...') : ''}}</td>
+        <td><p v-on:click="updateKeyboardBind(item)" class="keyboard-key">{{item.key}}</p></td>
+        <td class="pull-right">
+            <button v-on:click="updateKeyboardBind(item)" class="btn-table" type="button">{{translate('Update')}}</button>
+            <button v-on:click="resetKeyboardBind(item)" class="btn-table" type="button">{{translate('Reset')}}</button>
+        </td>
+    </tr>
+</table>

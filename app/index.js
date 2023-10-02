@@ -22,8 +22,17 @@ let updateLoaded = false;
 let updateNow = false;
 
 const launchArgs = require('./modules/launchArgs');
-const { url } = require('inspector');
 launchArgs.pushArguments()
+
+
+const express = require('express');
+const expressapp = express();
+
+expressapp.use(express.static(path.join(__dirname, 'vengeSource')));
+
+expressapp.listen(7481, function () {
+  console.log('App listening on port 7481!');
+});
 
 app.allowRendererProcessReuse = true;
 
@@ -64,7 +73,7 @@ class Client {
 
         this.win.removeMenu()
         this.win.setFullScreen(userPrefs.get('fullscreenMode'))
-        this.win.loadURL('https://venge.io')
+        this.win.loadURL('http://localhost:7481/')
             .catch((error) => console.log(error))
 
         this.win.on('ready-to-show', () => {
@@ -255,7 +264,7 @@ class Client {
             if (AdBlockList.includes(new URL(details.url).hostname) && userPrefs.get('disableAdvertisements')) {
                 return callback({ cancel: true })
             }
-            if (new URL(details.url).hostname === 'venge.io' && new URL(details.url).pathname.length > 1) {
+            if (new URL(details.url).hostname === 'localhost' && new URL(details.url).pathname.length > 1) {
                 const url = path.join(swapDirectory, new URL(details.url).pathname);
                 if (fs.existsSync(url)) {
                     return callback({ cancel: false, redirectURL: `swap:/${url}` })

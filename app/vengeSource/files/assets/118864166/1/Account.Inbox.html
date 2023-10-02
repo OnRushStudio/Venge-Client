@@ -1,0 +1,57 @@
+<div class="subtab">
+    <li v-on:click="subtab = 'Inbox'" :class="{'active' : subtab == 'Inbox'}">{{translate('Inbox')}}</li>
+    <li v-on:click="subtab = 'SendMessage', getMessages(false)" :class="{'active' : subtab == 'SendMessage'}"><i class="fa fa-inbox" aria-hidden="true"></i> {{translate('Send Message')}}</li>
+</div>
+
+<table v-if="subtab == 'Inbox'" id="following-table" class="table">
+    <tr class="sort-header">
+        <th>{{translate('From')}}</th>
+        <th>{{translate('Message')}}</th>
+        <th>{{translate('Date')}}</th>
+        <th></th>
+    </tr>
+    <tr v-on:click="getMessages(message)" v-for="(message, index) in inbox.messages">
+        <td><username :value="message.sender"></username></td>
+        <td>{{message.message.substring(0, 120)}}...</td>
+        <td>{{message.time_ago}}</td>
+        <td>
+            <button type="button" class="btn-table hint--right" aria-label="Reply Message">
+                <i class="fa fa-reply" aria-hidden="true"></i>
+            </button>
+        </td>
+    </tr>
+</table>
+
+<div v-if="subtab == 'SendMessage'" id="messages">
+    <div class="message-head-wrapper">
+        <div id="message-send-to">
+            <span>{{translate('To')}}: </span>
+            <input id="message-to-input" :class="{'selected' : inbox.message.isSelected}" v-on:keyup.enter="selectSearchResult(inbox.message.username)" v-on:keydown="searchFriends(inbox.message.username)" type="text" v-model="inbox.message.username" :placeholder="translate('Username')">
+            <span class="suggestions">
+                <span v-on:click="selectSearchResult(username)" v-for="username in inbox.message.searchResults">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    {{username}}
+                </span>
+            </span>
+        </div>
+
+        <div v-if="inbox.message.username" class="field field-checkbox">
+            <label for="disableMessages">{{translate('Disable All Messages From That User')}}</label>
+            <div class="field-toggle-wrapper">
+                <input class="toggle" type="checkbox" id="disableMessages"
+                        v-on:change="setBlockedUsers(inbox.message.username)"
+                        v-model="inbox.message.isBlockedUser">
+                <label for="disableMessages"></label>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-inbox">
+        <div class="message" v-for="message in inbox.message.pastMessages">
+            <username class="username" :value="message.sender"></username>
+            <span class="content">{{message.message}}</span>
+        </div>
+    </div>
+
+    <input id="message-box" v-on:keyup.enter="sendMessage()" type="text" v-model="inbox.message.message" autocomplete="off" :placeholder="translate('Enter your message and press [ENTER] to send')">
+</div>

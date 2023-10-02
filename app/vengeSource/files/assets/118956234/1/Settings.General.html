@@ -1,0 +1,128 @@
+<div class="field">
+    <label>{{translate('Language')}} - {{currentLanguage}}</label>
+    <select v-model="currentLanguage" v-on:change="onLanguageChange(currentLanguage)">
+        <option v-for="item in languages.list" 
+                :selected="item.code == currentLanguage"
+                :value="item.code">
+                {{item.text}}
+        </option>
+    </select>
+</div>
+
+<br/>
+
+<div class="field">
+    <label for="weaponBobbing">{{translate('Weapon Bobbing')}}</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.weaponBobbing}}
+        </div>
+        
+        <input id="weaponBobbing" v-on:change="onSettingsChange()" 
+                type="range" min="0" max="100" 
+                v-model="settings.weaponBobbing">
+    </div>
+</div>
+
+<div class="field">
+    <label>{{translate('Weapon Swaying')}}</label>
+    
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.weaponLeaning}}
+        </div>
+        
+        <input v-on:change="onSettingsChange()" 
+                type="range" min="0" max="100" 
+                v-model="settings.weaponLeaning">
+    </div>
+</div>
+
+<div class="field-wrap">
+    <div class="field field-checkbox">
+        <label for="censorUsername">{{translate('Censor Usernames')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+                    type="checkbox" id="censorUsername"
+                    v-model="settings.hideUsernames">
+            <label for="censorUsername"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="hideCharms">{{translate('Hide Charms')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+                    type="checkbox" id="hideCharms"
+                    v-model="settings.hideCharms">
+            <label for="hideCharms"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="hideChatMessages">{{translate('Hide Chat Messages')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="hideChatMessages"
+            v-model="settings.hideChat">
+            <label for="hideChatMessages"></label>
+        </div>
+    </div>
+
+     <div class="field field-checkbox">
+        <label for="hideEnemyHealthBar">{{translate('Hide Enemy Health Bar')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="hideEnemyHealthBar"
+            v-model="settings.hideEnemyHealthBar">
+            <label for="hideEnemyHealthBar"></label>
+        </div>
+    </div>
+</div>
+
+<div class="field-wrap">
+    <div class="field field-checkbox">
+        <label for="hideWeaponHands">{{translate('Hide Weapon & Hands')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="hideWeaponHands"
+            v-model="settings.hideArms">
+            <label for="hideWeaponHands"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="hideMedals">{{translate('Hide Announcement')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="hideMedals"
+            v-model="settings.hideMedals">
+            <label for="hideMedals"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="hideUIElements">{{translate('Hide UI Elements For Gameplay')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="hideUIElements"
+            v-model="settings.hideUIElements">
+            <label for="hideUIElements"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="hideDamageNumber">{{translate('Hide Damage Number')}}</label>
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="hideDamageNumber"
+            v-model="settings.hideDamageNumber">
+            <label for="hideDamageNumber"></label>
+        </div>
+    </div>
+</div>
+
+<div class="field-wrap">
+   
+</div>

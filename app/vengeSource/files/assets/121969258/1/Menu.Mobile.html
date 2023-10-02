@@ -1,0 +1,23 @@
+<div id="menu-mobile">
+    <div id="connecting" v-if="assets.active">
+        <img id="logo" :src="getImage('Logo.png')">
+
+        <div id="lock-mouse" v-on:click="lockMouse()" v-if="isPoki && !isMouseLocked">
+            <p><i class="fa fa-mouse-pointer" aria-hidden="true"></i> Click anywhere to lock your mouse!</p>
+        </div>
+
+        <div class="loading-bar">
+            <div class="fill" :style="{'width' : assets.loaded * 100 / assets.count + '%'}"></div>
+            <h3>
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                {{assets.loading}}
+            </h3>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="subtab">
+    <li v-on:click="subtab = 'Followers'" :class="{'active' : subtab == 'Followers'}">{{translate('Followers')}}</li>
+    <li v-on:click="subtab = 'Following'" :class="{'active' : subtab == 'Following'}">{{translate('Following')}}</li>
+    <li v-on:click="subtab = 'FollowSomeone'" :class="{'active' : subtab == 'FollowSomeone'}"><i class="fa fa-user-plus" aria-hidden="true"></i> {{translate('Add Friend')}}</li>
+</div>
+
+<table v-if="subtab == 'Followers'" id="following-table" class="table">
+    <tr class="sort-header">
+        <th></th>
+        <th>{{translate('Username')}}</th>
+        <th>{{translate('Last Online')}}</th>
+        <th></th>
+    </tr>
+    <tr v-for="(player, index) in friends.followers">
+        <td>{{index + 1}}.</td>
+        <td><username :value="player.username"></username></td>
+        <td>{{player.last_game_start}}</td>
+        <td>
+            <button type="button" class="btn-table" v-on:click="follow(player.username)">
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                {{translate('Follow')}}
+            </button>
+        </td>
+    </tr>
+</table>
+
+<table v-if="subtab == 'Following'" id="following-table" class="table">
+    <tr class="sort-header">
+        <th></th>
+        <th>{{translate('Username')}}</th>
+        <th>{{translate('Last Online')}}</th>
+        <th></th>
+    </tr>
+    <tr v-for="(player, index) in friends.following">
+        <td>{{index + 1}}.</td>
+        <td><username :value="player.username"></username></td>
+        <td>{{player.last_game_start}}</td>
+        <td>
+            <button type="button" class="btn-table btn-danger" v-on:click="unfollow(player.username)">
+                <i class="fa fa-user-times" aria-hidden="true"></i>
+                {{translate('Unfollow')}}
+            </button>
+        </td>
+    </tr>
+</table>
+
+<div id="add-friend" v-if="subtab == 'FollowSomeone'">
+    <form action="javascript:;">
+        <div class="form-field">
+            <label>{{translate('Username')}}</label>
+            <input v-model="form.friendUsername" type="text" :placeholder="translate('Friend\'s username')">
+        </div>
+
+        <div class="form-field flex-align" v-show="!loading">
+            <p class="tos-text">{{translate('Followed person should follow you back, later on.')}}</p>
+            <button v-on:click="follow(form.friendUsername)" class="btn btn-secondary"><i class="fa fa-user-plus" aria-hidden="true"></i> {{translate('Follow')}}</button>
+        </div>
+    </form>
+</div>

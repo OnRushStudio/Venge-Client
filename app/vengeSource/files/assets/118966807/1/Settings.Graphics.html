@@ -1,0 +1,79 @@
+
+<div class="field">
+    <label class="title" for="fov">{{translate('Field of View')}} (FOV)</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.fov}}
+        </div>
+        
+        <input id="fov" v-on:change="onSettingsChange()" 
+                type="range" min="30" max="120"
+                v-model="settings.fov">
+    </div>
+</div>
+
+<div class="field">
+    <label class="title" for="fov">{{translate('Weapon and Hand')}} (FOV)</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.weaponHandFov}}
+        </div>
+        
+        <input id="fov" v-on:change="onSettingsChange()" 
+                type="range" min="30" max="100"
+                v-model="settings.weaponHandFov">
+    </div>
+</div>
+
+<div class="field">
+    <label class="title" for="resolution">{{translate('Graphic Quality')}} ({{translate('Resolution')}})</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.quality}}
+        </div>
+        
+        <input id="resolution" v-on:change="onSettingsChange()" 
+                type="range" min="20" max="100"
+                v-model="settings.quality">
+    </div>
+</div>
+
+<br/>
+
+<div class="field-wrap">
+    <div class="field field-checkbox">
+        <label for="fpsCounter"> {{translate('FPS & Ping Counter')}}</label>
+
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="fpsCounter"
+            v-model="settings.fpsCounter">
+            <label for="fpsCounter"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="disableSpecialEffects">{{translate('Disable Special Effects')}}</label>
+
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="disableSpecialEffects"
+            v-model="settings.disableSpecialEffects">
+            <label for="disableSpecialEffects"></label>
+        </div>
+    </div>
+
+    <div class="field field-checkbox">
+        <label for="disableShadows">{{translate('Disable Shadows')}}</label>
+
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="disableShadows"
+            v-model="settings.disableShadows">
+            <label for="disableShadows"></label>
+        </div>
+    </div>
+</div>

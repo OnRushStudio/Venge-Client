@@ -1,0 +1,27 @@
+
+<div class="field">
+    <label>{{translate('Audio')}}</label>
+
+    <div class="input-slider-wrapper">
+        <div class="input-slider-text">
+            {{settings.volume}}
+        </div>
+        
+        <input v-on:change="onSettingsChange()" 
+            type="range" min="0" max="200" 
+            v-model="settings.volume">
+    </div>
+</div>
+
+<div class="field-wrap">
+    <div class="field field-checkbox">
+        <label for="muteMenu"> {{translate('Mute Menu Sound')}}</label>
+
+        <div class="field-toggle-wrapper">
+            <input class="toggle" v-on:change="onSettingsChange()" 
+            type="checkbox" id="muteMenu"
+            v-model="settings.muteMenu">
+            <label for="muteMenu"></label>
+        </div>
+    </div>
+</div>

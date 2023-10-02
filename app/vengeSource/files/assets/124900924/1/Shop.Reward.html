@@ -1,0 +1,31 @@
+<div v-if="popup.page == 'Reward'" class="popup">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> Reward
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div v-on:click="watchReward()" class="popup-content">
+        <div v-if="popup.loading" class="popup-loading">
+            <div id="spinner-center">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <p class="centered-white-text">
+            <img :src="getImage('Large-Coins.png')">
+            <br>
+            You can watch reward ads and get free VG.<br>VG coins can be used in shop or social hub market.
+        </p>
+
+        <div class="popup-bottom-content">
+            <span v-if="isLoggedIn">
+                <button class="btn btn-primary button-sound" v-on:click="watchReward()">
+                    🎬 Get Free VG
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
