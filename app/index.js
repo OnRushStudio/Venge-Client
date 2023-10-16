@@ -1,4 +1,4 @@
-const { app, BrowserWindow, clipboard, protocol, screen, ipcMain, ipcRenderer } = require('electron')
+const { app, BrowserWindow, clipboard, protocol, screen, ipcMain, ipcRenderer, shell } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const https = require('https');
