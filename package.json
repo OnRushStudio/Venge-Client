@@ -1,6 +1,6 @@
 {
   "name": "vengeclient",
-  "version": "1.0.0",
+  "version": "1.2.6",
   "description": "Official Venge.io Client!",
   "main": "./app/index.js",
   "scripts": {

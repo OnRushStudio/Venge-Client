@@ -35,9 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         contDiv.insertBefore(joinLink, contDiv.children[0])
                         joinLink.onclick = () => {
                             if (clipboard.readText().includes("venge.io")) {
-                                var hash = clipboard.readText().split('#')[1];
+                                let link = clipboard.readText().split('#');
+                                let roomhash = link[1]
 
-                                pc.Menu.$data.invite.hash = hash;
+                                pc.Menu.$data.invite.hash = roomhash;
                                 pc.Menu.getRoomDetails();
                             } else {
                                 alert('No valid link found on clipboard')
