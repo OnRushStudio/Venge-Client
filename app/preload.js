@@ -1,13 +1,110 @@
 const { ipcRenderer, clipboard } = require('electron');
 
-const settings = require('./modules/settings.json')
-const ClientSettings = require('./modules/clientSettings')
+const settingsJson = require('./modules/settings.json')
+
+const Store = require('electron-store');
+const userPrefs = new Store();
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    let clientSettingstest = new ClientSettings();
-    clientSettingstest.addCategory('Client Settings')
-    clientSettingstest.addSettings(settings)
-    clientSettingstest.settingElem.id = 'ClientContent';
+    clientDiv = document.createElement('div');
+    clientDiv.innerHTML = `
+    <style>
+        #managescripts {
+            width: 90%;
+            height: 2.5rem;
+            background: #7e35c9;
+            color: white;
+            border: none;
+            font-size: 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        .sidebar-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            z-index: 4;
+        }
+        #sidebar {
+            position: fixed;
+            width: 22rem;
+            height: 100vh;
+            right: 0;
+            top: 0;
+            background: #101010;
+            z-index: 5;
+            color: white;
+            text-align: center;
+        }
+        #sidebar label {
+            cursor: pointer;
+            position: absolute;
+            left: 1rem;
+            width: 100%;
+            text-align: left;
+        }
+        .field-cont {
+            font-size: 1.2rem;
+            width: 22rem;
+            align-items: center;
+            padding-top: 1.5rem;
+            height: 3rem;
+        }
+        .field-cont:hover {
+            background: #7e35c9;
+        }
+        .client-toggle {
+            right: 1rem;
+            position: absolute;
+            cursor: pointer;
+            filter: hue-rotate(40deg);
+        }
+    </style>
+    <div id="sidebar">
+        <div style="padding-bottom: 1.5rem; padding-top: 1.5rem; font-size: 1.5rem;"> Client Settings </div>
+        <hr>
+        <div id="clientContent"></div>
+        <button id="managescripts">Manage Scripts</button>
+    </div>
+    `;
+    clientDiv.style.display = "none";
+    clientDiv.classList.add('sidebar-wrapper')
+    document.body.appendChild(clientDiv)
+
+    Object.keys(settingsJson).forEach((setting) => {
+        document.getElementById('clientContent').innerHTML += `
+        <div class="field-cont">
+            <label for="${setting}">${settingsJson[setting].text}</label>
+            <input type="checkbox" id="${setting}" ${userPrefs.get(setting) ? 'checked' : ''} class="client-toggle" onclick=window.setSetting("${setting}")>
+        </div>
+        `
+    })
+
+    Object.keys(settingsJson).forEach((setting) => {
+        document.getElementById(setting).onclick = () => {
+            userPrefs.set(setting, document.getElementById(setting).checked)
+        }
+    })
+
+    document.getElementById("managescripts").onclick = (e) => {
+        ipcRenderer.send("loadhub")
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === "F3") {
+            if (clientDiv.style.display === "none") {
+                clientDiv.style.display = "block"
+            } else {
+                clientDiv.style.display = "none"
+            }
+        }
+    })
 
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
@@ -45,42 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
                         // document.querySelector("#play-section > div.content-wrapper").appendChild(document.querySelector("#play-section > div.content-wrapper > div.options"))
-                    }
-                }
-                if (node.id == "settings") {
-                    if (!document.getElementById("clientSettings")) {
-                        let tabs = document.querySelector("#header > div > div");
-                        let clientSettings = document.createElement("li")
-                        clientSettings.className = '';
-                        clientSettings.id = "clientSettings"
-                        clientSettings.innerHTML = `Client Settings`
-                        tabs.appendChild(clientSettings)
-
-                        clientSettings.onclick = () => {
-                            clientSettings.className = 'active';
-                            var tabCont = document.querySelector("#content > div > div.tab-content")
-                            tabCont.innerHTML = '';
-                            clientSettingstest.settingElem.innerHTML += `
-                            <button id="clientscriptbtn"style="                                     
-                                border: none;
-                                height: 2rem;
-                                color: white;
-                                background: #9729fe;
-                                font-weight: 10 !important;
-                            ">ManageScripts</button>
-                            `
-                            tabCont.appendChild(clientSettingstest.settingElem)
-                            clientSettingstest.setFromStore(settings)
-                            for (i = 0; i < tabs.children.length; i++) {
-                                if (tabs.children[i].className == 'active' && tabs.children[i].id != 'clientSettings') {
-                                    tabs.children[i].className = '';
-                                }
-                            }
-
-                            document.getElementById('clientscriptbtn').onclick = () => {
-                                ipcRenderer.send("loadhub")
-                            }
-                        }
                     }
                 }
             });
