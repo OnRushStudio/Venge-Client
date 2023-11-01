@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         closeClient.onclick = () => {
                             ipcRenderer.send("exit")
                         }
-                        console.log(closeClient)
+                        // console.log(closeClient)
                     }
                     if (!document.getElementById("JoinBtn")) {
                         let joinLink = document.createElement("div")
@@ -133,9 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         joinLink.onclick = () => {
                             if (clipboard.readText().includes("venge.io")) {
                                 let link = clipboard.readText().split('#');
-                                let roomhash = link[1]
+                                let roomhash = link[1];
 
-                                pc.Menu.$data.invite.hash = roomhash;
+                                pc.Menu.setSessionHash(roomhash);
                                 pc.Menu.getRoomDetails();
                             } else {
                                 alert('No valid link found on clipboard')

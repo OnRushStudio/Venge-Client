@@ -38,6 +38,11 @@
                 Unlock Crate <small>{{numberFormat(popup.item.price)}} VG</small>
                 <i class="fa fa-caret-right" aria-hidden="true"></i>
             </button>
+
+            <button v-if="!isLoggedIn" class="btn btn-secondary button-sound" v-on:click="goLogin('Account')">
+                <i class="fa fa-user" aria-hidden="true"></i> {{translate('You Need to Login')}} 
+            </button>
+            
         </div>
     </div>
 </div>

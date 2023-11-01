@@ -6,7 +6,7 @@
         <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
     </div>
 
-     <div 
+    <div 
         id="alert" 
         v-if="alert.active && popup.page"
         :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
@@ -72,14 +72,29 @@
                         <div class="slide-box" v-if="stepSlider.active == 1" key="1">
                             <div id="step-2">
                                 <form action="javascript:;" class="wide">
-                                    <div class="form-field username-field">
-                                        <label>{{translate('New Username')}}</label>
-                                        <input v-model="form.newUsername" type="text" placeholder="">
+
+                                    <div class="field-wrap change-form">
+                                        <div class="field">
+                                            <div class="label-wrap">
+                                                <label>{{translate('New Username')}}</label>
+                                            </div>
+
+                                            <div class="form-element-wrap">
+                                                <input v-model="form.newUsername" type="text" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <div class="label-wrap">
+                                                <label>{{translate('Password')}}</label>
+                                            </div>
+
+                                            <div class="form-element-wrap">
+                                                <input v-model="form.password" type="password" placeholder="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-field password-field">
-                                        <label>{{translate('Password')}}</label>
-                                        <input v-model="form.password" type="password" placeholder="">
-                                    </div>
+
                                 </form>
                                 <div v-if="!popup.loading" class="popup-bottom-content">
                                     <button v-on:click="slide(-1)" class="btn btn-fourth">{{translate('BACK')}}</button>

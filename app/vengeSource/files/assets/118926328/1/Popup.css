@@ -121,9 +121,9 @@
     padding: 20px;
     box-sizing: border-box;
     color: #fff;
-    overflow-y: auto;
     background: #2b2b2b;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .popup-side-content.full-side{
@@ -150,8 +150,11 @@
 }
 
 .popup .field{
+    width: 100%;
     background-color: transparent;
-    padding: 0px;
+    padding: 3px 0;
+    border: 0;
+    margin-bottom: 15px;
 }
 
 .popup-right{
@@ -337,6 +340,9 @@
 #popup-item-details{
     height: calc(100% - 150px);
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 13px;
 }
 
@@ -500,28 +506,51 @@
 .popup-tab-content{
     display: flex;
     flex-direction: column;
-    
+    width: 100%;
+    height: calc(100% - 60px);
+    margin-top: 60px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
+
 
 .popup-tab-content .subtab, 
 .popup-tab-content .tab{
     position: fixed;
     height: initial;
-    width: 95%;
-    padding: 10px 0;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 20px;
     top: 40px;
     background: #2b2b2bfc;
-}
-
-.popup-tab-content table,
-.popup-tab-content #messages{
-    margin-top: 40px;
+    box-sizing: border-box;
+    z-index: 1;
 }
 
 .popup-tab{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.popup-content-scroll{
+    height: 380px;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+#messages .popup-content-scroll{
+    height: calc(380px - 65px);
+}
+
+.popup-content-scroll.no-pad{
+    padding: 0;
+}
+
+.popup-content-scroll table{
+    margin-bottom: 20px;
 }
 
 .popup-tab-content #message-send-to {
@@ -543,18 +572,30 @@
 }
 
 .popup-tab-content #message-box{
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 15px;
-    background: rgba(0, 0, 0, 0.8);
+	width: calc(100% - 22px);
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	font-size: 18px;
+	padding: 10px;
+	border: solid 1px #575757;
+    border-radius: 6px;
 }
 
-.popup-tab-content #message-inbox{
-    margin-bottom: 40px;
+.popup .alert{
+    position: absolute;
+    max-width: 60%;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    padding: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 5px #000;
+    text-align: left;
+    letter-spacing: 0.05rem;
+    border-radius: 5px;
+    box-sizing: border-box;
+    z-index: 1;
 }
-    
-
 
 /*====== Responsive ======*/
 
@@ -562,7 +603,7 @@
 @media only screen and (max-width: 1100px){
     .popup{
         width: 90vw;
-        height: 90vh;
+        height: 85vh;
     }
 
     .popup-side-menu{
@@ -571,6 +612,18 @@
 
     .popup-side-content{
         width: 70%;
+    }
+
+    .popup-tab-content{
+        height: calc(90vh - 60px);
+    }
+
+    .popup-content-scroll{
+        height: calc(90vh - 100px);
+    }
+
+    #messages .popup-content-scroll {
+        height: calc(90vh - 165px);
     }
 
     .popup-side-menu li,
@@ -620,6 +673,22 @@
         width: 16px;
     }
 
+    #popup-text-details{
+        margin-top: 0;
+    }
+
+    #popup-text-details li{
+        font-size: 20px;
+    }
+
+    #popup-text-details li label{
+        font-size: 18px;
+    }
+
+    .popup .chat-box{
+        height: 130px;
+    }
+
 }
 
 .mobile .popup-details{
@@ -630,4 +699,21 @@
 .mobile .steps-content-wrapper .popup-bottom-content{
     position: relative;
     padding: 15px 30px;
+}
+
+.mobile #popup-text-details{
+    margin-top: 0;
+}
+
+.mobile #popup-text-details li{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.mobile  #popup-text-details li label{
+    font-size: 18px;
+}
+
+.mobile .popup .chat-box{
+    height: 130px;
 }

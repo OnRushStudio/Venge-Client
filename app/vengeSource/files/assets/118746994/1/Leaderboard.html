@@ -31,7 +31,54 @@
         </div>
 
         <div class="content-page">
-            <table id="leaderboard-table" class="table list-table">
+            
+            <div id="leaderboard-table" class="table-list-style with-sort" :class="{'fit-list' : tab == 'clans'}">
+                <ul class="table-list-header">
+                    <li>{{translate('Name')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'">{{translate('Kills')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'">{{translate('Death')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'">{{translate('KDR')}}</li>
+                    <li v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'">{{translate('Score')}}</li>
+                    <li v-if="tab == 'followers'">{{translate('Followers')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'clans'">{{translate('Tag')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'clans'">{{translate('Members')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'clans'">{{translate('KDR')}}</li>
+                    <li v-if="tab == 'clans'">{{translate('Score')}}</li>
+                    <li v-if="tab == 'clans'">{{translate('Level')}}</li>
+                    <li class="hide-mobile" v-if="tab == 'clans'">{{translate('Owner')}}</li>
+                </ul>
+
+                <ul class="table-list-content">
+                    <li v-for="(player, rank) in leaderboard"> 
+                        <div class="list">{{rank + 1}}.</div>
+                        <div class="list" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score' || tab == 'followers'">
+                            <username :value="player.username" :emoji="player.emoji" :verified="player.verified"></username>
+                        </div>
+                        <div class="list hide-mobile" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'"> {{player.kills}}</div>
+                        <div class="list hide-mobile" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'"> {{player.deaths}}</div>
+                        <div class="list hide-mobile" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'"> {{player.kdr}}</div>
+                        <div class="list" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score'"> {{formatNumber(player.experience)}}</div>
+                        <div class="list" v-if="tab == 'followers'"> {{player.followers}}</div>
+
+                        <div class="list" v-if="tab == 'clans'"><username :value="player.clan_name" :clan="true"></username></div>
+                        <div class="list hide-mobile" v-if="tab == 'clans'"><username :value="player.slug" :clan="true"></username></div>
+                        <div class="list hide-mobile" v-if="tab == 'clans'"> {{player.members_count}}</div>
+                        <div class="list hide-mobile" v-if="tab == 'clans'"> {{player.kdr}}</div>
+                        <div class="list" v-if="tab == 'clans'"> {{formatNumber(player.experience)}}</div>
+                        <div class="list" v-if="tab == 'clans'"> {{player.level}}</div>
+                        <div class="list hide-mobile" v-if="tab == 'clans'"> <username :value="player.owner_username"></username></div>
+                        <div class="list" v-if="tab == 'clans'">
+                            <a target="_blank" :href="generateClanLink(player)" class="table-button">{{translate('Clan')}} <i class="fa fa-id-card" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="list" v-if="tab == 'rank' || tab == 'weekly' || tab == 'score' || tab == 'followers'">
+                            <a target="_blank" :href="generatePlayerLink(player)" class="table-button">{{translate('Profile')}} <i class="fa fa-id-card" aria-hidden="true"></i></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!--<table id="leaderboard-table" class="table list-table">
                 <tr class="sort-header">
                     <th></th>
                     <th>{{translate('Name')}}</th>
@@ -73,7 +120,7 @@
                         <a target="_blank" :href="generatePlayerLink(player)" class="btn-table">{{translate('Profile')}} <i class="fa fa-id-card" aria-hidden="true"></i></a>
                     </td>
                 </tr>
-            </table>
+            </table>-->
         </div>
     </div>
     <div id="content-banner-area">

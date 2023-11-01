@@ -57,6 +57,8 @@ class Client {
     }
 
     createWindow() {
+        var self = this;
+        
         const { width, height } = screen.getPrimaryDisplay().workAreaSize
         this.win = new BrowserWindow({
             width,
@@ -77,62 +79,63 @@ class Client {
             .catch((error) => console.log(error))
 
         this.win.on('ready-to-show', () => {
-            this.win.show()
+            self.win.show()
         })
 
         this.win.webContents.on('will-prevent-unload', (event) => event.preventDefault())
 
         this.win.webContents.on('unresponsive', () => {
             console.log('Client is unresponsive...')
-            this.win.webContents.forcefullyCrashRenderer()
-            this.win.webContents.reload()
+            self.win.webContents.forcefullyCrashRenderer()
+            self.win.webContents.reload()
         })
 
         this.win.webContents.on('render-process-gone', () => {
             console.log('Client\'s renderer is gone...')
-            this.win.webContents.forcefullyCrashRenderer()
-            this.win.webContents.reload()
+            self.win.webContents.forcefullyCrashRenderer()
+            self.win.webContents.reload()
         })
 
         this.win.webContents.on('new-window', (event, url) => {
             event.preventDefault()
             const e = new URL(url)
             if (e.hostname === 'venge.io' && e.hash.length > 1) {
-                return this.win.webContents.loadURL(url)
+                return self.win.webContents.loadURL(url)
             }
             return shell.openExternal(url)
         })
 
         this.win.webContents.on('dom-ready', () => {
-            this.injectScripts()
-            this.replaceResources()
-            this.injectCSS()
+            self.injectScripts()
+            self.replaceResources()
+            self.injectCSS()
             let scriptLinks = userPrefs.get('scriptLinks')
             for (let i = 0; i < scriptLinks.length; i++) {
-                this.injectInstalledScripts(scriptLinks[i]);
+                self.injectInstalledScripts(scriptLinks[i]);
             }
         })
     }
 
     initShortcuts() {
+        var self = this;
         shortcut.register(this.win, 'F4', () => {
-            this.win.loadURL('https://venge.io')
+            self.win.loadURL('https://venge.io')
                 .catch((error) => console.log(error))
         })
         shortcut.register(this.win, 'Escape', () => {
-            this.win.webContents.executeJavaScript('document.exitPointerLock()', true)
+            self.win.webContents.executeJavaScript('document.exitPointerLock()', true)
         })
         shortcut.register(this.win, 'F11', () => {
-            this.win.fullScreen = !this.win.fullScreen; userPrefs.set('fullscreenMode', win.fullScreen)
+            self.win.fullScreen = !self.win.fullScreen; userPrefs.set('fullscreenMode', self.win.fullScreen)
         });
         shortcut.register(this.win, 'F12', () => {
-            this.win.toggleDevTools()
+            self.win.toggleDevTools()
         })
         shortcut.register(this.win, 'F6', () => {
-            if (clipboard.readText().includes("venge.io")) { this.win.loadURL(clipboard.readText()) }
+            if (clipboard.readText().includes("venge.io")) { self.win.loadURL(clipboard.readText()) }
         })
         shortcut.register(this.win, 'F5', () => {
-            this.win.reload()
+            self.win.reload()
         })
 
         shortcut.register(this.win, 'F7', () => {
@@ -205,7 +208,7 @@ class Client {
             if (!file.name.includes('js')) return;
             let script = fs.readFileSync(scriptDirectory + '/' + file.name, { encoding: 'utf-8' });
             try {
-                console.log(script)
+                // console.log(script)
                 this.win.webContents.executeJavaScript(script);
             } catch (error) {
                 console.error("an error occurred while executing userscript: " + file + " error: " + error);
@@ -214,6 +217,7 @@ class Client {
     }
 
     async injectInstalledScripts(url) {
+        var self = this;
         https.get(url, (response) => {
             let content = '';
 
@@ -221,10 +225,10 @@ class Client {
 
             response.on('end', () => {
                 try {
-                    this.win.webContents.executeJavaScript(content);
-                    console.log('=-------------------------------------------------------------------------------=')
-                    console.log(content)
-                    console.log('=-------------------------------------------------------------------------------=')
+                    self.win.webContents.executeJavaScript(content);
+                    // console.log('=-------------------------------------------------------------------------------=')
+                    // console.log(content)
+                    // console.log('=-------------------------------------------------------------------------------=')
                 } catch (error) {
                     console.error(error.message);
                 };
@@ -281,6 +285,7 @@ class Client {
     }
 
     injectCSS() {
+        var self = this;
         let cssDirectory = path.normalize(`${app.getPath('documents')}/Venge Client/CSS`)
 
         if (!fs.existsSync(cssDirectory)) {
@@ -296,8 +301,8 @@ class Client {
             if (!file.name.includes('css')) return;
             let css = fs.readFileSync(cssDirectory + '/' + file.name, { encoding: 'utf-8' });
             try {
-                win.webContents.on('did-finish-load', () => {
-                    this.win.webContents.insertCSS(css)
+                self.win.webContents.on('did-finish-load', () => {
+                    self.win.webContents.insertCSS(css)
                 })
             } catch (error) {
                 console.log(error)

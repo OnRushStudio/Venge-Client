@@ -14,9 +14,6 @@ function generateScriptElement(scriptData) {
     const actionText = scriptLinks.includes(scriptData.link) ? "Remove" : "Download";
     const actionClass = scriptLinks.includes(scriptData.link) ? "remove" : "download";
 
-    console.log(scriptLinks)
-    console.log(scriptData.link);
-
     return `
       <div class="cont">
         <div class="mod-cont">

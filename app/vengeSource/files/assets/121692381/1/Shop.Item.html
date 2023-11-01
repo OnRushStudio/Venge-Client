@@ -50,8 +50,29 @@
         </div>
 
         <div class="popup-bottom-content right-align">
+            <div 
+                v-if="alert.active"
+                class="alert"
+                :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+            >
+                <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+                <i v-if="alert.type == 'info'" class="fa fa-exclamation-circle" aria-hidden="true"></i> 
+                {{alert.message}}
+            </div>
+
             <span v-if="isLoggedIn">
-                <button v-if="!isOwner" class="btn btn-primary button-sound" v-on:click="buyItem(popup.item)">
+                <button v-if="!isOwner && popup.item.reward_ads > 0" class="unlock-with-ads" v-on:click="watchAds(popup.item)">
+                    <img class="ads-img" :src="getImage('Ads-Icon.png')">
+                    <div class="button-content">
+                        <p>{{translate('Unlock With Ads')}}</p> 
+                        <p class="ads-count">
+                            <span>{{totalAdsWatched}}</span>
+                            <span>{{popup.item.reward_ads}}</span>
+                        </p>
+                    </div>
+                </button>
+
+                <button v-if="!isOwner && popup.item.reward_ads == '0'" class="btn btn-primary button-sound" v-on:click="buyItem(popup.item)">
                     <i class="fa fa-unlock" aria-hidden="true"></i> Unlock <small>{{numberFormat(popup.item.price)}} VG</small>
                     <i class="fa fa-caret-right" aria-hidden="true"></i>
                 </button>
@@ -62,6 +83,12 @@
 
                 <button v-if="isOwner && isEquiped" class="btn btn-primary button-sound" v-on:click="unequipItem(popup.item, 'Popup')">
                     <i class="fa fa-times" aria-hidden="true"></i> Unequip
+                </button>
+            </span>
+
+            <span v-if="!isLoggedIn && !popup.item.ads"> 
+                <button class="btn btn-secondary button-sound" v-on:click="goLogin('Account')">
+                    <i class="fa fa-user" aria-hidden="true"></i> {{translate('You Need to Login')}} 
                 </button>
             </span>
         </div>

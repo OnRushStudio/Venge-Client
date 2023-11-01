@@ -4,24 +4,25 @@
         <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
     </div>
     <div class="popup-content">
-        <div id="scroll-element" class="popup-side-content full-side" :class="{'popup-no-scroll' : popup.loading}">
-            <div v-if="popup.loading" class="popup-loading">
-                <div id="spinner-center">
-                    <div class="lds-ring">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+        <div v-if="popup.loading" class="popup-loading">
+            <div id="spinner-center">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
-            <div class="popup-tab-content">
-                <div class="subtab">
-                    <li v-on:click="popupTab = 'Inbox'" :class="{'active' : popupTab == 'Inbox'}">{{translate('Inbox')}}</li>
-                    <li v-on:click="popupTab = 'SendMessage', getMessages(false)" :class="{'active' : popupTab == 'SendMessage'}"><i class="fa fa-inbox" aria-hidden="true"></i> {{translate('Send Message')}}</li>
-                </div>
+        </div>
 
-                <table v-if="popupTab == 'Inbox'" id="following-table" class="table">
+        <div class="popup-tab-content" :class="{'popup-no-scroll' : popup.loading}">
+            <div class="subtab">
+                <li v-on:click="popupTab = 'Inbox'" :class="{'active' : popupTab == 'Inbox'}">{{translate('Inbox')}}</li>
+                <li v-on:click="popupTab = 'SendMessage', getMessages(false)" :class="{'active' : popupTab == 'SendMessage'}"><i class="fa fa-inbox" aria-hidden="true"></i> {{translate('Send Message')}}</li>
+            </div>
+            
+            <div v-if="popupTab == 'Inbox'" class="popup-content-scroll no-pad">
+                <table id="following-table" class="table">
                     <tr class="sort-header">
                         <th>{{translate('From')}}</th>
                         <th>{{translate('Message')}}</th>
@@ -39,8 +40,12 @@
                         </td>
                     </tr>
                 </table>
+            </div>
+           
 
-                <div v-if="popupTab == 'SendMessage'" id="messages">
+            <div v-if="popupTab == 'SendMessage'" id="messages">
+
+                <div class="popup-content-scroll">
                     <div class="message-head-wrapper">
                         <div id="message-send-to">
                             <span>{{translate('To')}}: </span>
@@ -53,26 +58,38 @@
                             </span>
                         </div>
 
-                        <div v-if="inbox.message.username" class="field field-checkbox">
-                            <label for="disableMessages">{{translate('Disable All Messages From That User')}}</label>
-                            <div class="field-toggle-wrapper">
-                                <input class="toggle" type="checkbox" id="disableMessages"
-                                        v-on:change="setBlockedUsers(inbox.message.username)"
+                        <div v-if="inbox.message.username" class="field-wrap mini-wrap">
+                            <div class="field">
+                                <div class="label-wrap">
+                                    <label for="fpsCounter"> {{translate('Disable All Messages From That User')}}</label>
+                                </div>
+                            
+                                <div class="form-element-wrap">
+                                    <div class="field-toggle-wrapper">
+                                        <input class="toggle" v-on:change="setBlockedUsers(inbox.message.username)" 
+                                        type="checkbox" id="disableMessages"
                                         v-model="inbox.message.isBlockedUser">
-                                <label for="disableMessages"></label>
+                                        <label for="disableMessages">
+                                            <span v-html="inbox.message.isBlockedUser == true ? translate('Yes') : translate('No')"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div id="message-inbox">
-                        <div class="message" v-for="message in inbox.message.pastMessages">
+                        <div class="message" :class="{'mine' : message.sender == cleanMarkup(profile.username)}" v-for="message in inbox.message.pastMessages">
                             <username class="username" :value="message.sender"></username>
                             <span class="content">{{message.message}}</span>
                         </div>
                     </div>
+                </div>
 
+                <div class="message-input-wrapper">
                     <input id="message-box" v-on:keyup.enter="sendMessage()" type="text" v-model="inbox.message.message" autocomplete="off" :placeholder="translate('Enter your message and press [ENTER] to send')">
                 </div>
+                
             </div>
         </div>
     </div>

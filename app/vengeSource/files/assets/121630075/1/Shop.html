@@ -46,10 +46,10 @@
     @import "Shop.Reward.html"
     
 
-    <div id="content" :class="{'focused' : isFocused, 'content-vertical-scroll' : tab == 'Featured'}">
+    <div id="content" :class="{'focused' : isFocused}">
         <div 
             id="alert" 
-            v-if="alert.active"
+            v-if="alert.active && !popup.active"
             :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
         >
             <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
@@ -69,7 +69,10 @@
         </div>
 
         <ul v-if="tab == 'Featured'" class="item-wrapper">
-            <li v-for="item in offers" class="item" v-on:click="showItemOrCrate(item)" v-on:mouseover="isFocused = true" v-on:mouseleave="isFocused = false">
+            <li v-for="item in offers" class="item" v-on:click="showItemOrCrate(item)"  v-on:mouseover="isFocused = true" v-on:mouseleave="isFocused = false">
+                <div v-if="item.ads" class="ads-button">
+                   <img class="ads-img" :src="getImage('Ads-Icon.png')">
+                </div>
                 <img class="item-thumbnail" :src="'https://assets.venge.io/' + item.thumbnail">
                 <span class="item-price">
                     <span v-if="item.original_price > 0" class="original-price">{{numberFormat(item.original_price)}}  VG</span>

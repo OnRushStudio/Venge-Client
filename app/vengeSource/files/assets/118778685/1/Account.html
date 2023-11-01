@@ -12,7 +12,7 @@
                 <li v-on:click="tab = 'Stats'" :class="{'active' : tab == 'Stats'}">{{translate('Stats')}}</li>
                 <li v-on:click="tab = 'Quests'" :class="{'active' : tab == 'Quests'}">{{translate('Quests')}}</li>
                 <li v-on:click="tab = 'Clan'" :class="{'active' : tab == 'Clan'}">{{translate('Clan')}}</li>
-                <li v-on:click="tab = 'Inbox'" :class="{'active' : tab == 'Inbox'}">{{translate('Inbox')}}</li>
+                <li v-on:click="tab = 'Inbox', subtab = 'SendMessage', getMessages(false)" :class="{'active' : tab == 'Inbox'}">{{translate('Inbox')}}</li>
                 <li v-on:click="tab = 'Friends'" :class="{'active' : tab == 'Friends'}">{{translate('Friends')}}</li>
                 <li v-on:click="tab = 'Settings'" :class="{'active' : tab == 'Settings'}">{{translate('Settings')}}</li>
             </div>

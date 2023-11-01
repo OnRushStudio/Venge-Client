@@ -15,7 +15,12 @@
                     <p>
                         {{item.description}}
                         <br>
-                        <span class="discord-button"><i :class="item.icon"></i> {{item.cta}}</span>
+                        <span class="link-button">
+                            <i v-if="item.icon != 'fab fa-discord'" :class="item.icon"></i> 
+
+                            <img v-if="item.icon == 'fab fa-discord'" :src="getImage('Discord-Icon-Yellow.png')"/>
+                            {{item.cta}}
+                        </span>
                     </p>
                 </a>
             </div>

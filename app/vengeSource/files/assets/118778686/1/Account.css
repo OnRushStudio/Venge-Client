@@ -19,7 +19,21 @@
 }
 
 #account-wrapper p {
-    font-size: 20px;
+    font-size: var(--alt-title-font-size);
+}
+
+.account-box-wrap{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 25px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--second-border-radius);
+    margin-bottom: 10px;
+    min-height: 60px;
 }
 
 .account-left-box{
@@ -43,6 +57,15 @@
     transform: translate(-50%, -50%);
 }
 
+.login-register-wrapper .login-form-img{
+    position: absolute;  
+    left: 50%;
+    transform: translateX(-50%);
+    top: -65px; 
+    width: 100%;
+    max-width: 200px;
+}
+
 #content .login-register-wrapper form{
     width: 100%;
 }
@@ -61,10 +84,107 @@
     margin-right: 10px;
 }
 
+.profile-details-wrapper{
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--primary-dark-color);
+    border-top-left-radius: var(--second-border-radius);
+    border-top-right-radius: var(--second-border-radius);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.profile-details-wrapper:after{
+    content: "";
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: rotate(-15deg) translateY(-50%);
+    width: 400px;
+    height: 100px;
+    background: url('Logo.png') no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+    -webkit-filter: drop-shadow(5px 5px 5px var(--gray-scale-800-color));
+    filter: drop-shadow(5px 5px 5px var(--gray-scale-800-color));
+}
+
+.profile-details-wrapper.Lilium:after,
+.profile-details-wrapper.lilium:after,
+.profile-details-wrapper.Shin:after,
+.profile-details-wrapper.shin:after,
+.profile-details-wrapper.Kulu:after,
+.profile-details-wrapper.kulu:after,
+.profile-details-wrapper.Echo:after,
+.profile-details-wrapper.echo:after{
+    width: 135px;
+    height: 135px;
+    transform: translateY(-50%);
+    opacity: 0.7;
+}
+
+/*Lilium*/
+.profile-details-wrapper.Lilium,
+.profile-details-wrapper.lilium{
+    background: var(--primary-dark-color);
+    background: var(--lilium-bg)
+}
+.profile-details-wrapper.Lilium:after,
+.profile-details-wrapper.lilium:after{
+    background: url('Lilium-Thumbnail-1.png') no-repeat;
+    background-size: contain;
+    -webkit-filter: drop-shadow(5px 5px 5px var(--gray-scale-700-color));
+    filter: drop-shadow(5px 5px 5px var(--gray-scale-700-color));
+}
+
+/*Shin*/
+.profile-details-wrapper.Shin,
+.profile-details-wrapper.shin{
+    background: var(--shin);
+    background: var(--shin-bg);
+}
+.profile-details-wrapper.Shin:after,
+.profile-details-wrapper.shin:after{
+    background: url('Shin-Thumbnail-2.png') no-repeat;
+    background-size: contain;
+    -webkit-filter: drop-shadow(5px 5px 5px var(--gray-scale-600-color));
+    filter: drop-shadow(5px 5px 5px var(--gray-scale-600-color));
+}
+
+/*Kulu*/
+.profile-details-wrapper.Kulu,
+.profile-details-wrapper.kulu{
+    background: var(--kulu);
+    background: var(--kulu-bg)
+}
+.profile-details-wrapper.Kulu:after,
+.profile-details-wrapper.Kulu:after{
+    background: url('Kulu-Thumbnail-2.png') no-repeat;
+    background-size: contain;
+    -webkit-filter: drop-shadow(5px 5px 5px var(--gray-scale-800-color));
+    filter: drop-shadow(5px 5px 5px var(--gray-scale-800-color));
+}
+
+/*Echo*/
+.profile-details-wrapper.Echo,
+.profile-details-wrapper.echo{
+    background: var(--echo);
+    background: var(--echo-bg)
+}
+.profile-details-wrapper.Echo:after,
+.profile-details-wrapper.echo:after{
+    background: url('Echo-Thumbnail-2.png') no-repeat;
+    background-size: contain;
+    -webkit-filter: drop-shadow(5px 5px 5px var(--gray-scale-700-color));
+    filter: drop-shadow(5px 5px 5px var(--gray-scale-700-color));
+}
+
 .profile-username-header{
     display: flex;
     flex-direction: row;
     align-items: center;
+    z-index: 1;
 }
 
 .profile-username-header a{
@@ -75,6 +195,7 @@
     font-size: 21px;
     margin-left: 15px;
     cursor: pointer;
+    z-index: 1;
 }
 
 .profile-content{
@@ -85,20 +206,60 @@
 }
 
 .profile-content h4 {
-    font-size: 16px;
+    font-size: var(--alt-title-font-size);
     color: #fff;
 }
 
+.stats-wrapper{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0 20px 15px 20px;
+    background: rgb(59 58 58 / 20%);
+    border-bottom-right-radius: var(--second-border-radius);
+    border-bottom-left-radius: var(--second-border-radius);
+    box-sizing: border-box;
+}
+
+.stats-box{
+    position: relative;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    padding: 0px 25px 0 0;
+    box-sizing: border-box;
+}
+
+.stats-box:first-child{
+    position: absolute;
+    width: fit-content;
+    left: 55%;
+    transform: translateX(-50%);
+    top: -90px;
+    padding: 0;
+    z-index: 1;
+}
+
+.stats-box:last-child{
+    text-align: left;
+    padding-right: 0;
+}
+
 .stats-col {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     list-style: none;
     margin: 0px;
     padding: 0px;
-    margin-right: 50px;
 }
 
-.stats-col:last-child{
-	margin-right: 0;
+.stats-col.kdr-col{
+    flex-direction: row;
+    align-items: center;
 }
 
 .stats-col h4{
@@ -106,18 +267,69 @@
 }
 
 .stats-col li {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #4e4e4e;
+    background: var(--gray-scale-600-color);;
     color: #fff;
-    padding: 5px 15px;
-    border-radius: 3px;
-    font-size: 18px;
-    margin-bottom: 7px;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border-radius: var(--second-border-radius);
+    font-size: var(--list-font-size);
     text-transform: uppercase;
+    box-sizing: border-box;
 }
+
+.stats-col li a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-col.kdr-col li,
+.stats-col.kdr-col li:nth-child(even){
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+}
+
+.stats-box:first-child li{
+    width: 170px;
+    border-left: 4px solid var(--second-color);
+    margin-right: 25px;
+}
+
+.stats-col li:last-child{
+    margin-right: 0;
+}
+
+/*.stats-col.kdr-col li:first-child{
+    flex-direction: column;
+    justify-content: center;
+    --shadow-color: #fff;
+    --page-background: var(--gray-scale-900-color);
+    box-shadow: 0 0 10px 5px var(--gray-scale-400-color);
+    --size: 100px;
+    --weight: 8px;
+    --color: var(--info-color );
+    --border: var(--gray-scale-700-color);
+    --background: var(--page-background);
+    --progress: 0%;
+    --progress-label: 0%;
+    width: var(--size);
+    height: var(--size);
+    box-sizing: border-box;
+    background: linear-gradient(var(--background), var(--background)), conic-gradient(var(--color) calc(var(--progress) * 1), var(--border) calc(var(--progress) * 1));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border: var(--weight) solid transparent;
+    border-radius: 50%;
+    transition: 0.5s all ease-out;
+    margin-right: 15px;
+    padding: 0;
+}*/
 
 .stats-col li img{
 	width: 20px;
@@ -125,7 +337,7 @@
 }
 
 .stats-col li:nth-child(even) {
-    background: #929292;
+    background: var(--gray-scale-500-color);
 }
 
 .stats-col li.badges-area{
@@ -146,18 +358,12 @@
 	line-height: 1;
 }
 
-.stats-col li .value {
-    float: right;
-    font-weight: bold;
-}
-
 .stats-col li .profile-badge {
     height: 48px;
     width: 48px;
-    margin-top: 5px;
+    margin-top: 0;
     margin-right: 0;
 }
-
 
 
 #tribe-logo{
@@ -168,24 +374,8 @@
     border-radius: 50%;
     position: relative;
 }
-
-.clan-logo{
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    background: #000;
-    border-radius: 50%;
-    position: relative;
-    float: left;
-}
-
 .slug{
     color: yellow;
-}
-
-#clan-hub .clan-logo{
-    margin-right: 20px;
-    margin-top: -5px;
 }
 
 .layer{
@@ -262,51 +452,6 @@
     height: 300px;
 }
 
-.clan-slug{
-    color: yellow;
-}
-
-.clan-header{
-    background-color: rgb(58, 58, 58);
-    padding: 10px 20px;
-    height: 90px;
-}
-
-.clan-header .clan-logo{
-    width: 100px;
-    height: 100px;
-}
-
-.clan-header p, .clan-header h1{
-    margin: 0px;
-    padding: 0px;
-}
-
-.clan-header h1{
-    margin-top: 12px;
-    margin-bottom: 5px;
-}
-
-.clan-header p{
-    color: rgb(155, 155, 155);
-}
-
-.clan-header .discord-link{
-    float: right;
-    background-color: rgb(73,100,233);
-    padding: 5px 20px;
-    border-radius: 2px;
-    margin-top: -20px;
-}
-
-.clan-members-table{
-    margin-top: 20px;
-}
-
-.clan-members-table .fa{
-    margin-right: 0px;
-}
-
 .mini-bar{
     width: 150px;
     height: 4px;
@@ -322,22 +467,21 @@
     background-color: #fff;
 }
 
-.stats-col li .profile-badge {
-  height: 48px;
-  width: 48px;
-  margin-top: 5px;
-  margin-right: 0;
-}
-
 .badge-icon {
-    width: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
     text-align: center;
-    background: #9729fe;
-    border-radius: 5px;
+    background: var(--primary-dark-color);
+    border: 3px solid var(--primary-light-color);
+    border-radius: 100%;
     margin: 0 10px 10px 0;
 }
 
 .badge-icon p {
+    display: none;
     height: 25px;
     background: #7621c5;
     padding: 0px;
@@ -377,6 +521,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+    z-index: 2;
 }
 
 .profile-exp-wrapper p{
@@ -446,11 +591,9 @@
 }
 
 .quest-claim {
-	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	right: 0;
 	border: 0;
 	background: #4C9800;
 	color: #fff;
@@ -480,8 +623,334 @@
 	margin-right: 3px;
 }
 
+.inbox-head-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: var(--gray-scale-400-color);
+    border-top-left-radius: var(--second-border-radius);
+    border-top-right-radius: var(--second-border-radius);
+}
+
+.inbox-right-head{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.inbox-content-wrapper{
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: var(--gray-scale-800-color);
+    padding: 0;
+    border-bottom-left-radius: var(--second-border-radius);
+    border-bottom-right-radius: var(--second-border-radius);
+    overflow: hidden;
+}
+
+.inbox-left-content,
+.inbox-right-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.inbox-search-box,
+.inbox-content-head{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    background: var(--gray-scale-900-color);
+    box-sizing: border-box
+}
+
+.inbox-content-head{
+    justify-content: flex-end;
+}
+
+.inbox-left-content{
+    width: 30%;
+    border-right: 2px solid var(--gray-scale-900-color);
+}
+
+.inbox-left-content ul{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+.inbox-right-content{
+    width: 70%;
+}
+
+.message-list{
+    position: relative;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.message-list *{
+    box-sizing: border-box;
+}
+
+.message-list .new-message{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    padding: 4px 10px;
+    font-size: var(--mini-button-font-size);
+    background: var(--info-color);
+    border-radius: var(--second-border-radius);
+}
+
+.message-list li{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: var(--second-border-radius);
+    background: var(--gray-scale-900-color);
+    cursor: pointer;
+    border:2px solid transparent;
+    transition: ease all 0.25s;
+    user-select: text;
+}
+
+.message-list li:hover{
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+}
+
+.message-list .message-sender{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.message-sender .sender-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background: var(--primary-dark-color);
+    border: 2px solid var(--primary-medium-color);
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.message-sender a{
+    width: fit-content;
+    font-size: var(--table-font-size);
+}
+
+.message-list .message-sender .message-time{
+    font-size: var(--content-font-size);
+    color: var(--gray-scale-400-color);
+    margin-top: 3px;
+}
+
+.message-list .message{
+    margin-top: 10px;
+    font-size: var(--content-font-size);
+    letter-spacing: var(--content-letter-spacing);
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/*========================================
+
+             Responsive Section
+
+ ========================================*/
+
+
+@media only screen and (max-width: 1200px) {
+    .stats-wrapper{
+        flex-wrap: wrap;
+    }
+
+    .stats-box{
+        width: 50%;
+    }
+
+    .stats-box:nth-child(3n){
+        padding: 0;
+    }
+
+    .stats-box:first-child{
+        position: relative;
+        left: initial;
+        transform: initial;
+        top: initial;
+        width: 100%;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .stats-col.kdr-col{
+        width: fit-content;
+    }
+
+    .message-sender a{
+        font-size: var(--content-font-size);
+    }
+
+}
 
 /* ================ Mobile Devices ================ */
+
+@media only screen and (max-width:  900px){
+    .login-register-wrapper .login-form-img{
+        display: none;
+    }
+
+    .account-box-wrap{
+        flex-direction: column-reverse;
+        margin-bottom: 0;
+    }
+
+    .account-left-box{
+        width: 100%;
+        margin-top:15px
+    }
+
+    .profile-details-wrapper.Lilium:after, 
+    .profile-details-wrapper.lilium:after, 
+    .profile-details-wrapper.Shin:after, 
+    .profile-details-wrapper.shin:after, 
+    .profile-details-wrapper.Kulu:after, 
+    .profile-details-wrapper.kulu:after, 
+    .profile-details-wrapper.Echo:after, 
+    .profile-details-wrapper.echo:after{
+        right: 15px;
+        opacity: 0.4;
+    }
+
+    .inbox-content-wrapper{
+        height: calc(100vh - 210px);
+    }
+
+    .inbox-search-box, .inbox-content-head{
+        padding: 10px;
+    }
+
+    .inbox-left-content{
+        width: 40%;
+    }
+    .inbox-right-content{
+        width: 60%;
+    }
+
+    .message-list .message{
+        font-size: 14px;
+    }
+
+    
+    
+}
+
+
+@media only screen and (max-width:  750px){
+
+    .stats-box:first-child li{
+        width: fit-content;
+        flex-grow: 1;
+    }
+
+    .stats-box:first-child .stats-col li .label{
+        padding-right: 10px;
+    }
+
+    .stats-box{
+        width: 100%;
+        padding: 0;
+    }
+
+    .stats-box:last-child{
+        text-align: center;
+    }
+
+    .stats-col{
+        flex-wrap: wrap;
+    }
+
+    .stats-col.kdr-col{
+        justify-content: center;
+    }
+
+    .stats-col li{
+        margin: 0 0 10px 0;
+    }
+
+    .stats-col li.badges-area{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .message-list{
+        padding: 10px;
+    }  
+
+    .inbox-search-box{
+        width: 160%;
+        padding: 10px 0;
+        z-index: 1;
+    }
+
+    .inbox-left-content{
+        width: 35%;
+    }
+    .inbox-right-content {
+        width: 65%;
+    }
+
+    .inbox-left-content ul{
+        margin-top: 0;
+    }
+
+    .message-list .message{
+        display: none;
+    }
+
+    .message-list li{
+        padding: 7px 10px;
+    }
+
+    .message-list .message-sender{
+        flex-direction: column;
+    }
+
+    .message-sender .sender-img{
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .message-list .message-sender .sender-box,
+    .message-list .message-sender .sender-box .account-username{
+        text-align: center;
+        justify-content: center;
+    }
+}
+
 
 /* Account - Guest */
 .mobile .login-register-wrapper{
@@ -496,10 +965,6 @@
     left: 0;
     font-size: 13px;
     padding: 5px 10px;
-}
-
-.mobile .logout-button{
-    width: 80px;
 }
 
 .mobile #account-wrapper p{
@@ -531,7 +996,7 @@
 .mobile .account-button-box .btn{
     width: 48%;
     margin-bottom: 0;
-    margin-left: 0;
+    margin-left: 20px;
 }
 
 .mobile .account-button-box .btn:hover{
@@ -546,7 +1011,7 @@
 }
 
 .mobile .profile-username-header h1{
- margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .mobile .account-username-wrap{
@@ -561,33 +1026,6 @@
     line-height: 15px;
     padding-top: 10px;
 }
-
-.mobile .stats-col li i {
-  margin-right: 10px;
-}
-
-.mobile .stats-col li .label,
-.mobile .stats-col li .value  {
-    font-size: 15px;
-}
-
-.mobile .stats-col li.badges-area{
-	background: transparent;
-	justify-content: flex-start;
-	padding: 0;
-}
-
-.mobile .badge-icon {
-   width: 70px;
-}
-
-.mobile .stats-col li .profile-badge {
-  height: 38px;
-  width: 38px;
-  margin-top: 5px;
-  margin-right: 0;
-}
-
 
 /*Quests*/
 .mobile table#quests-table td, 
@@ -614,114 +1052,10 @@
     margin-right: 5px;
 }
 
-/*Clan*/
-.mobile #clan-home,
-.mobile #clan-matches,
-.mobile #clan-bank,
-.mobile #clan-members,
-.mobile #clan-settings,
-.mobile #messages,
-.mobile #following-table,
-.mobile #add-friend{
-    padding-bottom: 30px;
-}
-
-.mobile .clan-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: initial;
-}
-
-.mobile .clan-owner{
-    font-size: 19px;
-}
-
-.mobile .clan-level img {
-    width: 45px;
-}
-
-.mobile #clan-hub {
-    display: flex;
-    flex-direction: row;
-}
-
-.mobile .clan-content{
-    margin-top: 10px;
-}
-
-.mobile .clan-details ul li{
-    height: 45px;
-    font-size: 17px;
-}
-
-.mobile #clan-home .chat-box{
-    height: 165px;
-}
-
-.mobile .clan-level p{
-    font-size: 20px!important;
-    margin-top: -5px;
-}
-
-.mobile .clan-levels {
-    margin: 25px 0 0 0;
-}
-
-.mobile .top-donator .top-donator-head h2{
-    font-size: 20px;
-}
-
-.mobile #account-wrapper table button.btn-table{
-    font-size: 16px!important;
-    padding: 5px 15px!important;
-}
-
-.mobile .clan-member-roles table{
-    width: 95%;
-    display: table;
-}
-
-.mobile .clan-roles .role-form{
-    padding: 0;
-}
-
-.mobile .clan-roles .field-wrap{
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.mobile .clan-roles .role-form .field{
-    justify-content: space-between;
-    margin: 5px 0;
-    padding: 5px 0;
-    border-bottom: solid 2px #383838;
-}
-
-.mobile .clan-roles .role-form .field.right-align{
-    margin-top: 10px;
-}
-
-.mobile .clan-roles .role-form .field:last-child{
-    border-bottom: 0;
-}
-
-
-.mobile .field-info.half {
-    width: 100%;
-    padding: 10px 15px;
-    margin-bottom: 0;
-}
-
-.mobile #clan-hub .tab-scroll {
-    /*height: calc(75vh - 75px);*/
-    height: initial;
-}
 
 /* Inbox */
 .mobile .account-username{
-    font-size: 18px;
+    font-size: 23px;
 }
 
 .mobile .change-username-button{

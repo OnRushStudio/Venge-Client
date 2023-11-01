@@ -6,23 +6,74 @@
 }
 
 .clan-header{
+	position: relative;
+	width: 100%;
 	display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    background: rgb(0 0 0 / 50%);
-    /*border: 2px solid #fff;
-    background: rgb(255,149,2);
-    background: linear-gradient(90deg, rgba(255,149,2,0.8) 0%, rgba(8,4,8,0.6) 100%);*/
-    border-radius: 10px;
+    padding: 25px 20px;
+    border-radius:var(--second-border-radius);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
     color: #fff;
+	background: var(--gray-scale-700-color);
+	background-size: 400% 400%!important;
+    animation: gradient 5s ease infinite; 
+	box-sizing: border-box;
+}
+
+@-webkit-keyframes gradient{
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+@keyframes gradient{
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+
+.clan-header.clan-level-1{
+	background: rgb(73,128,250);
+	background: linear-gradient(90deg, rgba(73,128,250,1) 0%, rgba(60,92,163,1) 100%);
+}
+
+.clan-header.clan-level-2{
+	background: rgb(255, 163, 36);
+	background: linear-gradient(90deg, rgba(255,163,36,1) 0%, rgb(184, 109, 5) 100%);
+	text-shadow: 0px 0px 5px var(--gray-scale-800-color);
+}
+
+.clan-header.clan-level-3{
+	background: rgb(255, 35, 36);
+	background: linear-gradient(90deg, rgba(255,35,36,1) 0%, rgb(172, 5, 5) 100%);
+	text-shadow: 0px 0px 5px var(--gray-scale-800-color);
+}
+
+.clan-header.clan-level-4{
+	background: rgb(255, 35, 36);
+	background: linear-gradient(65deg, rgb(229, 64, 202, 0.5), rgb(228, 60, 26, 0.5), rgb(235, 250, 61, 0.5), rgb(128, 249, 56, 0.5), rgb(130, 250, 223, 0.5), rgb(45, 78, 250, 0.5), rgba(164, 48, 250, 0.5));
+	text-shadow: 0px 0px 5px var(--gray-scale-800-color);
 }
 
 .clan-level{
 	position: relative;
 	margin-right: 15px;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(0px 0px 5px var(--gray-scale-700-color));
 }
 
 .clan-level img {
@@ -123,6 +174,7 @@
 	width: 100%;
 	padding: 10px;
 	border-radius: 5px;
+	font-size: 16px;
 	border: 2px solid #ff9502;
 	background: transparent;
 	color: #fff;
@@ -155,9 +207,38 @@
 	position: relative;
 	width: 100%;
 	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+.clan-details-wrapper{
+	position: relative;
+	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: flex-start;
+	width: 100%;
+	box-sizing: border-box;
 	margin-top: 30px;
+}
+
+.clan-details-wrapper .clan-box{
+	position: relative;
+	width: calc(100% - 30px);
+	margin-right: 30px;
+}
+
+.clan-details-wrapper .clan-box.fix{
+	max-height: 322px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.clan-details-wrapper .clan-box h4{
+	font-size: var(--alt-title-font-size);
+    color: #fff;
+	margin-top: 0;	
 }
 
 .clan-details{
@@ -381,14 +462,19 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: flex-start;
 }
 
-.clan-member-roles,
+.clan-member-roles{
+	position: relative;
+	width: 30%;
+	padding: 0 30px 0 0;
+	border-right: 2px solid var(--gray-scale-700-color);
+}
+
 .clan-roles .edit-role{
 	position: relative;
-	width: 100%;
-	padding-right: 40px;
+	width: 70%;
+	padding: 0 0 0 30px;
 }
 
 .clan-roles > div:last-child{
@@ -467,3 +553,147 @@
 	margin-bottom: 50px;
 }
 
+
+
+/*========================================
+
+             Responsive Section
+
+ ========================================*/
+
+/* Ultra Laptop & Tablets */
+@media only screen and (max-width: 1280px){
+	.clan-details-wrapper{
+		flex-direction: column-reverse;
+	}
+
+	.clan-details-wrapper .clan-box.fix{
+		width: 100%;
+		margin-top: 40px;
+	}
+}
+
+
+@media only screen and (max-width: 900px){
+	.clan-roles{
+		flex-wrap: wrap;
+    	margin: 15px 0 30px 0 0;
+    	padding: 15px 0 0 0;
+    	border-top: 2px solid var(--gray-scale-700-color);
+	}
+	
+	.clan-member-roles,
+	.clan-roles .edit-role{
+		width: 100%;
+		padding: 0;
+		border: 0;
+	}
+}
+
+
+
+
+/*Clan*/
+.mobile #clan-home,
+.mobile #clan-matches,
+.mobile #clan-bank,
+.mobile #clan-members,
+.mobile #clan-settings,
+.mobile #messages,
+.mobile #following-table,
+.mobile #add-friend{
+    padding-bottom: 30px;
+}
+
+.mobile .clan-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: initial;
+}
+
+.mobile .clan-owner{
+    font-size: 19px;
+}
+
+.mobile .clan-level img {
+    width: 45px;
+}
+
+.mobile #clan-hub {
+    display: flex;
+    flex-direction: row;
+}
+
+.mobile .clan-content{
+    margin-top: 10px;
+}
+
+.mobile .clan-details ul li{
+    height: 45px;
+    font-size: 17px;
+}
+
+.mobile #clan-home .chat-box{
+    height: 165px;
+}
+
+.mobile .clan-level p{
+    font-size: 20px!important;
+    margin-top: -5px;
+}
+
+.mobile .clan-levels {
+    margin: 25px 0 0 0;
+}
+
+.mobile .top-donator .top-donator-head h2{
+    font-size: 20px;
+}
+
+.mobile #account-wrapper table button.btn-table{
+    font-size: 16px!important;
+    padding: 5px 15px!important;
+}
+
+.mobile .clan-member-roles table{
+    width: 95%;
+    display: table;
+}
+
+.mobile .clan-roles .role-form{
+    padding: 0;
+}
+
+.mobile .clan-roles .field-wrap{
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mobile .clan-roles .role-form .field{
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: solid 2px #383838;
+}
+
+.mobile .clan-roles .role-form .field.right-align{
+    margin-top: 10px;
+}
+
+.mobile .clan-roles .role-form .field:last-child{
+    border-bottom: 0;
+}
+
+
+.mobile .field-info.half {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 0;
+}
+
+.mobile #clan-hub .tab-scroll {
+    /*height: calc(75vh - 75px);*/
+    height: initial;
+}
