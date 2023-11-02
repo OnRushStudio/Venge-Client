@@ -175,6 +175,7 @@ class Client {
         autoUpdater.checkForUpdates();
 
         autoUpdater.on('update-available', () => {
+            let appVer = app.getVersion()
             splashScreen = new BrowserWindow({
                 width: 520,
                 height: 300,
