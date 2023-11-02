@@ -5,8 +5,11 @@ const settingsJson = require('./modules/settings.json')
 const Store = require('electron-store');
 const userPrefs = new Store();
 
-
 document.addEventListener('DOMContentLoaded', () => {
+    //Sends RPC Events
+    updateRPC();
+
+    //Client Settings
     clientDiv = document.createElement('div');
     clientDiv.innerHTML = `
     <style>
@@ -97,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('keydown', (e) => {
-        if (e.code === "F3") {
+        if (e.code === "Slash") {
             if (clientDiv.style.display === "none") {
                 clientDiv.style.display = "block"
             } else {
@@ -141,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 alert('No valid link found on clipboard')
                             }
                         }
-                        // document.querySelector("#play-section > div.content-wrapper").appendChild(document.querySelector("#play-section > div.content-wrapper > div.options"))
                     }
                 }
             });
@@ -153,6 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
         subtree: true
     });
 })
+
+
+function updateRPC() {
+    pc.app.on('Player:Leave', function () {
+        ipcRenderer.send('loadRPC', { area: 'menu' });
+    }, this);
+
+    pc.app.on('Overlay:Weapon', function (weapon) {
+        let maps = app.session.defaultMaps.map((map) => map.split(' - ')[0]);
+        ipcRenderer.send('loadRPC', { area: 'game', now: Date.now(), weapon: weapon, map: app.session.map, maps: maps, mapText: app.session.defaultMaps.filter((map) => map.split(' - ')[0] == app.session.map)[0] });
+    }, this);
+}
 
 window._pc = false;
 Object.defineProperty(window, "pc", {

@@ -31,7 +31,7 @@ const expressapp = express();
 expressapp.use(express.static(path.join(__dirname, 'vengeSource')));
 
 expressapp.listen(7481, function () {
-  console.log('App listening on port 7481!');
+    console.log('App listening on port 7481!');
 });
 
 app.allowRendererProcessReuse = true;
@@ -43,6 +43,13 @@ protocol.registerSchemesAsPrivileged([{
         corsEnabled: true
     }
 }]);
+
+//DiscordRPC
+const DiscordRPC = require('discord-rpc');
+const clientId = '727533470594760785';
+const RPC = new DiscordRPC.Client({ transport: 'ipc' });
+DiscordRPC.register(clientId);
+const rpc_script = require('./modules/rpc.js');
 
 console.log('Chrome:', process.versions.chrome, 'Electron:', process.versions.electron)
 
@@ -58,7 +65,7 @@ class Client {
 
     createWindow() {
         var self = this;
-        
+
         const { width, height } = screen.getPrimaryDisplay().workAreaSize
         this.win = new BrowserWindow({
             width,
@@ -157,31 +164,29 @@ class Client {
     }
 
     initUpdater() {
+        let splashScreen;
         autoUpdater.setFeedURL({
-            owner: "MetaHumanREAL",
+            owner: "OnRushStudio",
             repo: "Venge-Client",
             provider: "github",
             updaterCacheDirName: "venge-client-updater",
         });
 
-
         autoUpdater.checkForUpdates();
 
         autoUpdater.on('update-available', () => {
-            const options = {
-                title: "Client Update",
-                buttons: ["Now", "Later"],
-                message: "Client Update available, do you want to install it now or after the next restart?",
-                icon: __dirname + "/../icon.ico"
-            }
-            dialog.showMessageBox(options).then((result) => {
-                if (result.response === 0) {
-                    updateNow = true;
-                    if (updateLoaded) {
-                        autoUpdater.quitAndInstall();
-                    }
+            splashScreen = new BrowserWindow({
+                width: 520,
+                height: 300,
+                frame: false,
+                transparent: true,
+                icon: __dirname + "/../icon.ico",
+                webPreferences: {
+                    nodeIntegration: true
                 }
             });
+            splashScreen.center()
+            splashScreen.webContents.executeJavaScript(`document.querySelector("body > div > div").innerText = '${appVer}'; document.getElementById('downloadtext').style.display = "block"`)
         });
 
         autoUpdater.on('update-downloaded', () => {
@@ -189,6 +194,7 @@ class Client {
             if (updateNow) {
                 autoUpdater.quitAndInstall(true, true);
             }
+            splashScreen.close()
         });
     }
 
@@ -331,19 +337,75 @@ class Client {
             // HubWindow.removeMenu()
             HubWindow.loadFile(path.join(__dirname, '/userscript/index.html'));
         })
+
+        ipcMain.on('loadRPC', (event, data) => {
+            if (data.area == 'game') {
+                rpc_script.setActivity(RPC, {
+                    state: 'In a game',
+                    startTimestamp: data.now,
+                    largeImageKey: data.maps.includes(data.map) ? data.map.toLowerCase() : 'custom',
+                    largeImageText: data.mapText == undefined ? data.map + ' - CUSTOM MATCH' : data.mapText,
+                    smallImageKey: data.weapon.toLowerCase(),
+                    smallImageText: data.weapon,
+                    instance: false,
+                    buttons: [
+                        {
+                            label: 'Download Client',
+                            url: 'https://social.venge.io/client.html'
+                        }
+                    ]
+                });
+            }
+
+            if (data.area == 'menu') {
+                rpc_script.setActivity(RPC, {
+                    state: 'On the menu',
+                    startTimestamp: app.startedAt,
+                    largeImageKey: 'menu',
+                    largeImageText: 'Venge.io',
+                    instance: false,
+                    buttons: [
+                        {
+                            label: 'Download Client',
+                            url: 'https://social.venge.io/client.html'
+                        }
+                    ]
+                });
+            }
+        });
     }
 }
 
 const client = new Client()
 
 app.on('ready', () => {
+    let appVer = app.getVersion()
+    let splashScreen = new BrowserWindow({
+        width: 520,
+        height: 300,
+        frame: false,
+        transparent: true,
+        icon: __dirname + "/../icon.ico",
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+    splashScreen.center()
+
+    setTimeout(() => {
+        if (app.requestSingleInstanceLock()) { client.init() }
+        splashScreen.close()
+    }, 3000);
+
+    // Load the splash screen HTML
+    splashScreen.loadFile(path.join(__dirname, '/splash/index.html'));
+    splashScreen.webContents.executeJavaScript(`document.querySelector("body > div > div").innerText = '${appVer}'; document.getElementById('tip').style.display = "block"`)
     protocol.registerFileProtocol('swap', (request, callback) => {
         callback({
             path: path.normalize(request.url.replace(/^swap:/, ''))
         })
     })
 
-    if (app.requestSingleInstanceLock()) client.init()
 })
 
 app.on('window-all-closed', () => app.exit())
