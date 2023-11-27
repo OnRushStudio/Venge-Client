@@ -5,7 +5,8 @@
   "main": "./app/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder build --mwl --x64 -p never",
+    "buildwin": "electron-builder build --win --x64 -p never",
+    "build": "electron-builder build -mwl --x64 -p never",
     "deploy": "electron-builder build --mwl --x64 -p always",
     "dist": "electron-builder -p always"
   },
@@ -13,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/OnRushStudio/Venge-Client.git"
   },
-  "author": "CaptainCool",
+  "author": "OnRush Studio",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/OnRushStudio/Venge-Client/issues"
