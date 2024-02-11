@@ -567,13 +567,15 @@ display: none;
     }
 
     .vcssummary {
-        list-style: none;
+        list-style: none !important;
         /*<--- removes the triangle*/
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         /*   align-items: center; */
     }
+
+    .vcssummary::-webkit-details-marker { display: none !important} /* Fixes the triangles */
 
     /* @media (max-width: 750px){
 .vcssummary{

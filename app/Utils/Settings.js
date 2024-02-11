@@ -1,33 +1,7 @@
 const Store = require('electron-store');
 const userPrefs = new Store();
+const clientData = require('../Settings/settings.json')
 
-const clientData = [
-    {
-        label: "Unlimited FPS",
-        id: "disableFrameRateLimit",
-        tooltip: "Uncap your FPS from being limited to the monitor's refresh rate"
-    },
-    {
-        label: "Fullscreen Mode",
-        id: "fullscreenMode",
-        tooltip: "Makes the client window full-screen"
-    },
-    {
-        label: "Experimental Flags",
-        id: "experimentalFlags",
-        tooltip: "Enables use of Chromium-based experimental features that may or may not boost performance"
-    },
-    {
-        label: "Low Latency",
-        id: "lowLatency",
-        tooltip: "Minimizes input delay for smoother gameplay"
-    },
-    {
-        label: "Enable Userscripts",
-        id: "enableUserscripts",
-        tooltip: "Enables use of community made userscripts for added features"
-    }
-];
 const scriptData = [
     {
         id: "vmodel", // ID of the setting
@@ -69,8 +43,7 @@ const initClientSettings = () => {
                 <div class="vcsblockset">
                     <div class="vcsfield vcscheck">
                         <label for="${setting.id}">${setting.label}</label>
-                        <div class="vcswrapper"><input type="checkbox" id="${setting.id}" class="vcstoggle"><label
-                                for="${setting.id}"></label>
+                        <div class="vcswrapper"><input type="checkbox" id="${setting.id}" class="vcstoggle">
                         </div>
                     </div>
                 </div>
@@ -92,7 +65,15 @@ const initClientSettings = () => {
     const settingsHTML = generateHTML(clientData);
     document.getElementById('vcsperfsettings').innerHTML += settingsHTML;
 
-    initValues()
+    //init Values
+    clientData.forEach(setting => {
+        const elem = document.getElementById(setting.id);
+        elem.checked = userPrefs.get(setting.id)
+
+        elem.onclick = () => {
+            userPrefs.set(setting.id, elem.checked)
+        }
+    })
 }
 
 const initUserscripts = () => {
@@ -170,9 +151,6 @@ const initUserscripts = () => {
                         </div>
                     </details>
                 </div>
-                <div id="vcscustom-footer">Script By <a class="vcslinks" href="https://social.venge.io/#Captain_Cool"
-                        target="_blank" rel="noopener noreferrer">Captain_Cool</a> and <a class="vcslinks"
-                        href="https://social.venge.io/#shady" target="_blank" rel="noopener noreferrer">shady</a></div>
             </div>
         `;
         });
@@ -186,9 +164,14 @@ const initUserscripts = () => {
     document.getElementById('vcscustomuserscripts').innerHTML += customSettingsHTML;
 
     saveSettings()
-    if (localStorage.getItem('allSettings') != null) {
-        loadSettings2()
-    }
+
+    scriptData.forEach(setting => {
+        setting.subSettings.forEach(subSetting => {
+            document.getElementById(subSetting.id).onchange = () => {
+                saveSettings()
+            }
+        });
+    });
 }
 
 function saveSettings() {
@@ -228,15 +211,5 @@ function loadSettings() {
 
 }
 
-const initValues = () => {
-    clientData.forEach(setting => {
-        const elem = document.getElementById(setting.id);
-        elem.checked = userPrefs.get(setting.id)
-
-        elem.onclick = () => {
-            userPrefs.set(setting.id, elem.checked)
-        }
-    })
-}
 
 module.exports = { initClientSettings, initUserscripts }

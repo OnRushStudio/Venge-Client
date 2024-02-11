@@ -1,6 +1,9 @@
 const { app, BrowserWindow, screen, ipcMain, protocol } = require('electron');
 const path = require('path')
 const fs = require('fs')
+const { autoUpdater } = require("electron-updater")
+let updateLoaded = false;
+let updateNow = false;
 
 const shortcut = require('electron-localshortcut')
 const Store = require('electron-store')
@@ -23,9 +26,17 @@ launchArgs.pushArguments()
 
 let win
 
-
 console.log('Chrome:', process.versions.chrome, 'Electron:', process.versions.electron)
 
+app.allowRendererProcessReuse = true;
+
+protocol.registerSchemesAsPrivileged([{
+    scheme: "swap",
+    privileges: {
+        secure: true,
+        corsEnabled: true
+    }
+}]);
 
 function createWindow() {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize
@@ -46,7 +57,7 @@ function createWindow() {
     win.setFullScreen(userPrefs.get('fullscreenMode'))
     win.removeMenu()
     win.loadFile(path.join(__dirname, '../vengeSource/index.html'))
-    
+
     win.on('ready-to-show', () => {
         win.show()
     })
@@ -76,6 +87,7 @@ function createWindow() {
 
     initShortcuts()
     initEvents()
+    initUpdater()
 
     win.webContents.on('dom-ready', () => {
         Injector.injectScripts(win)
@@ -134,6 +146,53 @@ function initEvents() {
         // HubWindow.removeMenu()
         HubWindow.loadFile(path.join(__dirname, '/userscript/index.html'));
     })
+}
+
+function initUpdater() {
+    let appVer = app.getVersion()
+    autoUpdater.setFeedURL({
+        owner: "OnRushStudio",
+        repo: "Venge-Client",
+        provider: "github",
+        updaterCacheDirName: "venge-client-updater",
+    });
+
+    autoUpdater.checkForUpdates();
+
+    autoUpdater.on('update-available', () => {
+        updateScreen = new BrowserWindow({
+            width: 520,
+            height: 300,
+            frame: false,
+            transparent: true,
+            icon: __dirname + "/../icon.ico",
+            webPreferences: {
+                nodeIntegration: true
+            },
+            alwaysOnTop: true // Set alwaysOnTop property to true
+        });
+
+        updateScreen.center()
+        updateScreen.loadFile(path.join(__dirname, '/Splash/updating.html'));
+        updateScreen.webContents.executeJavaScript(`document.querySelector("body > div > div").innerText = '${appVer}'; document.querySelector("body > div > div.download-text").style.display = "block"`)
+        win.close()
+    });
+
+    autoUpdater.on('download-progress', (progressObj) => {
+        if (updateScreen) {
+            const progressValue = progressObj.percent;
+            updateScreen.webContents.executeJavaScript(`document.querySelector('.prog-line').style.width = "${progressValue}%"`)
+            updateScreen.webContents.executeJavaScript(`document.querySelector('#download-percent').innerHTML = ${progressValue}`)
+        }
+    });
+
+    autoUpdater.on('update-downloaded', () => {
+        updateLoaded = true;
+        if (updateNow) {
+            autoUpdater.quitAndInstall(true, true);
+        }
+        updateScreen.close()
+    });
 }
 
 app.whenReady().then(() => {

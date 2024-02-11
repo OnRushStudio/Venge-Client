@@ -1,27 +1,27 @@
-{
-    "disableFrameRateLimit": {
-        "type": "checkbox",
-        "text": "Disable Frame Rate Limit *",
-        "default": false
+[
+    {
+        "label": "Unlimited FPS",
+        "id": "disableFrameRateLimit",
+        "tooltip": "Uncap your FPS from being limited to the monitor's refresh rate"
     },
-    "experimentalFlags": {
-        "type": "checkbox",
-        "text": "Experimental Flags *",
-        "default": false
+    {
+        "label": "Fullscreen Mode",
+        "id": "fullscreenMode",
+        "tooltip": "Makes the client window full-screen"
     },
-    "disableAdvertisements": {
-        "type": "checkbox",
-        "text": "Disable Advertisements",
-        "default": true
+    {
+        "label": "Experimental Flags",
+        "id": "experimentalFlags",
+        "tooltip": "Enables use of Chromium-based experimental features that may or may not boost performance"
     },
-    "enableUserscripts": {
-        "type": "checkbox",
-        "text": "Enable Userscripts",
-        "default": true
+    {
+        "label": "Low Latency",
+        "id": "lowLatency",
+        "tooltip": "Minimizes input delay for smoother gameplay"
     },
-    "lowLatency": {
-        "type": "checkbox",
-        "text": "Low Latency Mode *",
-        "default": false
+    {
+        "label": "Enable Userscripts",
+        "id": "enableUserscripts",
+        "tooltip": "Enables use of community made userscripts for added features"
     }
-}
+]
