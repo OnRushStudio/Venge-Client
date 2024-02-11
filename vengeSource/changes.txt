@@ -1,0 +1,2086 @@
+## Changes
+
+(v1.2.27) - 8 January 2024
+- Christmas event ended.
+
+(v1.2.26) - 31 December 2023
+- AWP and sniper skins added for Christmas!
+
+(v1.2.25) - 21 December 2023
+- Christmas update to Sierra and Xilbalba maps!
+- New skins on shop for Christmas!
+- Special 2 XP boost event! Check Discord for more details!
+
+(v1.2.24) - 21 November 2023
+- Trading feature added to social hub.
+- Daily login reworked.
+- Clan page description and discord button added.
+- Dynamic sensitivity for scoping.
+- Clan settings fixed.
+- Account login page fixed.
+- Inventory has been speeded up, backend improvements.
+- Selling in inventory has been improved, it's faster now.
+
+(v1.2.23) - 30 October 2023
+- Halloween event ended.
+- FPS weapon speed changes.
+
+(v1.2.22) - 25 October 2023
+- Default sniper weapon balanced.
+- AWP weapon buffed.
+- Fixed shoot rate dependent on FPS. Now all player will shoot with the same speed.
+- Fixed Skin icons size in shop fixed.
+
+(v1.2.21) - 23 October 2023
+- Halloween content added!
+- Sierra and Xibalba has now new halloween content.
+- AWP Sniper added. (values might change)
+- Spawn times were longer, this annoying issue fixed.
+- Some improvements on UI and backend.
+- Clan leave/join and creation had some issues on username, this bug fixed.
+
+(v1.2.20) - 22 October 2023
+- Respawn long waiting time fixed.
+
+(v1.2.19) - 13 October 2023
+- Mobile controller improvements for pro players.
+- [FIXED] Xibalba doesn't change player stats.
+- Xibalba shows up on vote list in match end screen.
+- [FIXED] Sometimes kill-feed entries get stuck on the HUD.
+- [FIXED] After leaving any match the character on the main UI takes up the lighting of that match.
+- [FIXED] A lot of times damage with weapons, throwables and melees goes unregistered (the enemy doesn't get damaged even when hit)
+- UI improvements for profile pages.
+- Settings page visual improvements.
+
+(v1.2.18) - 6 October 2023
+- Xibalba added back with optimization fixes and now default mode is black coin.
+- Invite bug on games fixed, after 10 seconds sessions were invalid.
+- Invite menu chat bugs fixed. Now guest users also can join chat.
+- [FIXED] Welcome message and Discord link areas doesn't get updated.
+- [FIXED] "Disable all messages from that user" functionality doesn't work.
+- [FIXED] Lootbox open sound plays even when the player doesn't have enough VG to unlock it.
+- [FIXED] Sierra, Temple, Mistle and Tundra map optimizations.
+
+(v1.2.17) - 24 July 2023
+- Paramilitary (AK47) skin added.
+- Briz (AK47) skin added.
+- Dragon (AK47) skin added.
+- Doxic (AK47) skin added.
+
+(v1.2.16) - 12 Jun 2023
+- Home page hero animations added.
+- [FIXED] SandstormBlitz ramp reflection visual glitch fixed.
+- [IMPROVED] Chat messages were disappearing very quickly, this is fixed now.
+- [FIXED] Max limit of claiming ad rewards per day is 3. But the popup shows up more than 3 times.
+- [SUGGESTION ADDED] Add the ability to change Aim Down Sights FOV.
+- [FIXED] Missing AK47 hypothermia skin added.
+- [IMPROVED] Charms are little bit bigger now.
+- [IMPROVED] Moved sub menus to the header to save up some space.
+- [IMPROVED] Gliders don't feel very controllable, this is improved now.
+- Some bugs game freezing bugs fixed.
+- Some UI element text fixes.
+- Auto-complete off on inbox send messages.
+- Some fixes on account APIs for servers.
+- Valentine skins fixed.
+- Improvement on reward ads callbacks.
+- Banner display issues fixed.
+- Echo's standing pose changed.
+- Anti-cheat service improvements.
+
+(v1.2.15) - 1 Jun 2023
+- SandstormBlitz more collision improvements.
+- [FIXED] Kulu Totems can be spam-spawned after Kulu dies (very prominent when playing on a mobile device).
+- [FIXED] Lilium Grenades can be spam-spawned after Lilium dies (very prominent when playing on a mobile device).
+- 3rd Anniversary skins added.
+
+(v1.2.14) - 23 May 2023
+- AK-47 added to Gun game.
+- Only sierra map matchmaking fixed.
+- Social hub former nickname log wording fix.
+- [FIXED] After a match ends and you vote for the next map, in the next game there is no hp bar over the enemies when you shoot them.
+- [FIXED] You can claim daily rewards even without watching its advert.
+- [SETTINGS ADDED] Hide Opponents' Health Bar above their head, Damage Number Values, etc.
+- [ADDED] Search Bar in Inventory.
+- You can share map with venge.io/?map=MapName now.
+- Autocomplete removed from inbox message input.
+- [FIXED] Only Liliums Hammer can De-Rank someone, when the other characters should be able to as well.
+- [FIXED] Shin Dash doesn't cause any damage sometimes even after intersecting with enemies.
+- [FIXED] Hammer/mallet is highly inaccurate. Hits about 20 degrees to the left of the crosshair.
+- [IMPROVED] Sandstorm Blitz Rock Collisions are not great, collisions improved and fixed.
+- [IMPROVED] The "Air Blaster things" do not work great, and barely give you momentum
+- [FIXED] Jumping on the Throne and dashing outwards you can leave the map, Need More collisions outside.
+- [FIXED] Bounce pad jumping and increasing the jumping speed glitch fixed.
+- [FIXED] Can't move camera around like before while dancing in-game.
+- [FIXED] Ability icons do not change for different characters on mobile. Its always Lilium's hammer for melee and grenade for main ability
+- Weapon magazine reset on next match bug fixed.
+- Social mobile UI fixes.
+
+(v1.2.13) - 17 May 2023
+- Username change feature introduced.
+- New animations added to menu to improve visual quality.
+- "Account is unavailable" display added back for social hub.
+- In your profile settings you cannot update your password unless you also change your email.
+- The resolution range in menu settings is 20-100 while for in-game pause menu its 50-100.
+- Becoming aimbot with mobile controller glitch fixed.
+- [FIXED] When leaving a game after winning, the audio increases at least 3x as much.
+- [FIXED] Skybox Reflection Bug on the Cart, and players in Main Menu.
+- Kulu Egyptian Skin has a 'Tracer' that you can see Through Walls and that glitch fixed.
+- Engine upgrade.
+
+(v1.2.12) - 2 May 2023
+- Damage given and taken numbers fixed. UI improved.
+- Damage hit numbers now shows real hit numbers.
+- Aim assist on gamepad improved and fixed.
+- Emoji appears on home page next to our name.
+- Menu UI sounds added to audio settings.
+- New message popup added for home page.
+- Social wiki thumbnails fixed.
+- Member join date added for clan member list.
+- Social page online numbers show up now.
+- Included the free skin notification in game on settings to "hide announcement".
+- Inbox messages notification now shows up on home page.
+- Mobile UI improvements.
+- To make UX better when you select custom map, it automatically clears official maps.
+
+(v1.2.11) - 20 Apr 2023
+- Visual improvements for hitting with hammer.
+- Daily reward fixes.
+- Social badge's icons changed.
+- In game Y button teleport glitch fixed.
+- Clan leave issues fixed.
+- Some performance improvements.
+- Room owner fixes for custom matches.
+
+(v1.2.10) - 8 Apr 2023
+- Tundra map collision fixes.
+- Temple map collision fixes.
+- PS and Xbox controller glitch fixed.
+- Daily reward fixed.
+- Some UI improvements.
+- Emoji's removed from people who got it with glitch.
+- In game reward disabled for SandstormBlitz and Tundra maps.
+
+(v1.2.9) - 31 Mar 2023
+- Some font style changes to make them more readable.
+- Temple map collisions improved.
+- In game settings keyboard configuration fixed.
+- Changing emoji without having all of them bug fixed.
+- Disable light settings bug fixed.
+- Sending message to user via inbox bug fixed.
+- Daily reward screen size fixed for Poki and smaller screens.
+- Small texts added to banners for adblock.
+
+(v1.2.8) - 24 Mar 2023
+- Fixed map editor save, create project and login bugs.
+- Fixed duplicate functionality on map editor.
+
+(v1.2.7) - 9 Mar 2023
+- Logout fixed.
+- Clan roles area fixed.
+- Daily rewards added back.
+- Level 4 clan name rainbow tag issue fixed.
+- Free VG button added to home page.
+- Social hub clan name tag color fixed.
+- Auto location selection for servers fixed.
+- Profile details color display fixed for level 4 clans.
+- Some UI fixes for different resolutions.
+- Anti-cheat fixes.
+- Shop item listing fixes. (Crate wasn't showing up)
+- Firefox shop bug fixed.
+- For smaller screen popup interface glitches fixed.
+- Leaderboard updates fixed.
+- Joining clan issue fixed.
+- Some performance issues.
+- We keep sessions open now, you don't have the login again everytime.
+
+(v1.2.6) - 24 Feb 2023
+- Map voting bug fixed.
+- Duck charm model fixed.
+- Crosshair settings bug fixed.
+- Social hub button added to shop page.
+- Rarities and rarity ratios shows up on item details now.
+- Character select doesn't apply until you refresh page/ play 2 games, that bug fixed.
+- Mobile shuriken, throw and ability spam glitch fixed.
+- Respawn transitions fixed.
+- Dance emote and walking glitch fixed.
+- Shop interface improvements for small screen size.
+- Keyboard key binding fixed for home page menu.
+- Auto server change glitch fixed.
+- Mistle teammate health bars are red instead of green, that bug fixed.
+- Skybox textures able to be seen on the mistle crate, that bug fixed.
+
+(v1.2.5) - 21 Feb 2023
+- Timer fixed.
+
+(v1.2.4) - 20 Feb 2023
+- Matchmaking changes.
+- Default camera FOV changes.
+- Mobile fixes.
+- Game finish and redirection bugs fixed.
+
+(v1.2.3) - 19 Feb 2023
+- Muscle shock, frost bomb and venom movement slow affect glitch fixed.
+- Auto-login added for home page.
+- Map selection glitch fixed.
+- Ivies from Sierra removed to gain performance.
+- Matchmaking puts you in the newly started games instead of ending ones.
+
+(v1.2.2) - 18 Feb 2023
+- Emote fixed.
+- Auto country selection fixed.
+- Map selection thumbnail fixed.
+- Equip item on inventory issues fixed.
+
+(v1.2.1) - 18 Feb 2023
+- Version bump!
+
+(v1.2.0) - 18 Feb 2023
+- New UI changes.
+- Invite fixes.
+- Anti-cheat improvements.
+
+(v1.1.50) - 14 Feb 2023
+- Valentine skins added.
+
+(v1.1.49) - 18 Jan 2023
+- Menu re-design.
+- Temple map design fixes and performance improvements.
+
+(v1.1.48) - 25 Dec 2022
+- Character skins fixed for FPS view.
+- Score added to result screen.
+- Character skin added to victory screen.
+- Two years badge icon fixed on profile page.
+- New skin's third person views fixed.
+- Inventory bugs fixed.
+- Emote skin display fixed.
+
+(v1.1.47) - 22 Dec 2022
+- New Christmas skins added.
+- Maps updated for christmas theme.
+
+(v1.1.47) - 13 Dec 2022
+- Parkour map deselect bug
+
+(v1.1.46) - 12 Dec 2022
+- Some issues fixed for mouse lock on PC.
+
+(v1.1.45) - 1 Dec 2022
+- Animated skins fixed.
+- Mobile optimization and improvements.
+- Sierra EU spawn bug fixed.
+- Invisible character bug fixed.
+- Echo axe damage increased.
+- New M4 skin added: Royal Paladin
+- New LMG skin added: Modern War
+- New Sniper skin added: TurboLight
+- New AK-47 skin added: Millennium
+- New Scar skin added: Toy Army
+- New M4 skin added: Space Tiles
+
+(v1.1.44) - 9 Nov 2022
+- Public match player limit updated to 6 players.
+- Halloween shop removed.
+- Sierra reverted back.
+- Multiple map selection added.
+- Echo throw skill background image fixed. (Thanks to R7AN?)
+
+(v1.1.43) - 7 Oct 2022
+- Key binding issue fixed.
+- Echo skin fixes (white texture)
+- Invisible character bug fixed.
+
+(v1.1.42) - 28 Sep 2022
+- New skins released. (Heat series, Scar, Shotgun, Sniper, M4, Desert Eagle, Tec-9)
+- Texture glitch on crates fixed.
+- Settings menu in game wasn't updating the settings, this issue fixed.
+- Rainbow tag fixed for result screen.
+- Sniper skin texture issues fixed.
+- Loading spinner added to leaderboard to improve UX.
+- Hide announce messages option added to settings.
+- Performance improvements on PlayCanvas engine.
+- Notification sounds added for messages.
+
+(v1.1.41) - 21 Aug 2022
+- Thumbnails added for loading page.
+
+(v1.1.40) - 19 Aug 2022
+- Game loading fix (double spawn issue)
+
+(v1.1.39) - 10 Aug 2022
+- Invite friend with link bug fixed.
+- Friend list added to inbox menu.
+- Inbox menu improvements.
+- You can block any user from sending you messages.
+- UI fixes and improvements.
+- Loading file size optimized, game should load faster now.
+- A fix deployed for invisible characters.
+- Seperated button added for kill message.
+- Kill message bug fixed.
+
+(v1.1.37) - 24 July 2022
+- Reforge feature introduced.
+- Offline message system added.
+- Market sell limits removed.
+- Small screen interface UI improvements.
+- Icons added, UI improvements in profile menus.
+- Clan leaderboard added.
+- Email validation added to settings area.
+- Small bug fixes.
+
+(v1.1.36) - 12 July 2022
+- Performance boost for rendering engine.
+- TAB stats menu shows hero skins properly now.
+- Matchmaking and connection bugs fixed.
+- Invite menu interface improvements.
+- Spectate button added to invite menu for joining players.
+- Menu UI improvements.
+- Overtime added back.
+
+(v1.1.35) - 28 June 2022
+- Sierra collision fixed.
+- Sierra performance fixes.
+- Leaderboard added to home page.
+- Please re-save the map you have to fix breakable object issue.
+- Custom map sound bug and respawn bug fixed, you can join the game again.
+- Home page UI bugs fixed.
+- Inventory screen AK-47, Desert eagle previews fixed.
+
+(v1.1.34) - 20 June 2022
+- Sierra performance fixes.
+- Invite interface some UI improvements.
+- KDR display fixed for result screen.
+- Pointer lock issue fixed.
+- Loader screen problems fixed.
+- Continue button added for result screen.
+
+(v1.1.33) - 18 June 2022
+- Spectate function fixed.
+
+(v1.1.32) - 2 June 2022
+- Xilbalba removed from rotation because of performance issues. Will be added back after performance fixes.
+- 6 new charms added for Anniversary.
+
+(v1.1.31) - 25 May 2022
+- Xibalba map added back, thanks to Enderious!
+- Exact join date added to the social hub.
+- Added favorite skins feature to the inventory area.
+- Shop crates now show rarities on top-right of screen.
+- Map screen re-designed, will be improved.
+- Result screen re-designed.
+- Animated skins glitch fixed.
+- Improvements on backend servers.
+
+(v1.1.30) - 19 May 2022
+- UI improvements.
+- Re-designing map selection screen for better UX, search and category filtering.
+
+(v1.1.29) - 17 May 2022
+- Map editor breakable objects fixed, if you save the map you have already, it will be fixed.
+- Login bug fixed.
+
+(v1.1.29) - 16 May 2022
+- Market minimum sale prices increased.
+- LMG skin doesn't show up in the game, this bug fixed.
+- Mythical rarity lowered for crates.
+- Add confirmation to the resell button.
+- Add bulk quick sell for the inventory area.
+- Temple map out of glitch fixed for bounce pad.
+- Shop thumbnail fixed for different resolutions.
+- Bubbly skin (merge with an old skin, duplicate issue)
+- Fixed Mrs. Claus skin thumbnail.
+- Inventory filter button colors fixed for Windows.
+- Unlocking old skins is not possible anymore, API routes disabled.
+- Character skins weren't show up properly on the game, this issue fixed.
+- Set minimum amount for market sells
+- Balance display wasn't updating properly, this issue fixed.
+- Kenny assets link added to the crosshair settings area.
+- Simple hover effect to the shop area.
+- Hover sound added to the shop menu.
+- Shop mobile optimization, you can inspect weapons with touch now.
+- Add hover to the resell and equip button
+- Add animation to the home page banner, that will atract more users for the shop
+- New banners added to home page.
+- Fix mouse spinning sound on shop for desktop devices.
+- Remove push notification alert implementation.
+- Overtime removed from matches to increase engagement.
+- Menu UI improvements. (Button color change etc.)
+- Sierra map improvements.
+- New skins added to the shop rotation, make sure to check them out!
+
+(v1.1.28) - 14 May 2022
+- Invite game fixed.
+- Duplicated skins merged.
+- Twitch streamers area fixed.
+
+(v1.1.27) - 13 May 2022
+- Shop re-designed.
+- Sierra improvements.
+- Bug fixes on client.
+- New 127 skin release.
+- Old skins vaulted.
+- Old inventory system improved and added to the shop area.
+- Weekly offerings added.
+- Xibalba improved by Enderious. Will be released soon.
+
+
+(v1.1.26) - 27 April 2022
+- Loadout has more info about heroes now.
+- You can compare weapons with hover on load menu.
+- UI improvements.
+- Sierra out of map glitches fixed.
+- A chat message bug fixed (focus and enter key bind problem)
+- Now it sets resolution automatically if you didn't set it before.
+- After signing up, it automatically logs you in.
+- Kulu's totem wasn't working, that bug fixed.
+- Suggestion bot fixed, it works now.
+
+(v1.1.25) - 20 April 2022
+- Changed the brightness of temple map textures for better visibility.
+- Objective icons are being hidden if you are too close.
+- Special effect settings now also disables rain and snow effects on maps.
+- Sierra collision glitch fixed.
+- Temple roof jump glitch fixed.
+- Free crate has been removed from home page, since it affects the game economy.
+- Show latest change log on home page in a popup with version code check.
+- Region display removed from home page display, for better visibility.
+
+(v1.1.24) - 15 April 2022
+- Added online numbers for maps.
+- Games will have 4 players from now. (Test period for client + browser performance)
+- Fixes on matchmaking and improving game finding algorithm.
+- Now system saves creator codes, you don't have to re-enter them.
+- Social hub wiki skin thumbnails fixed.
+- Social hub now shows how many users has specific items, you can also sort them.
+- Market area shows Lilium, Shin, Echo and Kulu skins on filter area now.
+- Username and auth problems fixed for matchmaking, sometimes it was putting users to the wrong queue.
+- Some changes on matchmaking to provide better experience.
+- Map selection now shows online numbers for maps, depending on region.
+- Some UI improvements on menu design.
+- Weapon skin / model skin bug, sometimes it shows another skin on a different model.
+- Clicking skip ads button while in game causes some bugs, that issue fixed.
+- Notification background resize glitch fixed.
+- Sandstorm blitz map default map selection fixed. (It should be sniper)
+- Quest progression UI removed from result screen.
+- Loading stucks in the background when we leave the match, this issue fixed.
+- Timer stucks in the background when we leave the match, this issue fixed.
+- Friends shortcut notification removed from home page for clear view.
+- Version code added back to home page.
+
+(v1.1.23) - 2 April 2022
+- Clan member kick issue has been fixed.
+- Some backend issues has been fixed.
+
+(v1.1.23) - 25 March 2022
+- Unlock popup placed to the top-right menu area.
+- Map selection UX improvement.
+- Some fixes on shop.
+
+(v1.1.22) - 18 March 2022
+- Character, skin selection and username problems fixed.
+- Friend system added back.
+- Waterfall sound has been updated for Sierra map because of audio glithes on main menu.
+- Invite system bugs fixed.
+- Sounds added for unlocking crates.
+- Loading displays added to loadout menu.
+- Random map selection added for guest players.
+- Character display re-designed, it's 3D now.
+
+(v1.1.21) - 15 March 2022
+- Indonesia language added.
+- Language selection area added to settings.
+- Quest bug fixed.
+- ESC button added for returning back.
+- Some resolution related UI bugs fixed.
+- Improvements on UI elements like slider.
+- Tooltip added to menu social button.
+- Captcha error fixed for signup interface.
+
+(v1.1.20) - 10 March 2022
+- Quests added back.
+- Some UI bugs fixed.
+- Crosshair size bug fixed.
+
+(v1.1.19) - 9 March 2022
+- Safari right click problem fixed.
+- Key up/down/left/right buttons also added for movement.
+- Loadout menu redirects to you login/signup page if you didn't logged in now.
+- French translation added to language list.
+- Lootbox reward ads bug fixed in cases where you are not logged in.
+- A bug fixed on invite match.
+- Some sessions had an issue with 4 players matches, those issues fixed.
+- T-rex, Skunta, and lilium skin thumbnail issue fixed.
+
+(v1.1.18) - 7 March 2022
+- A game bug fixed with player labels.
+- Twitch display fixed.
+
+(v1.1.17) - 4 March 2022
+- Sandstorm blitz collision fixes.
+- New languages added : Español, Portugués, русский, 中文
+- Fixed loadout bug that redirects users to login page in error.
+- Crates shows rarities now.
+- Mytical rarity has been increased.
+- Game loading speed increased.
+- Crate order has been changed on shop menu.
+- Earn free VG button added to the shop menu.
+- Keyboard configuration issues fixed.
+- Social links added.
+- Clan page bugs fixed.
+
+## Notes
+- Apperantly there are still issues with invisible characters, we deployed another fix, please check and let us know if it's still exist.
+
+(v1.1.16) - 2 March 2022
++ Clans reintroduced back.
++ Sandstorm blitz added to map list.
++ Payment methods added back to the shop menu.
++ Charms selection added to loadout menu.
++ Some labels weren't clickable on mobile, that UI glitch has been fixed.
++ Keyboard configuration bugs fixed.
++ Sound effects added for menu on hover and click actions for better experience.
++ Captcha added for login/signup.
++ Invite link menu UI bugs fixed, now create session and invite link at the top.
++ Audio volume number UI bug fixed.
++ Language support added for some parts on main menu. (English, Turkish, more languages being added...)
+- Small UI improvements.
+
+(v1.1.15) - 27 Feb 2022
+- Verification icon added for home page menu.
+- Reward ads added for buying items.
+- Region based online numbers added server selection screen.
+- Lootbox inspect menu sizes resizes depending on UI.
+- Lootboxes now shows rarities.
+- Anti-cheat is active now, issue has been fixed.
+- Some users reported clearing cache fixes performance issues, please do that if you are experiencing that.
+- Chat interface added to invite menu.
+- Leaderboard width issue has been fixed. (Visual glitch)
+- Custom games added for invite menu and map selection screens.
+- Loadout weapon selections bug fixed.
+- Invisible players fixed. (This is a rare issue, might be other cases, please let us know if it still exist)
+- White texture bug fixed for custom maps.
+
+(v1.1.12) - 16 Feb 2022
+- Graphic setting issue fixed.
+- Minus score shows as red now on death screen.
+- Some UI improvements.
+- Screen resize screen issues fixed.
+
+(v1.1.11) - 14 Feb 2022
+- Valentine's Day update!
+- Companion Bot
+- Eros Kulu
+- Make-Up Shotgun
+- Present Sniper
+
+(v1.1.10) - 9 Feb 2022
+- Inspect animation added back to the "J" key.
+- Fixes on matchmaking servers.
+- Asian server issues fixed.
+- Some disconnection problems fixed for game servers.
+- Random map rotation added to custom area. We reviewed all maps that has been submited and for better sorting give them scores, system will list all the good maps and rotate them, with the votes we collected from maps, we'll build a better interface.
+
+(v1.1.9) - 1 Feb 2022
+- Keyboard configuration also added to the in game settings.
+- Scrollbar issue fixed for menu interfaces.
+- When you try to sell items that has higher rarity then legendary, it will ask for confirmation.
+- Some backend improvements.
+
++ New skins added
+- Leo [Mythical] (Echo Skin)
+- EyeFlow [Mythical] (Tec-9 Animated Skin)
+- Phoenix [Rare] (Deagle)
+- Twirl [Rare] (Scar)
+- Madboy [Uncommon] (Shotgun)
+- Bazinga [Rare] (Sniper)
+
+(v1.1.8) - 25 Jan 2022
+- Twitch username can be added to social hub profile from settings now.
+- Damage numbers fixed for result screen.
+- Custom map white texture error fixed.
+- Scale function added to map editor. (Experimental)
+- Random usernames assigned to guest players instead of "Guest".
+
+(v1.1.7) - 19 Jan 2022
+- Hide hitmarker feature added.
+- Crosshair scale option added, default one also is scalable now.
+- In game settings menu re-designed, it has more features now.
+- Damage given and taken numbers added to result screen.
+- Login popup added to social hub for better UX.
+- Search option added for our inventory on social hub.
+- Sending message feature added for VG transfer menu.
+- FPS and ping text at the top-left of screen turns red color if values are bad.
+- More models added to map editor. More than 60 unique new models.
+- Invisible wall added to map editor.
+- Shop buttons has hover effects (UI improvement)
+- Game leave functionality improved, now it loads menu faster instead of reloading the whole page.
+- Some game bugs fixed.
+- Sometimes result area was showing old game's data, that issue fixed.
+- Performance improvements on Sierra, Tundra and Mistle maps.
+- Invite area icons added beside button to improve UI.
+- Map thumbnail loading issue fixed for some screens.
+
++ New skins added
+- Driller [Rare] (Tec-9)
+- Power Level [Uncommon] (Deagle)
+- Fishbone [Uncommon] (Deagle)
+- Overdrive [Uncommon] (M4)
+- Cyborg [Uncommon] (Deagle)
+- Friends [Common] (AK-47)
+
+(v1.1.6) - 14 Jan 2022
+- Mouse lock issue fixed.
+
+(v1.1.5) - 10 Jan 2022
+- GIF crosshair support added. (For now, only crosshair)
+- Duplicated badge issue fixed. (If you don't see it properly, logout/login would fix)
+- Wrong kicks from public games fixed. If you were kicked by system, make sure you are not using tampermonkey or make sure you didn't use hack on that PC before.
+- Damage given and damage taken numbers will be added next release. (Testing)
+- Health potion fixes.
+- Performance update to increase FPS.
+- More update coming soon.
+- A server issue fixed on South America.
+
+(v1.1.4) - 4 Jan 2022
+- Market button added to the shop for easy access.
+- Account age badges added to profiles.
+- Health potions added to Temple, Tundra and Mistle maps.
+- A collision bug fixed on Sierra.
+- Added loading display for game loading.
+- Game load up functions optimized.
+- Game render functions optimized for better FPS.
+- Remove slider from menu for guest players.
+- Add volume slider in game.
+
+(v1.1.3) - 1 Jan 2022
+- Christmas theme removed.
+- Shop prices reverted.
+
+(v1.1.2) - 26 Dec 2021
+- Cooldown reset when we die.
+- Kulu cooldown timer doesn't start for placing items, this issue fixed.
+- Kulu weapon placing in hand fixed.
+- View player profile button added for result screen.
+- Kulu's details added to social wiki page.
+- Shop crates are rotatable with mouse now.
+- Some engine improvements for performance.
+- A new thumbnail added to rotation.
+- Christmas tree added.
+- Christmas discount added.
+- Skinmaker AK-47 thumbnail fix.
+
++ New skins added
+- Xmas Happiness [Xmas] (LMG)
+- Christmas Hat [Xmas] (Charm)
+- Frozen Carrot [Xmas] (Sniper)
+- Festive Slice [Xmas] (Dagger)
+- Blizzard [Xmas] (AK-47)
+
+(v1.1.1) - 14 Dec 2021
+- Top-left Banner area removed from main menu.
+- Kulu totem will be de-spawned after Kulu dies. (Tomorrow with daily server restart this will be active)
+- A new functionality added to prevent spawn collision issues.
+- KDR for last 25 match, last 50 match and last 100 match fields added to database, we'll show them on profile pages and start to use it as matchmaking data soon.
+- Kulu sound effects added.
+- FPS display removed, we have the original one on UI that also shows ping.
+
++ New skins added
+- Shin Snowman [Xmas] (Shin)
+- Mrs. clause [Xmas] (Lilium)
+- Suprise [Xmas] (Suprise)
+- Xmas Happiness [Xmas] (AK47)
+- Xmas Happiness [Xmas] (Deagle)
+- Sweet Christmas [Xmas] (M4)
+
+(v1.1.0) - 8 Dec 2021
+- Performance improvements.
+- New chest models added to the shop.
+- Sierra has snow update now.
+- New ads reward added.
+- Inventory item list sizing bug fixed.
+- Hacker flagged accounts will be kicked from private sessions automatically. (Tomorrow with daily server restart this will be active)
+- Backend improvements on database queries.
+- Mute and sound issues after games fixed.
+- A login/signup bug fixed.
+- Clan tag issue fixed for level 4 clans.
+
++ New skins added
+- Skunta [Mythical] (Shin)
+- Crash Test [Common] (Sniper)
+- Caution [Common] (Deagle)
+
+(v1.0.99) - 1 Dec 2021
+- Client FPS improvements.
+- Backend fixes.
+
+(v1.0.98) - 18 Nov 2021
+- South America servers moved to the Sao Paulo for better ping. Please let us know if you still experience lag.
+- Spray visual improvements.
+- Health potions added to maps.
+- Some rendering and performance issues fixed.
+- Game server bug fixes. (Backend)
+- Sniper scope bug fixed for gungame mode.
+- Loading display added to login and signup popup for better UX.
+- A client-side bug fixed. (Client crashing)
+- URL redirection improvements, now you can invite venge.io/HASH too.
+
++ New skins added
+- Robber Lilium [Mythical] (Lilium)
+- T-Rex [Mythical] (Shin)
+- Flowerpot [Rare] (Deagle)
+- Super Dragon [Rare] (Sniper)
+- Slayer [Uncommon] (AK-47)
+- Glitch [Uncommon] (AK-47)
+
+(v1.0.97) - 1 Nov 2021
+- Halloween assets has been removed.
+
+(v1.0.96) - 31 Oct 2021
+- SA servers added.
+- More EU servers added.
+- Database servers improved.
+- Some small backend fixes.
+- Player stats screen sizing issues fixed. (TAB)
+- Result screen layout fixes.
+
+(v1.0.95) - 26 Oct 2021
+- WebGL errors fixed.
+- Automatic mouse focus at the beginning.
+- Invite button fixes.
+- Improved matchmaking based on KDR values.
+- All lobbies are 6 players from now.
+- Quest close button fixes.
+- Some overlay fixes.
+
++ New Halloween skins added
+- Wiring (AK-47)
+- Voodoo Doll (Charm)
+- Zombie Hand (Charm)
+
+(v1.0.94) - 19 Oct 2021
+- WebGL error fixed. (glitched maps)
+- Weapon selection bug fixed on death menu.
+- Some improvements on friend chat area, also messages are limited to 140 characters.
+- Loading screen waits until maps are fully loaded now.
+- Some scripting bugs fixed.
+
+(v1.0.93) - 14 Oct 2021
+- Quest complete bug fixed.
+- Mobile bugs fixed.
+- Mouse wheel bug fixed for Poki.
+- Invite screen chat UI issue fixed.
+- Fixed some UI issues.
+- Login/Signup bugs fixed.
+- Weapon selection UI bug fixed for death screen.
+
++ New Halloween skins added
+- Burnt (Kulu Skin)
+- Magma (AK-47)
+- Halloween (M4)
+- Witch Tec-9 (Tec-9)
+- Witch Hat (Charm)
+- Coffin (Charm)
+
+(v1.0.92) - 06 Oct 2021
+- Kulu quest added to rotation.
+- New quest rotation timer changed from 6 hours to 3 hours.
+- All players has pumpkin head attachment now!
+- [Editor] Scar visual model added to map editor.
+- [Editor] Deagle visual model added to map editor.
+- [Editor] LMG visual model added to map editor.
+- [Editor] M4 visual model added to map editor.
+- [Editor] Shotgun visual model added to map editor.
+- [Editor] Tec-9 visual model added to map editor.
+- [Editor] Dagger visual model added to map editor.
+- [Editor] Sniper visual model added to map editor.
+- [Editor] AK-47 visual model added to map editor.
+- [Editor] New rock models added.
+- [Editor] Block wall model added.
+- [Editor] Column model added.
+- [Editor] Leaf clump model added.
+- [Editor] Awning model added.
+- [Editor] New fence and wood models added.
+- [Editor] Gravestones added.
+- [Editor] Pyramid walls added.
+- [Editor] New symbols added.
+- [Editor] Pumpkin model added.
+- [Editor] Skeleton model added.
+- New Halloween crate added.
+- Halloween sierra added.
+
++ New Halloween skins added
+- Sniper Halloween (Sniper)
+- Graveyard Watch (AK-47)
+- Halloween Nights (Scar)
+- Halloween Smile (M4)
+- Gathering (AK-47)
+- Spooky (Scar)
+
+(v1.0.91) - 28 Sep 2021
+- Scar damage buff (Old : 11, New : 13)
+- New hero banner popup removed from home page
+- Hero selection bug fixed (it was resetting after game change)
+- Weapon icons doesn't show up properly on announcement notifications, this issue fixed.
+- Custom skins works with arms too.
+- Desert Eagle skins fixed.
+- Kill and death counter display bugs fixed.
+- Shine effect visual bug fixed for temple map
+- Totems was causing some physics issues, these bugs fixed.
+- Kulu's wand attack speed increased.
+- Kulu's wand attack movement slow duration decreased.
+- Kulu's wand attack damage increased.
+- Kulu's crack and totem doesn't affect team friends.
+
+- Editor get link bug fixed.
+- Editor shotgun collider fixed.
+
+- Sorry for Kulu's quest, it will be added asap.
+
+(v1.0.90) - 19 Sep 2021
+- Kulu introduced! (New hero)
+- M4 Balance changes (Old damage = 15, New damage = 13)
+- Desert Eagle balance changes (Old damage = 35, New damage = 18)
+- Private game chat bug fixed.
+
+(v1.0.89) - 14 Sep 2021
+- New loadout system introduced.
+- AK-47 added to the loadout system, can be playable in all games.
+- M4 added to the loadout system, can be playable in all games.
+- Fixes on twitch button, it opens in another tab
+- Search added for custom games area, featured removed, instead it lists all games
+- Login popup layout fixes for small screens
+- Custom maps had white-texture issue, this bug fixes.
+- Quest progress added at the end of the games.
+- Fixes on inventory display for different resolutions.
+- Banana skin name updated.
+- Small UI fixes.
+- Server-side bug fixes.
+- Scar balance changes (Old : Damage = 15, New : Damage = 11)
+- M4 balance changes (Old : Damage = 16 - Spread = 500, New : Damage = 12 - Spread = 1500, Recoil = 1.75)
+- AK-47 added (Damage = 18, Spread = 2000, Recoil = 1.8)
+
++ New skins added
+- Clown Lilium [Mythical] (Lilium)
+- Fade [Rare] (Dagger)
+- Recon [Rare] (Sniper)
+- Wasteland Fiend [Rare] (M4)
+- Vengeance [Common] (Desert Eagle)
+- Torchlight [Uncommon] (Tec-9)
+
+(v1.0.88) - 06 Sep 2021
+- New skins added.
+- Mobile responsive design added for social hub.
+- Game time display updated for social hub.
+- Watch ads, unlock skin create added.
+- Badges added to the social hub. (wiki)
+- Bug fixed on social hub profile links (popular leaderboard)
+- Backend server fixes.
+- Shop display fixes.
+
+(v1.0.87) - 30 Aug 2021
+- Fixes on client code.
+- Bug fixes on backend code.
+- New skins added.
+
+(v1.0.86) - 20 Aug 2021
+- [Editor] Added sticky bomb to the map editor.
+- [Editor] Added destructible wall/floor.
+- Fixed the issue with weapon selection code. (it was constantly setting same weapon)
+- Mobile joystick bug fixed.
+
+(v1.0.85) - 19 Aug 2021
+- Performance improvements.
+- Login layout fixes.
+- Login and account creation bugs fixed.
+- Social hub bugs fixed, username that has space can be displayed now.
+- Consent request disabled on Poki.
+- Mobile joystick improved.
+- Banner area modified on home page.
+- Weapon change disabled on custom games, this option will be provided in settings soon.
+
+(v1.0.84) - 10 Aug 2021
+- [Editor] Import/Export functionality added.
+- [Editor] Water added.
+- [Editor] Checkpoint added.
+- [Editor] Glider point added.
+- [Editor] Emote point added.
+- [Editor] Scar weapon set point added.
+- [Editor] Shotgun weapon set point added.
+- [Editor] Tec9 weapon set point added.
+- [Editor] Sniper weapon set point added.
+- [Editor] LMG weapon set point added.
+- [Editor] M4 weapon set point added.
+- [Editor] Dagger weapon set point added.
+- [Editor] Desert Eagle weapon set point added.
+- [Editor] Victory set point added.
+- [Editor] Death set point added.
+- [Editor] 2 new sky setting added.
+- [Editor] 4 new model added.
+- [Editor] Create new project and save as buttons added.
+- Capture point bugs fixed for all game types.
+- Badges added to social area, you can earn badges for certain actions. All badges can be seen under wiki. (Will be updated)
+- Xibalba removed from map rotation.
+- New items added to Shop.
+- More update will be announced after internal testing.
+
+(v1.0.83) - 3 Aug 2021
+- Published area added to the custom maps.
+
+(v1.0.82) - 3 Aug 2021
+- Shop fixed.
+- Profile link added to the custom maps area for map creators.
+
+(v1.0.81) - 2 Aug 2021
+- Loading screen fixes (layout fixes)
+- Shop display fixed.
+- Map editor released officially.
+- New maps featured on customs area.
+- Custom game mode texture loading bugs fixed.
+- [Editor] New 20 model added.
+- Tundra map collision issues fixed.
+- Xibalba map collision issues fixed.
+
+(v1.0.80) - 1 Aug 2021
+- Map editor fixes.
+
+(v1.0.79) - 30 July 2021
+- Changes on map loader.
+- Map editor released to the beta testers.
+
+(v1.0.78) - 27 June 2021
+- Unlimited time on game sessions, this bug fixed.
+- New login and signup popups added.
+- Optimized loading times.
+- Friend list height issue fixed.
+- Some server-side bugs fixed.
+- Headshots leaderboard introduced.
+- Kills leaderboard introduced.
+- Instructions added for hardware acceleration.
+- New card introduced : Increase reload speed. (Tier 2 card)
+- New card introduced : Increase health regen speed. (Tier 2 card)
+- Sorting functionality added for all tables, including inventory.
+- Reset keybinding feature added.
+- Game leaderboard has a little effect for sorting now.
+- Skinmaker texture upload file size increased.
+- Collision on dead bodies disabled.
+- Item listing for my sales area set to 40.
+- New kill message added : Just Clicking Heads
+- New effect added when enemy player regen health.
+- Custom skin issue fixed for heroes.
+- Repeating sounds on respawning fixed.
+- Inputs and checkboxes on settings area had some issues with overlay, this bug fixed.
+- New effects added : enemy bodies are burning at some point for respawning.
+- Enemy health bars shows enemy levels from now.
+- Some visual improvements on game UI (about enemy health bars).
+- Visual effects added for killing.
+- Some adjustments on leaderboard overlay.
+- Weapon inspection animation removed after killing someone.
+- Improvements on hit point visuals and sounds.
+- Better chest models on shop screen.
+- Improvements on map textures.
+- Audio effect added for rank gain and lost.
+- Kick command added to room owners. (You can kick players with /kick <username>)
+
++ Skins added
+- Love Machine [Mythical] (Tec-9)
+- Army Disbanded [Rare] (Scar)
+- Fanatic [Uncommon] (Shotgun)
+- Sidearm [Rare] (Tec-9)
+- Hawkeye [Uncommon] (Sniper)
+- Accelerator [Uncommon] (Tec-9)
+
+(v1.0.77) - 10 June 2021
+- Happy anniversary Venge.io!
+
++ Skins added
+- Cake [Anniversary] (M4)
+- Happy [Anniversary] (Scar)
+- Celebration [Anniversary] (Scar)
+- Gift [Anniversary] (Tec-9)
+- Candles [Anniversary] (Shotgun)
+- Scar Gift [Anniversary] (Scar)
+
+(v1.0.76 - hot fix) - 30 May 2021
+- A bug on enemy respawn fixed.
+- Settings menu bug fixed.
+- Animated skin problem fixed.
+- I believe weapon change error is related to those errors, hopefully it will be fixed too. Please make sure your client has the newest version.
+
+(v1.0.76) - 30 May 2021
+- Equipped weapon and hero skins now appear on home menu.
+- Kill messages updated (custom text removed, premade lines added).
+- Loading performance increased (skins moved to new servers).
+- Scroll added to settings menu to allow for more settings in list.
+- Spectator mode fixed.
+- Fixed matchmaking issues.
+- Social hub typo fixes.
+- Friend list SHIFT + C shortcut issue.
+- Map selection bugs (ex: map was selecting Sierra no matter what).
+- Mouse wheel issue in gun game mode.
+- Spectator bugs.
+- Small UI element fixes.
+
++ Skins added
+- Asashin [Legendary] (Shin Skin)
+- Hell [Rare] (Shotgun)
+- Skull Drip [Rare] (Tec-9)
+- Plague [Rare] (Sniper)
+- Lilium's Flower [Rare] (Charm)
+- Toucan [Uncommon] (Dagger)
+
+(v1.0.75) - 18 May 2021
+- Friends system introduced, you can chat with your friends even in game and invite them easily. Press Shift + C to open chat panel.
+- VG transfer feature added to shop. You can transfer your VG to your friend with entering username.
+- Different game modes can be playable on different maps. You can play gun game mode on Sierra now!
+- Account creation problem fixed.
+- Some pointer lock issues fixed, especially at the end of the game it wasn't working properly.
+- Streamer support code area added back. Sorry for that.
+- Matchmaking server performance upgrade.
+- Complete quest display bug fixed, it was showing a variable on bar.
+- Connection issue display calculating algorithm fixed, it measures avarage ping now.
+- Clan social link button fixed.
+- Kill message option added, you can set a kill message from your account.
+- Sometimes game was freezing at the end of the game, this bug fixed.
+- Next and previous weapon option added to mouse wheel. You can switch to next or previous weapon.
+- Weapon switch delay updated, it's 2 seconds now, instead of 8 seconds.
+- Profile display bug fixed for social hub.
+- A few small bug fixed on score board for in game.
+- Performance improvements.
+
++ Skins added
+- Apocalyse Survivor [Rare] (M4)
+- Open Fire [Uncommon] (Scar)
+- Nitro [Rare] (Tec-9)
+- Shin's Head [Rare] (Charm)
+- Slime Drip [Rare] (Scar)
+- Chase [Uncommon] (Shotgun)
+- Anubis [Rare] (Tec-9)
+
+(v1.0.74) - 30 Apr 2021
+- Character skins introduced.
+- New shop design.
+- Mistle map and payload game mode bugs fixed.
+- Xibalba collision issues fixed.
+- Glider was staying when we die in certain cases, this bug is fixed.
+- Scar and shotgun models replaced with GLB format to make modding easier.
+- Mistle map falling under map and constantly respawn bug fixed.
+- Sandstorm map some collision issues fixed.
+- Mistle map collision improvements.
+- Sandstorm map and custom game mode was diplaying victory all the time, this bug fixed.
+- Improvements on result screen.
+- Social hub search bugs fixed.
+- Full screen error messages unlocks mouse automatically now.
+- Some backend improvements.
+- Performance improvements.
+- Some debug messages removed.
+
++ Skins added
+- Agent Lilium [Mythical] (Lilium Skin)
+- Shuriken Charm [Legendary] (Charm)
+- pwned Spray [Rare] (Spray)
+- Cory [Uncommon] (Shotgun)
+- Infernal Judgement [Uncommon] (Scar)
+- Cyberlady [Rare] (Sniper)
+- Blood Patch [Rare] (Sniper) By MikeyOriginal Follow him on Twitter : https://twitter.com/MikeyOrigina
+
+(v1.0.73) - 14 Apr 2021
+- Sandstorm Blitz map released. (Sniper only map)
+- Glider feature added to game engine, can be used in different modes.
+- We are currently testing more players in games, soon sessions can have 4-6 players.
+- Market item search feature added.
+- Server improvements.
+- A game engine bug fixed, this bug was freezing game on map switches.
+- Performance improvements on engine.
+- Clan name and verification badges fixed for all leaderboards.
+- Market changes : you can't sell more than 20 items from now. Current listings will stay as they are.
+- You can't buy your own listings from now.
+- Emojis shows up on leaderboards too now.
+
++ Skins added
+- Armageddon [Rare] (Scar)
+- Flare Gun [Rare] (Tec-9)
+- Battle Hardened [Rare] (Scar)
+- Tuxedo [Common] (Sniper)
+- Angel [Uncommon] (Scar)
+- Medusa [Common] (Scar)
+
+(v1.0.72) - 5 Apr 2021
+- Market fee is decreased. It's 5% for listing now.
+- Character selection issue fixed.
+- Performance improvements on game engine.
+- Market streamers area added. If you put "market" in your description, your stream will be featured in the market.
+- You can now see your listings and sales in my sales page.
+- Listing cancel option added to market.
+- Layout improvements on market page.
+- Trap dance animation bug fixed.
+- Black coin bug fixed. (Coins were staying from previous session)
+- Special offer redirection bug fixed.
+- Daily login rewards feature removed.
+- Some UI bugs fixed.
+
+(v1.0.71) - 31 Mar 2021
+- Market introduced, users can sell and buy items. Market items will be also showed on sellers profile.
+- Dark mode added to social hub.
+- Shin's shurikens balanced. Only center shuriken can inflict spell.
+- Echo's grapple bugs fixed, sometimes it was applying too much force and was pushing through wall.
+- Login and account creation bugs fixed.
+- Inventory layout issues fixed.
+- Lock mouse display bug fixed for mobile.
+- Youtube feature bug fixed.
+- Vote screen layout improvements for small resolutions.
+- Some performance improvements.
+- Some improvements on Asia servers.
+- Layout improvements on social hub.
+- Custom match stat save issue fixed.
+
++ Skins added
+- Trap [Legendary] (Dance)
+- Vintage [Rare] (Scar)
+- Test Dummy [Rare] (Scar)
+- Snowman [Uncommon] (Scar)
+- Slick [Common] (Scar)
+- Dove [Uncommon] (Shotgun)
+- Fall for You [Common] (Sniper)
+
+(v1.0.70) - 18 Mar 2021
+- Black screen error fixed.
+- Rainbow color ground issue fixed.
+
+(v1.0.69) - 15 Mar 2021
+- New and improved menu design.
+- Fixes and improvements on Runes map.
+- Game loads faster now, loading improvements.
+- Enemy sounds were playing repeatly on respawn, this issue fixed.
+- Sometimes player labels wasn't showing up, this bug fixed.
+- Spray selection wasn't working properly, this issue fixed.
+- Map loading and respawn under map issues fixed.
+- Some quests had issues, those bugs fixed.
+- Clan chat server restarted and bugs fixed.
+
++ Skins added
+- Banzai [Rare] (Scar)
+- Squirell [Rare] (Sniper)
+- Jawripper [Rare] (Sniper)
+- Carbon Fiber [Uncommon] (Scar)
+- Magic [Common] (Scar)
+- Poker [Common] (Shotgun)
+- Void [Uncommon] (Tec-9)
+
+(v1.0.68) - 2 Mar 2021
+- Custom game mode feature introduced. More game modes will be available soon.
+- New custom game mode introduced : Runes (Dagger only CTF mode)
+- Shotgun damage decreased for balancing. (Damage 12 to 9, Distance multipler 0.975 to 0.85)
+- TDM and payload map teaming and auto-balance issues fixed.
+- For crate open screen, item type added. You can now see if it's a Tec-9 skin or dance animation.
+- Some performance issues fixed.
+- Load time performance improved.
+- Menu layout re-designed.
+- Social hub typo fixes.
+- Coins were staying after Temple map, this issue fixed.
+- Gameplay UI improvements.
+- GDPR compliant only shows up on menu now.
+- All weapons enabled in skinmaker.
+- Popup close button added.
+- On respawn or window focuses, character moves sides, this issue fixed.
+- Bullet holes was staying at the air for some objects, this issue fixed.
+- Fall out of map bugs fixed.
+- Mistle respawning bugs fixed.
+- For mouse lock [L] option added, if you can't lock your mouse with left-click, press [L].
+- Echo's grappling improved. It was too fast and had some physics glitches.
+- Brave "Play Now" button bugs fixed. (It wasn't let players in because of ads)
+- "You are currently not in a clan" bug fixed for newly joined clans.
+- Charm equip bugs fixed. Now it can be properly equipable.
+- Sprays will be featured in shop too now.
+- Endless match bug fixed. There was a timing issue.
+
++ Skins added
+- Shin EZ [Uncommon] (Spray)
+- Toxic [Legendary] (Tec9)
+- DNA [Legendary] (Tec9)
+- Earth [Common] (Shotgun)
+- Hot Rod [Rare] (Scar)
+- Vibe [Rare] (Scar)
+- Poison Shots [Uncommon] (Scar)
+- Amethyst [Uncommon] (Scar)
+- Zima [Uncommon] (Scar)
+
+(v1.0.67) - 1 Feb 2021
+- Echo's grapple delay speed decreased. (Balance)
+- Mobile controllers bug fixed. (It was freezing screen at some point)
+- Black screen on game menu bug fixed.
+- Brave browser game load bug fixed.
+- Some menu buttons wasn't giving response because of a bug, this issue fixed.
+- Payload cart position bugs fixes.
+- Result screen freezing and stretching bugs fixed.
+- News slider and invite chat overlap issue fixed.
+- Number formatting fixed for UI elements.
+- Clan name protection added. (Cant contain cuss words, clans with cuss words will be deleted)
+- Quest condition bugs fixed. (Open crate and date range issues)
+- Map loading effect stucks and repeats 5-10 times before map load, this visual bug fixed.
+- Profile display on social hub fixed.
+- Link buttons had an issue, this issue fixed.
+- Typo fixes for server messages.
+- Weekly leaderboard added to social hub.
+- Join date added for accounts on social hub.
+- Auto team balance won't work when a player leave and it won't work after 30 seconds.
+- Player's stats will be saved if they leave early from games and system will put those users with other early leave players.
+- Banner users won't show up on social hub after this update.
+- Black coin map coin model re-designed.
+- Daily login reward claim issue fixed. (For logged out accounts it wasn't working)
+- Respawn sound added.
+
++ Skins added
+- Nuclear Power [Uncommon] (TEC-9)
+- Flamingo [Rare] (Scar)
+- Joker [Rare] (Scar)
+- Kitty [Uncommon] (Scar)
+- Monster Fish [Uncommon] (Scar)
+- Shark [Common] (Scar)
+- Army Seargent [Common] (Scar)
+- Exemplar [Common] (Scar)
+- Fade [Common] (Scar)
+- Horizon [Common] (Scar)
+- Mecha [Uncommon] (Scar)
+- Operator [Common] (Scar)
+- Prototype [Uncommon] (Scar)
+- Tundra Camo [Uncommon] (Scar)
+- Colorful Fox [Uncommon] (Shotgun)
+- Heat [Rare] (Shotgun)
+- Greenwood [Common] (Shotgun)
+- Security [Rare] (Shotgun)
+- Sunset [Rare] (Shotgun)
+- Lune [Common] (Sniper)
+- Leamon [Common] (Sniper)
+- Shuriken [Common] (Spray)
+
+(v1.0.66) - 22 Jan 2020
+- Small bug fixes on engine.
+- Typo fixes.
+
+(v1.0.65) - 20 Jan 2020
+- Some public matches weren't saving stats properly, this issue fixed. (Some servers will be updated tomorrow morning)
+- Spray feature added, it can be used with [V] key. (Some servers will be updated tomorrow morning)
+- 10 emoji charms added, by collecting those charms you can enable put emoji beside your name.
+- Daily login reward feature added, you can get unique rewards for each day of week.
+- Social Hub - Wiki page improvements, weapons added.
+- Social Hub - Hero informations added.
+- Shop area featured youtube section now works with rotation. Unboxing videos will be published in this area.
+- Profile link naming issue fixed for profile page. (It was also showing clan tags in profile links)
+- Loading screen map name and thumbnail issue fixed.
+- Xbox controller support added. PS4 and PS5 controller supports will be available soon.
+- Small bug fixes and performance improvements.
+- More EU servers added to decrease latency.
+- More Asia servers added to decrease latency.
+- New skin : Shinobi [Common] (TEC-9)
+- New skin : Layers [Common] (TEC-9)
+- New skin : Killshot [Common] (TEC-9)
+- New skin : Shinobi [Common] (SHOTGUN)
+- New skin : Layers [Common] (SHOTGUN)
+- New skin : Hero [Common] (SHOTGUN)
+- New skin : Hunt [Common] (SCAR)
+- New skin : Defender [Uncommon] (SCAR)
+- New skin : Flame [Rare] (SCAR)
+
+(v1.0.64) - 14 Jan 2021
+- One-time shooting issue fixed.
+
+(v1.0.63) - 13 Jan 2021
+- Shooting issue fixed.
+
+(v1.0.62) - 13 Jan 2021
+- 15 Jan. all servers will be restarted with 10:00 PM GMT+3 for maintenance and bug fixes.
+- Rainbow clan tag display now works on profile and home pages.
+- Rarity column added to inventory.
+- Home page design improvements.
+- Crate unlocking videos will be featured in shop.
+- On ADS point areas gets smaller for better experience.
+- Some small bug fixes.
+- Small performance improvements on engine.
+- New Scar skin added : I see you (Rare)
+- New Scar skin added : KOI (Rare)
+- New Sniper skin added : Hell Gate (Rare)
+- New Tec-9 skin added : Deamon (Uncommon)
+- New Tec-9 skin added : Yin Yang (Common)
+- New charm skin added : Envelope (Common)
+
+(v1.0.61) - 08 Jan 2021
+- Quest reward claim bug fixed.
+- Joining public match with friends now possible, bugs fixed.
+- Clan chat issue fixed.
+- Last online display fixed.
+- Ambient sound issue fixed for map changes.
+- On map swich some coins was staying on map, this issue fixed.
+- Hero thumbnails added to mini leaderboard.
+- Popup view size problem fixed.
+- Result screen music loop issue on tab switch.
+- Enemy respawn animation bug fixed.
+- Spell announcement now shows who casted spell.
+- Mini notification size and UI issues fixed.
+- Ads button double click bug fixed.
+- Fix rain angles for Temple map.
+- Some small bugs fixed.
+- Mobile menu UI problems fixed.
+- Player name plate label bug fixed.
+- Temple map raining optimization and positioning fixed.
+- Invite screen map selection UX improvements.
+- Background image added to loading screen.
+- Gun game disconnection problem fixed.
+- Temple map out of map bugs fixed.
+- Bullet hole effects removed from player surfaces and map boundaries.
+- Temple map door gateway collisions fixed.
+- More EU servers added to decrease latency and balance server load.
+- New Scar skin added : Fade Out (Uncommon)
+- New Shotgun skin added : Night Sky (Rare)
+- New Tec-9 skin added : Desert Guard (Common)
+- New Tec-9 skin added : Bliss (Common)
+- New charm skin added : Fishing Hook (Uncommon)
+
+(v1.0.60) - 31 Dec 2020
+- New mode introduced : Black coin
+- New map introduced : Temple
+- Rainbow clan tags introduced for Level 4 clans.
+- Leaderboard was showing banned users, that issue fixed.
+- Disable shadow settings was causing some issues, this issue fixed.
+- New map selection system introduced, you can join to matchmaking with multiple map selection.
+- Map selection option added to invite menu.
+- For payload maps auto balance added for private matches.
+- New servers introduced. (For East and West USA)
+- Small spawn bug fixed.
+- Enemy damage bug fixed. (Visual glitch)
+- Profile views display added to social hub.
+- Wiki added to social club (now it only contains skins)
+- Play button had some issues on Brave browser, this issue fixed.
+- Christmas Sales ended.
+- New skins added.
+- Tec-9 skin added : Fade out (Rare)
+- Scar skin added : Desert Guard (Common)
+- Shotgun skin added : Retroset (Uncommon)
+- Shotgun skin added : Drifter (Common)
+- Scar skin added : Desert Nights (Uncommon)
+- Tec-9 skin added : Blossom (Common)
+
+(v1.0.59) - 19 Dec 2020
+- More server added for EU and NA.
+- Sierra snow effect removed.
+
+(v1.0.58) - 15 Dec 2020
+- Quest bugs fixed.
+- Re-queue matchmaking feature added for max server capacity screen.
+- Loot box openning sound pitch changes by rarity.
+- Background image added to social club for better visibility.
+- Player search feature added to social hub.
+- Update message positioning change. (It was full screen)
+- Chat and account cuss word filter improved.
+- Featured streamer Twitch section logo bug fixed.
+- Out out map reset functionality bug fixed.
+- Play button isn't working, that bug fixed.
+- Frost bomb screen texture bug fixed.
+- Capture point or payload point icon was staying on screen after game, this issue fixed.
+- Bullet holes was floating around after shooting players, this issue fixed.
+- After card selection screen was glitching for a second, this issue fixed.
+- On spectator mode, player label won't show up as in under ground on card selection.
+- Some effects wasn't working properly on spectator mode, this issue fixed.
+- Team selection buttons fixed, each team can accept 2 team members.
+- Some UI element's resize bug fixed.
+- Snowman charm added.
+- Santa Hat charm added.
+- Present charm added.
+- Jinglebell charm added.
+- Duck charm added.
+- Gingerbreadman charm added.
+- Emergency skin added for Tec-9.
+- Present skin added for Tec-9.
+- Sweet skin added for Sniper.
+- Royal Gift skin added for Sniper.
+- Layers skin added for Sniper.
+- Death Viper skin added for Sniper.
+- Chrismas Helper skin added for Sniper.
+- Royal Gift skin added for Shotgun.
+- Retroset skin added for Shotgun.
+- Madness skin added for Shotgun.
+- Christmas night skin added for Shotgun.
+- Camo skin added for Shotgun.
+- Sector25 skin added for Scar.
+- Royal Gift skin added for Scar.
+- Rover skin added for Scar.
+- Frozen skin added for Scar.
+- Christmas Helper skin added for Scar.
+- Camo skin added for Scar.
+- Blossom skin added for Scar.
+
+(v1.0.57) - 7 Dec 2020
+- 50 melee kill quest removed from quest list, replaced with 10 melee kill quest.
+- Quest duplicate problem fixed.
+- Update screen display improved.
+- Spectator name label bug fixed.
+- Sniper scope size slightly decreased.
+- Spectator mode camera speed issue fixed.
+- Imperial skin added for Shotgun (Rare)
+- Brigand skin added for Scar (Uncommon)
+- Syndicate skin added for Tec-9 (Rare)
+
+(v1.0.56) - 2 Dec 2020
+- Quests introduced.
+- Reward ads volume updated, it was too loud.
+- Menu hover and click sound volumes updated, they were too loud.
+- Menu design slightly improved.
+- Mobile result screen freeze bug fixed.
+- Hide all UI option added. (Can be useful for in-game recording)
+- Disable shadow option added.
+- Twitch button updated, now it has better visibility.
+- Twitch button now shows profile picture.
+- Some spawn bugs fixed.
+- Clan chat issue fixed.
+- Brave browser play button bug fixed.
+- Uncapped brower FPS issues fixed.
+- Verified people will get verification charm in game.
+- Default FOV value updated to 75. (It was 60 for guest players)
+- Mercenary for Scar skin added. (Rare)
+- Medusa for Scar skin added. (Legendary)
+- Rosa for Shotgun skin added. (Uncommon)
+- Mythical resell value updated
+
+(v1.0.55) - 27 Nov 2020
+- Gaze of Zeus for Scar skin added. (Mythical)
+- Eye for Scar skin added. (Legendary)
+- Venge can charm skin added. (Common)
+
+(v1.0.54) - 20 Nov 2020
+- Resell feature added.
+- Equip button issues fixed. (Delay or not equipting issues fixed)
+- On canceling reload icon was staying on UI, that bug fixed.
+- Xibalba slightly updated.
+- Tundra slightly updated.
+- Sierra slightly updated.
+- Some server-side collision issues fixed.
+- Some server bugs fixed.
+- Game start point issue fixed. (Buggy point position on beginning)
+- On matchmaking connection chat was showing, that bug fixed.
+- Hammer bug fixed on gungame. (last melee kill on gun game was causing bugs)
+- Some spawn problems fixed.
+- Weapon change delay and animation added.
+- Some matchmaking problems fixed.
+- Chat spamming prevent added.
+- Anti-cheat improvements.
+- Loading speed improved, game files optimized.
+- Link copied alert moved to small notify for better UX.
+- Camo Sniper skin added.
+- Streak Tec-9 skin added.
+- Chick charm added.
+
+(v1.0.53) - 12 Nov 2020
+- FOV settings's max limit increased to 125.
+- Invite and clan chat bugs fixed.
+- Kicked by admin bug fixed.
+- Changing weapons and shooting bug fixed.
+- Some disconnection problems fixed.
+- Some players was respawning at the center, that bug fixed.
+- New point area animations added.
+- Falling death animation added for kills mid-air.
+- Custom upload area bug fixed.
+- Invite menu small bugs fixed.
+- Fixed shop dance music bug fixed.
+- Shin's voice lines fixed for out-side view.
+- Running animation speed changed. (Visual change)
+- Teddy bear charm added. (Common)
+- Skull charm added. (Common)
+- BioHazard Scar skin added. (Uncommon)
+- Llama charm added. (Legendary)
+
+(v1.0.52) - 9 Nov 2020
+- Payload auto-balance issue fixed. (Auto balance only works on first 40 seconds)
+- Mistle map respawn suicide bug fixed.
+- Stucking on boxes bug fixed.
+- Chat feature added for invite.
+- Cancel button added for invited player.
+- Jumping on some collisions was causing bugs, these issues fixed.
+- Payload point icon was staying on menu on map switches, this bug fixed.
+- Quick weapon selection key bindings added to 1, 2, 3, 4.
+- For payload and TDM modes health bar color updated.
+- For payload and TDM modes team name added beside health bar.
+- Chat messages on payload and TDM modes now shows team color.
+- Falling under map issues fixed.
+- Hide charms option added to settings.
+- Weapon bobbing and swaying options added to settings.
+- Count down added for reloading.
+- Some small aiming bugs fixed.
+- Now kill feed shows which weapon are used to kill.
+- Shotgun balancing : shotgun shooting pattern updated, damage is updated to 12 from 20, distance multiplier updated to 0.975, from 0.95.
+- 3D positional talk sound added for enemy characters.
+- Echo's death, grunt sounds fixed for out-side view.
+- Lilium's grenade effect size issue fixed.
+- Ceramic break sound reverted back. (After halloween fix it stayed pumpkin sound)
+- After being killed grenade wasn't dealing damage, that bug is fixed.
+- Disable username doesn't work in spectator mode, fixed.
+- Slight menu UI improvements.
+- Connectivity issue display added.
+- Echo's right arm display issue fixed.
+- Custom crosshair asset pack added to Settings > Customs.
+- Upload areas now works with click too.
+- Echo's dance bug issue fixed. (It wasn't playing in game)
+- Loading map screen image black screen bug fixed.
+
+(v1.0.51) - 4 Nov 2020
+- Halloween event ended.
+- New dance animation added : True Born
+- New Tec-9 skin added : Caution
+- New charm added : Pyramid
+- Shin's throw delay decreased.
+- Change log added to home page.
+- Tundra out of map glitches fixed.
+- Echo's Whirl emote issue fixed.
+- Spectator mode settings added, camera speed, mouse sensivity can be changed, UI parts can be disabled/enabled.
+- Spectator mode score display added for leaderboard.
+- Mobile iOS app redirection removed.
+- For mobile layout, reload button added.
+- New loading screen for map loading.
+
+(v1.0.50) - 31 Oct 2020
+- Vases replaced with pumpkins
+- Fog system added
+- Maps darkened
+- New skybox
+- New character: Echo
+     - Grapple ability
+     - Throwing axe
+     - Cooldown notification
+     - Highlighted object indicator
+- 4 new skins:
+     - Paroxysm - Mythical [Halloween Exclusive]
+     - Bones - Mythical [Halloween Exclusive]
+     - Carnage - Legendary [Halloween Exclusive]
+     - Zombie - Rare
+- Shin's dash damage decreased to 30-50 from (50-80).
+- Tier image bug fixed.
+
+Skin Maker Update - 27 Oct 2020
+- Sniper UV map issue fixed.
+- Background change added.
+- Rotation stop option added.
+- Warnings added for some cases like max file size or invalid file format.
+- Repeated texture formats fixed.
+
+In order to use skin maker's latest version, make sure you refresh page.
+
+(v1.0.49) - 24 Oct 2020
+- Prepared trophy charm for tournament winner.
+- Changed spectator "hide" feature, only hides controls now.
+- Visibility issues fixed.
+- Spectator kicking issues fixed.
+- Leaving matches wasn't saving data properly, fixed.
+
+(v1.0.48) - 22 Oct 2020
+- Notification display fixed for longer usernames.
+- Map title fixed on result screen.
+- Mistle spawning on roof issue fixed.
+- Gun game bugs fixed. (Game doesn't end and holding invisible knife)
+- Custom sniper image feature added to settings.
+- Overtime added for Tundra.
+- Team selection added for TDM and Payload modes. (For private modes)
+- Tundra map collision improvements.
+- Anti-cheat improvements.
+- Small performance improvements.
+- Tundra spectator camera points fixed.
+- Respawn kill bugs fixed.
+- Respawning improved.
+- Flying out of map bugs fixed.
+- Clan rank display fixed for profile page.
+- If you leave from match early, it will automatically save latest state. (Prevent KDR boosting)
+- Crate menu UI fixes.
+- New charms added. (Bongo Cat, Crown, Watermelon)
+
+(v1.0.47) - 18 Oct 2020
+- Tundra map fixes.
+- Shooting accuracy fixes.
+- Some disconnection issues fixed.
+- Mobile result screen bugs fixed.
+
+(v1.0.46) - 15 Oct 2020
+- On map switches background sound was stucking on loop, issue fixed.
+- Vote screen UI changes.
+- Shin dash nerfed. (Distance multiplier updated to 110, it was 160)
+- Shin shuriken damage nerfed. (Damage multiplier updated to 20-35, it was 30-45)
+- Clan level and role issues fixed.
+- Wording on account login and signup screens updated and fixed.
+- Menu design updated.
+- Golden melee bugs fixed.
+- Some small backend bugs fixed.
+- Anti-cheat improvements.
+- Spectator username UI issue fixed.
+- VG balance display sync issues fixed.
+- Some small firefox bugs fixed.
+- Loading display added. (For leaderboards)
+- Connection problems fixed.
+- Tundra map introduced.
+- Gun game introduced.
+- New weapons added: M4, Light Machine Gun, Dagger
+
+(v1.0.45) - 3 Oct 2020
+- Game crashes fixed.
+- Clan tag issues fixed.
+- Account login lock time reduced to 5 minutes.
+
+(v1.0.44) - 2 Oct 2020
+- Hide chat messages now hides result screen chat too.
+- Hide usernames option added.
+- Profanity filter improved.
+- "Last Match Position" renamed to "Last Match Rank".
+- Mobile disconnection issues fixed.
+- Profile link issue fixed.
+- Last kill data fixed for clan display.
+- Longer username notifications fixed.
+- Owner kick issue fixed for clans.
+- User left or join messages was missing with last update, fixed.
+- Daily leaderboard reward updated to 750 VG.
+- Mini profile display bar and sizing problem fixed for home page.
+- Rank change icons added to social hub.
+- Paypal added to shop payment options.
+
+(v1.0.43) - 21 Sep 2020
+- Social hub introduced, user profiles, leaderboards and more...
+- Some small clan bug fixes.
+- New 10 different skins.
+- Server selection screen scroll issue fixed.
+- Usernames are clickable, you can display user profiles with clicking on usernames.
+- Users can share their profile with Social hub now.
+- Popular users leaderboard added to social hub.
+- Anti-cheat improvements.
+- Sierra map collision bugs fixed.
+- Custom crosshair added.
+
++ New skins added
+- Equator - Legendary
+- OLED - Mythical
+- Polar - Rare
+- Pretty Girl - Legendary
+- Ghost - Common
+- Hazard - Uncommon
+- Inheritance - Uncommon
+- Alligator - Rare
+- Sugar - Common
+- Mango - Common
+
+(v1.0.42) - 13 Sep 2020
+- Sniper scope updated.
+- Performance improvements.
+- Clans introduced.
+- Some UI improvements.
+
++ Features of clans
+- Clans have their own chats for members.
+- Clans have level system, on certain levels certains features are being enabled.
+- Clan owners can give roles to specific members.
+- Clan owner can kick or approve member requests on their dashboard.
+- With clan bank system members can deposit money and increase the clan level.
+- There are 5 level for clans, all clans start with zero base level.
+- Clan owners can publish daily message on dashboard.
+- Clan owners can put discord button on member hub.
+- In order to create new clan you must be 20 level.
+- Clans can have max 4 character clan tags.
+- Members can send request for clans.
+- You should be 10 level to join clan.
+- You can search and look for clan stats on clan menu if you are not in the clan.
+- Clans have separated leaderboard.
+
+(v1.0.41) - 8 Sep 2020
+- Anti-cheat improved.
+- Now session owner can kick players.
+- 360 degree kill fixed. (It wasn't working properly)
+- Notification overflow issues fixed for UI.
+- On announce score details are more clear now (UI changes)
+- Card unlock notification added.
+- Tec-9 distance multiplier value has been updated to 0.9 from 1.
+- Performance updates.
+
+(v1.0.40) - 1 Sep 2020
+- TAB key now shows player stats.
+- Sniper scope improved and camera shake on scope decreased.
+- Sniper shoot time value has been increased from 0.7 to 0.8.
+- Sniper shoot time sound added.
+- Sniper charm size updated.
+- Experience values updated, now it's %25 of total score with max 500 limit.
+- Earned coin values updated.
+- Nailed, Picked off, 360 Degree trick shot, pumped and drilled notifications added.
+- Walking animation improvements.
+- Sniper lens alpha bug fixed.
+- Hide weapon and arms feature added to settings.
+- Mobile performance improvements.
+- On mobile auto shoot for breakable items issue fixed.
+- Mobile game time updated.
+- Mobile matchmaking bugs fixed.
+- Hitmarker animation slightly improved.
+- Hitmarker sound slightly changed.
+- Mobile menu improvements.
+- Earn Free VG button added back.
+- Kill and death numbers added on game screen.
+
+(v1.0.39) - 31 Aug 2020
+- E-mail option added to account settings.
+- Shotgun nerfed. (Distance multiplier was 0.8, now it's 0.5, ADS spread was 30, now it's 50)
+- Ping and FPS stats now updates with 1 second interval.
+- Some tweaks on interface.
+- Leaderboard bugs fixed.
+
+(v1.0.38) - 28 Aug 2020
+- Lag compensator added.
+- Asia (Singapore) server introduced.
+- AU (Sydney) server introduced.
+- Skip ads button bug fixed.
+- ADS ammo counter update bug fixed.
+- Coin values wasn't updating after game, this issue fixed.
+- Result screen now displays earned coin and experience.
+- On advertising it was kicking players because of AFK, this bug fixed.
+- Weapon selection wasn't working, this bug fixed.
+- Mistle out of map issues fixed.
+- Invite server server location bug fixed.
+
+(v1.0.37) - 26 Aug 2020
+- Added new skin : Papyrus
+- Added new charm : Venge logo
+- Added new charm : Pepe
+- Added new charm : Doge
+- Now if you have new followers, notification pops up on home page.
+- Room manager usernames was disappearing, this issue fixed.
+- Respawn bugs fixed.
+- Mistle map out of glitches fixed.
+- Shotgun long distance damage problems solved. (It was dealing quite a lot damage for long distance)
+- Ping display added.
+- AFK system improved.
+- System will kick 300ms and higher pings now.
+- FPS and ping displays are grouped and minimalized.
+- Xibalba map falling through the map issue fixed.
+- Emote camera bug fixed. (When pressing dance button and then hitting ESC)
+- Keyboard binding wasn't displaying properly, this issue fixed.
+- If adblock turned off, "Disable adblock" message removed from display.
+- Loadout weapon bug fixed. (Even after loadout selection on menu, it was starting with scar, this bug fixed)
+- For player kills, some effects improved.
+- Loading speed improvements.
+- On result screen labels was staying on results, this bug fixed.
+- When user connected to payload mode, if game already progressed, payload was teleporting another position, this issue fixed.
+- Timer display issues fixed.
+- When user connected a finished game, it was respawning twice, this bug fixed.
+- Overtime sound on victory screen is fixed.
+- Respawning improvements on payload mode.
+- Backend database improvements.
+- Mistle map performance improvements.
+- Finding match and timer issues fixed.
+- Shop menu dance animation music loop bug fixed.
+- Mobile shooting mechanism improved.
+- Mobile users separated in matchmaking queue now.
+- Chat layout issues fixed.
+
+(v1.0.36) - 24 Aug 2020
+- Server location selection added.
+- Session connection bugs fixed.
+- For tomorrow, general server update scheduled, this update will contain server and lag fixes, AFK fixes and better matchmaking.
+
+(v1.0.35) - 18 Aug 2020
+- Shuriken damage increased to 40-55, spread also changed.
+- Shotgun nerf. (Spread increased)
+- Player outlines can be disabled in settings menu.
+- Xibalba map fixes.
+- Mobile performance update.
+- Chat message display issues fixed.
+- Game settings can be changed in-game now.
+- Shuriken bugs fixed, sometimes it wasn't registering damage properly.
+- On player respawn ammo wasn't resetting, that issue fixed.
+- Payload icon stays on map, this issue fixed on mode changes.
+- Small changes on Sierra map.
+- Drown animation positioning issue fixed.
+- On weapon change scope was staying for some cases, this issue fixed.
+- Result screen add friend button was causing some bugs in game, these issues fixed.
+- Connecting was staying for some cases, this issue fixed.
+- Chromebook performance optimizations.
+- "Enter your message" color was transparent, this issue fixed.
+- Matchmaking improvements, now it will check if session empty or not, then proceed.
+
+(v1.0.34) - 14 Aug 2020
+- Team auto balance issues fixed.
+- Friendly fire display added.
+- Room player count issue fixed.
+- Sniper scope and weapon change issues fixed.
+- Player label display issues fixed.
+- Game ending issues fixed.
+
+(v1.0.33) - 13 Aug 2020
+- Payload percentage not resetting after end of game, fixed.
+- Stroke removed from hardpoint (exlusive to payload only).
+- Stroke lasting longer than intended, fixed.
+- Payload team displaying issues fixed.
+- Sniper damages adjusted: Bodyshots are no longer oneshot kill (60 damage).
+
+(v1.0.32) - 13 Aug 2020
+- Mistle map introduced.
+- Payload object team death match mode introduced.
+- Sierra glitches are fixed.
+- Xibalba collisions are fixed.
+- Weapon selection added.
+- 7 new skins added.
+- Input form issues fixed.
+- More server opened in EU and NA areas.
+- Shotgun has 3 bullets now.
+- Shotgun damage updated to 20 from 12.
+- Shotgun no-ads spread has been increased to 40 from 20.
+- Sniper accuracy bug fixed.
+- Sniper shoot wait time increased to 0.85 from 0.7
+- Sniper is oneshot kill now.
+- Tec-9 damage increased to 18 from 12.
+- Tec-9 spread decreased to 650 from 950.
+- Shuriken spread increased.
+- Shuriken deal damage to same position issue fixed.
+- Shuriken damage decreased to (10-15) from (15-25).
+- Shin shuriken cooldown duration has been increased to 3 from 2.
+- iOS mobile app performance improvements.
+- Hide chat feature added.
+- Report system improvements. (Server will query for previous hack reports)
+- Matchmaking improvements.
+- Render engine improved.
+- Lighting issues fixed.
+- Hit marker issues fixed.
+- Some models are optimized.
+- Load time optimized.
+- Hit marker improved.
+- Stroke added for better visibility.
+- Hit points are clear now.
+- Favicon updated.
+- Menu re-designed.
+- Animated skins mobile issue fixed.
+- iPad controls improved.
+
+(v1.0.31) - 31 July 2020
+- Shooting sideways issue fixed.
+- Creator code form now scans each time you click buy.
+- Shotgun skin issue fixed.
+- Performance improvements.
+
+(v1.0.30) - 28 July 2020
+- In-game purchases introduced.
+- Animated weapon skins introduced.
+- Small bug fixes.
+- UI improvements.
+- Shop displays rarities for crates.
+- Legendary skins introduced.
+- Un-equip button added to inventory.
+- VG balance display added to shop screen
+- Verification now shows in game and leaderboard.
+- Creator codes introduced for shop.
+- Inventory display duplicated items.
+- Report system kick threshold updated.
+- Performance improvements.
+- Some texts updated.
+
+(v1.0.29) - 20 July 2020
+- Minor bug fixes.
+- Shop introduced. (For now only skins will be available, we'll be releasing more content soon)
+
+(v1.0.28) - 16 July 2020
+- Menu music issues fixed.
+- Total win number issues fixed.
+- Scoring system is changed for games.
+- Weird physics bugs fixed.
+- Overtime condition is changed.
+- Xibalba collision (invisible wall) changes.
+- Venom and frost bomb duration changes.
+- Report system introduced.
+- Censored word vocabulary updated.
+- Longer streamer names show up properly on home page now.
+- FOV issues fixed.
+- Mobile App redirection for iOS devices.
+- Pause menu functionalities changed.
+- Performance improvements.
+- New EU and NA servers (London, Atlanta and California).
+- Vertical grenade explosion issue fixed.
+
+(v1.0.27) - 10 July 2020
+- Spectator mode.
+- X key for shooting with keyboard.
+- Key binding bug fixed.
+- Sessions has 4 players now.
+- Mobile issues fixed.
+- Weird head animation fixed.
+- Network connection bugs fixed.
+- Sniper nerfed.
+
+(v1.0.26) - 4 July 2020
+- Anti-cheat improved
+- Skill issues fixed.
+- Frost bomb, venom display issues fixed.
+
+(v1.0.25) - 4 July 2020
+- Anti-cheat improved
+
+(v1.0.24) - 3 July 2020
+- Shin character's skills re-designed.
+- Disconnection issues fixed.
+- Anti-cheat improved.
+- Health bar animation added.
+- Sniper nerfed.
+- Tab key issues fixed (Chat releated)
+- Special effects can be disabled on settings.
+- Leaving match was re-connecting again, that issue fixed.
+- Menu improvements.
+- Frost bomb UI issues fixed.
+- FPS Counter added.
+- Circle score display was displaying +1, it's +2 now.
+- Venom card typo fixed.
+- Matchmaking improvements.
+- Out of map glithes fixed.
+- Melee hit collision improved.
+- Tos added : http://venge.io/tos.txt
+- Account creation rules changed.
+
+(v1.0.23) - 1 July 2020
+- Shin character added.
+- Map collision issues fixed.
+- Chat integer number issue fixed.
+- Server crash issues fixed.
+- Falling under map will respawn you automatically.
+- Crosshair issues fixed.
+- Aim and sight problems fixed.
+- KDR leaderboard removed.
+- Midnight curse issues fixed.
+- New ability added : frost bomb
+- New ability added : Venom
+- Some small changes on ability durations and damages.
+- Menu design improvements.
+- Capture point issues fixed.
+- Game mute problems fixed.
+
+(v1.0.22) - 25 June 2020
+- Curse radius reduced from 150 to 125.
+- Objective points increased from 1 every second to 2.
+- Capture points increased from 15 to 30.
+- Air Headshot kill increased from +10 to +20.
+- First blood increased from 1 to 10.
+- Suicide increased from -5 to -10.
+- ADS Sensitivity added.
+- Disable Menu Music added.
+- Signup issues fixed.
+- Name on profile page display fixed for longer names.
+- Fixed out of map issues for Sierra.
+
+(v1.0.21) - 22 June 2020
+- Mouse sensivity issue fixed.
+- Xibalba map patched.
+
+(v1.0.20) - 22 June 2020
+- New map introduced : Xibalba
+- Keyboard configuration added.
+- Invite system issues fixed.
+- Matchmaking issues fixed.
+- Auto-login issues fixed.
+- Game ending mute problems fixed.
+- Auto rematchmaking added for full sessions.
+- Some typo issues fixed.
+- Respawn bugs fixed.
+- Chat message bugs fixed.
+
+(v1.0.19) - 17 June 2020
+- Enter key bind for forms.
+- Volume settings added.
+- FOV settings added.
+- Invert axis added.
+- Share titles updated.
+- Experience bar issues fixed.
+- Right-click prevention added.
+- Spell cancelation added on death.
+- AFK implemented.
+- Count back added for reward bar.
+- Lock mechanism added for matchmaking.
+- Spawn locations are randomized more.
+- Private matches are not in matchmaking now.
+- Bounce pad issues fixed.
+- Coin display changed for profile page.
+- Scar nerf.
+- Sparky spell name changed to Sparky Sprites.
+- Sparky sprites nerfed.
+- Score display added to profile page.
+- Banner issues fixed for result page.
+- Tips added on connection screen.
+- Two and more reducer doesn't show up on grenade section.
+
+(v1.0.18) - 16 June 2020
+- Server connectivity issues fixed.
+- Reward request issues fixed.
+- Username issues fixed. (Some of them was show up as "false")
+- Chat message issues fixed.
+- Doodah item issues fixed.
+
+(v1.0.17) - 15 June 2020
+- UI issues fixed.
+- Account display added for home page.
+- Play button and invite button designs changed.
+- Some game bugs fixed.
+- Ability cooldown issues fixed on game finish.
+- Leaderboard KDR display issues fixed.
+
+(v1.0.16) - 13 June 2020
+- Commercial break mouse lock issue fixed.
+
+(v1.0.15) - 13 June 2020
+- Connectivity issues fixed.
+
+(v1.0.14) - 13 June 2020
+- UI improvements.
+- Scar nerfed.
+
+(v1.0.13) - 13 June 2020
+- Minor changes.
+
+(v1.0.12) - 12 June 2020
+- Invite and matchmaking button design updated.
+- Rematchmaking added.
+
+(v1.0.11) - 12 June 2020
+- Poki SDK updates.
+
+(v1.0.10) - 12 June 2020
+- Poki SDK updates.
+
+(v1.0.9) - 12 June 2020
+- Poki SDK updates.
+
+(v1.0.8) - 12 June 2020
+- Poki SDK updates.
+
+(v1.0.7) - 11 June 2020
+- Poki SDK updates.
+
+(v1.0.6) - 11 June 2020
+- Minor changes.
+
+(v1.0.5) - 11 June 2020
+- Consecutive gameplayStart trigger issues fixed.
+- On reward ads it mutes game now, fixed.
+- I believe displaying ads on weapon selection menu can cause problem since PokiSDK doesn't have banner refresh functionality.
+- Mobile version of game is not ready. It's still under development. I'll contact with Poki again once we have mobile version fully released.
+- Pause menu added for in-game. (ESC or mouse unlock)
+- Player disconnect issues fixed, it doesn't show up at the center of map anymore.
+- FPS display removed.
+- Now, you can cancel reload animations.
+- Weapon selection popup issues fixed. (CSS Responsive)
+- Pressing 1, 2, 3 respawn issue fixed.
+- Mouse sensivity setting added to main menu.
+- Cards comes up randomly, since we don't only few cards for tier 2 it might show duplicated cards.
+- Damages buffed for Scar and Tec-9, clip size changed for Scar.
+- For chat profanity filter added.
+- Space key is no prevent page scrolls.
+- Grenade explosion problem fixed.
+- Show disconnected error on game play, if player disconnects.
+- Map bounderies patched.
+
+(v1.0.4) - 09 June 2020
+- Minor changes.
+
+(v1.0.3) - 08 June 2020
+- Minor changes.
+
+(v1.0.2) - 08 June 2020
+- Invite menu improved.
+- Discord link added.
+
+(v1.0.1) - 07 June 2020
+- Invite server issues fixed!
+
+(v1.0.0) - 01 June 2020
+- Beta release

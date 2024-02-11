@@ -1,0 +1,100 @@
+<style>
+    #managescripts {
+        width: 90%;
+        height: 2.5rem;
+        background: #7e35c9;
+        color: white;
+        border: none;
+        font-size: 1rem;
+        margin-top: 1rem;
+        cursor: pointer;
+    }
+
+    .sidebar-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+        z-index: 4;
+    }
+
+    #sidebar {
+        position: fixed;
+        width: 22rem;
+        height: 100vh;
+        right: 0;
+        top: 0;
+        background: #101010;
+        z-index: 5;
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    #sidebar label {
+        cursor: pointer;
+        position: absolute;
+        left: 1rem;
+        width: 90%;
+        text-align: left;
+    }
+
+    .field-cont {
+        font-size: 1.2rem;
+        width: 22rem;
+        align-items: center;
+        padding-top: 1.5rem;
+        height: 3rem;
+    }
+
+    .field-cont:hover {
+        background: #7e35c9;
+    }
+
+    .client-toggle {
+        right: 1rem;
+        position: absolute;
+        cursor: pointer;
+        filter: hue-rotate(40deg);
+    }
+</style>
+<div id="sidebar">
+    <div style="padding-bottom: 1.5rem; padding-top: 1.5rem; font-size: 1.5rem;"> Client Settings </div>
+    <hr>
+    <div id="clientContent"></div>
+    <button id="managescripts">Manage Scripts</button>
+
+    <div id="vengeance" style="display: none;">
+        <div style="padding-bottom: 1.5rem; padding-top: 1.5rem; font-size: 1.5rem;"> Vengeance Script </div>
+        <hr>
+        <div class="field-cont">
+            <label for="HideHands">Hide Hands</label>
+            <input type="checkbox" id="HideHands" class="client-toggle">
+        </div>
+
+        <div class="field-cont">
+            <label for="HideADS">Hide Weapon on ADS</label>
+            <input type="checkbox" id="HideADS" class="client-toggle">
+        </div>
+
+        <div class="field-cont">
+            <label for="BetterUI">Better Ingame UI</label>
+            <input type="checkbox" id="BetterUI" class="client-toggle">
+        </div>
+
+        <div class="field-cont">
+            <label for="HiddenReload">Hide weapon on reload</label>
+            <input type="checkbox" id="HiddenReload" class="client-toggle">
+        </div>
+
+        <div class="field-cont">
+            <label for="endmessage">End Game Message</label>
+            <input type="text" id="endmessage" class="client-toggle" value="" style="right: 0px;">
+        </div>
+    </div>
+</div>

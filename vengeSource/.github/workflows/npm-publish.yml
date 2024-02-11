@@ -1,0 +1,13 @@
+on: push
+name: 🚀 Deploy Poki on push
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: fifsky/ssh-action@master
+        with:
+          command: cd /root/poki/venge && git pull "https://devcem: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@github.com/devcem/venge.git" && cd /root/poki/ && npm run poki-upload
+          host: 139.162.172.51
+          user: root
+          pass: E}R[=z%@~&=+46H+

@@ -1,0 +1,803 @@
+<style>
+    /*Default stuff*/
+    @import url("https://fonts.googleapis.com/css2?family=Passion+One&display=swap");
+
+    :root {
+        --vcspurple: #9729fe;
+        --vcsblack: #111111;
+        --vcsgrey: #252525;
+        --vcsfontsize: 1.4rem;
+        --vcspurplesemitrsp: rgb(151, 41, 254, 0.15);
+    }
+
+    body {
+        font-family: "Passion One", Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        letter-spacing: 0.05rem;
+    }
+
+    /*END Default stuff*/
+
+    /* section#vcsperfsettings,
+section#vcsuserscriptsbtn,
+section#vcscustomuserscripts{ 
+display: none;
+} */
+
+    #vcs {
+        /*   border: 2px solid red; */
+        width: 100vw;
+        height: 100vh;
+        z-index: 100;
+        position: fixed;
+        inset: 0;
+        margin: auto;
+        backdrop-filter: blur(10px);
+        user-select: none;
+        background: rgb(0, 0, 0, 0.5);
+        animation: appear 0.25s linear;
+    }
+
+    #vcspanel {
+        /*   border: 2px solid white; */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: 0 auto;
+        width: clamp(20rem, 50vw, 25rem);
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: var(--vcsblack);
+        color: white;
+        animation: float-in 0.25s linear;
+    }
+
+    #vcspanel section {
+        position: relative;
+    }
+
+    .vcsheader {
+        /*   border: 2px solid grey; */
+        text-align: center;
+        padding: 1.5rem 0rem;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        font-size: calc(var(--vcsfontsize) * 1.5);
+    }
+
+    .vcsperf,
+    .vcscustom-cont {
+        /*   border: 2px solid white; */
+        margin-top: 1rem;
+    }
+
+    .vcsblockheader {
+        /*   border: 1px solid grey; */
+        text-align: center;
+        margin: 0 auto;
+        top: 0;
+        bottom: 0;
+        font-size: calc(var(--vcsfontsize) * 0.85);
+        margin-bottom: 0.5rem;
+    }
+
+    .vcsblockset {
+        /*   border: 1px solid greenyellow; */
+        padding: 1.25rem 0rem;
+        font-size: var(--vcsfontsize);
+    }
+
+    .vcsblockset:hover {
+        background: var(--vcsgrey);
+    }
+
+    .vcsusermanager {
+        /*   border: 1px solid yellow; */
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*Custom Scripts*/
+    #vcscustomuserscripts {
+        /*   display: none; */
+    }
+
+    .vcscustom-cont {
+        /*   border: 2px solid white; */
+    }
+
+    .vcscustom-blockset {
+        border: 2px solid var(--vcspurple);
+        border-radius: 10px;
+        background: var(--vcspurplesemitrsp);
+        position: relative;
+        margin: 0 5px 1rem 5px;
+    }
+
+    #vcscustom-footer {
+        /*   border: 1px solid grey; */
+        text-align: center;
+        font-size: calc(var(--vcsfontsize) * 0.8);
+        text-align: center;
+        background: var(--vcspurple);
+        border-radius: 20px;
+        padding: 0.25rem 1rem;
+        margin: 0 5rem;
+        /*   overflow: hidden; */
+        overflow-wrap: anywhere;
+        position: relative;
+        bottom: 1.9rem;
+    }
+
+    .vcsdetailscontent>*:nth-last-child(1) {
+        border-radius: 0 0 10px 10px;
+        /*<--- For compensating the protruding bottom corners of the last child of details content*/
+    }
+
+    /*END Custom Scripts*/
+
+    /* Unavailable overlay Styles */
+    .vcsunavailable {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        font-size: var(--vcsfontsize);
+        border: 1px solid #555;
+    }
+
+    /* END Unavailable overlay Styles */
+
+    /*Tooltips*/
+    .vcsperfsettings-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .vcsperfsettings-wrapper:hover {
+        background: var(--vcsgrey);
+    }
+
+    .vcsperfsettings-wrapper .vcsblockset {
+        flex: 1;
+    }
+
+    .vcstooltip {
+        display: flex;
+        align-items: center;
+        position: relative;
+        box-sizing: border-box;
+        user-select: none;
+        font-family: inherit;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .vcstooltip>#vcsinfo-svg {
+        margin: 10px;
+        transition: transform 0.2s;
+    }
+
+    .vcstooltip:hover>#vcsinfo-svg {
+        transform: scale(1.1);
+    }
+
+    .vcstooltip>.vcstooltip-text {
+        font-size: 20px;
+        background: white;
+        position: absolute;
+        padding: 5px 3px;
+        border-radius: 5px;
+        width: 17.5rem;
+        top: 100%;
+        right: 0%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        text-align: left;
+        filter: drop-shadow(0 0 1px white);
+        display: flex;
+        justify-content: center;
+        z-index: 99999;
+        transform: scale(0);
+        text-align: center;
+        filter: drop-shadow(0 0 10px black);
+    }
+
+    .vcstooltip>.vcstooltip-text:after {
+        content: " ";
+        position: absolute;
+        bottom: 100%;
+        /* At the top of the tooltip */
+        right: 7%;
+        margin-left: -7px;
+        border-width: 7px;
+        border-style: solid;
+        border-color: transparent transparent white transparent;
+    }
+
+    .vcstooltip:focus .vcstooltip-text {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /*END Tooltips*/
+
+    /*Manage Scripts Button*/
+    btn.vcsuserbtn {
+        /*   border: 2px solid red; */
+        cursor: pointer;
+        text-align: center;
+        width: 80%;
+        font-size: calc(1.05 * var(--vcsfontsize));
+        padding: 0.65rem;
+        background: var(--vcspurple);
+        border-radius: 5px;
+        transition: transform 0.25s ease, border 0.5s ease;
+        border: 2px solid transparent;
+    }
+
+    btn.vcsuserbtn:hover {
+        transform: scale(1.05);
+        border: 2px solid white;
+    }
+
+    btn.vcsuserbtn:active {
+        transform: scale(1);
+    }
+
+    /*END Manage Scripts Button*/
+
+    /*Checkbox Stuff*/
+    .vcsfield input[type="checkbox"] {
+        float: left;
+        box-shadow: none;
+        width: 30px;
+        height: 30px;
+        top: 0px;
+        margin-right: 12px;
+        margin-left: 1px;
+    }
+
+    .vcsfield label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #fff;
+        box-sizing: content-box;
+        /*<---- Important*/
+    }
+
+    .vcscheck {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .vcsfield.vcscheck label {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .vcswrapper .vcstoggle {
+        /*   position: absolute; 
+  opacity: 0;<--position: absolute is what was causing the scrolljump issue, puts all checkboxes at the starting of the panel and focuse scrolls to them when toggled on*/
+        display: none;
+        /*<--Solved*/
+    }
+
+    .vcswrapper label {
+        position: relative;
+        -moz-transition: 0.4s ease;
+        -o-transition: 0.4s ease;
+        -webkit-transition: 0.4s ease;
+        transition: 0.4s ease;
+        -webkit-tap-highlight-color: transparent;
+        height: 30px;
+        width: 50px;
+        border: 1px solid #e4e4e4;
+        border-radius: 20px;
+    }
+
+    .vcswrapper input.vcstoggle+label:before {
+        content: "";
+        position: absolute;
+        display: block;
+        -moz-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+        -o-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+        -webkit-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+        transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+        height: 30px;
+        width: 51px;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+    }
+
+    .vcswrapper input.vcstoggle+label:after {
+        content: "";
+        position: absolute;
+        display: block;
+        -moz-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+        -o-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+        -webkit-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+        transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+        background: #f6f6f6;
+        height: 28px;
+        width: 28px;
+        top: 1px;
+        left: 0px;
+        border-radius: 60px;
+    }
+
+    .vcswrapper input.vcstoggle:checked+label:before {
+        background: var(--vcspurple);
+        -moz-transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+        -o-transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+        -webkit-transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+        transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+    }
+
+    .vcswrapper input.vcstoggle:checked+label:after {
+        left: 22px;
+    }
+
+    /*END Checkbox stuff*/
+
+    /*HR Styles*/
+    .vcshr {
+        border: 1px solid var(--vcspurple);
+        margin: 0;
+    }
+
+    /*END HR Styles*/
+
+    /*Range Styles*/
+    .vcsfield-range {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    .vcsfield-range:hover {
+        background: var(--vcsgrey);
+    }
+
+    input,
+    .vcsfield-range select {
+        width: 100%;
+        box-shadow: inset 0px 2px 7px #a895bb;
+        box-sizing: border-box;
+    }
+
+    .vcsfield-range input[type="range"] {
+        outline: 0;
+        border: 0;
+        border-radius: 10px;
+        transition: box-shadow 0.2s ease-in-out;
+        overflow: hidden;
+        height: 20px;
+        padding: 5px 0;
+        -webkit-appearance: none;
+        background-color: #ddd;
+    }
+
+    .vcsfield-range input[type="range"]::-webkit-slider-runnable-track {
+        height: 20px;
+        -webkit-appearance: none;
+        color: #000;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+
+    .vcsfield-range input[type="range"]::-webkit-slider-thumb {
+        width: 20px;
+        -webkit-appearance: none;
+        height: 20px;
+        cursor: ew-resize;
+        background: #fff;
+        box-shadow: -100.5vw 0 0 100vw #7e35c9, inset 0 0 0 5px #7e35c9;
+        border-radius: 50%;
+        transition: box-shadow 0.2s ease-in-out;
+        position: relative;
+    }
+
+    .vcsfield-range input[type="range"]:active::-webkit-slider-thumb {
+        background: #fff;
+        box-shadow: -100.5vw 0 0 100vw #ff9502, inset 0 0 0 5px #ff9502;
+    }
+
+    .vcsfield-range label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .vcsinput-slider-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0 0 0;
+        box-sizing: border-box;
+    }
+
+    .vcsinput-slider-text {
+        min-width: 27px;
+        padding: 7px;
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+        background: #7e35c9;
+        border-radius: 10px;
+        margin-right: 5px;
+    }
+
+    /*END Range Styles*/
+
+    /*Textbox Styles*/
+    .vcsform-field {
+        padding: 15px 25px;
+        border-radius: 3px;
+        min-height: 60px;
+    }
+
+    .vcsform-field:hover {
+        background: var(--vcsgrey);
+    }
+
+    .vcsform-field label {
+        display: block;
+        font-size: 20px;
+        width: 100%;
+        font-weight: normal;
+        margin-bottom: 10px;
+    }
+
+    .vcsform-field input[type="text"],
+    .vcsform-field select {
+        width: 100%;
+        box-shadow: inset 0px 2px 7px #a895bb;
+        border: solid 1px #9985ae;
+        border-radius: 5px;
+        font-size: 19px;
+        padding: 10px;
+        box-sizing: border-box;
+        outline: 0 !important;
+    }
+
+    /*END Textbox Styles*/
+
+    /*Color Picker Styles*/
+    .vcscolorpicker {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 13px;
+        gap: 0.75rem;
+        font-size: 22px;
+    }
+
+    .vcscolorpicker:hover {
+        background: var(--vcsgrey);
+    }
+
+    .vcscolorpicker label {
+        cursor: pointer !important;
+    }
+
+    .vcscolorpicker-swatch {
+        box-shadow: none;
+        background-color: transparent;
+        width: 48px;
+        height: 48px;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .vcscolorpicker-swatch::-webkit-color-swatch {
+        border-radius: 50%;
+        box-shadow: none;
+        border: 3px solid black;
+    }
+
+    /*END Color Picker Styles*/
+
+    /* Scrollbar styles */
+    #vcs ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    #vcs ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    #vcs ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    #vcs ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* END Scrollbar styles */
+
+    /*Animation KeyFrames*/
+    @keyframes float-in {
+        from {
+            transform: translateX(500px);
+        }
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    /*END Animation Keyframes*/
+
+    /*Details*/
+    .vcsdetails {
+        margin: 0.125rem 0;
+    }
+
+    .vcsdetails[open] .vcssummary .vcssummaryside svg {
+        transform: rotate(45deg);
+    }
+
+    .vcssummary {
+        list-style: none;
+        /*<--- removes the triangle*/
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        /*   align-items: center; */
+    }
+
+    /* @media (max-width: 750px){
+.vcssummary{
+display: block;
+}
+} */
+    .vcssummary>.vcssummarymain {
+        flex: 1;
+        cursor: auto;
+    }
+
+    .vcssummary>.vcssummaryside {
+        /*   background: hotpink; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .vcssummary>.vcssummaryside svg {
+        display: block;
+        inset: 0;
+        margin: 1.25rem 0.75rem;
+        transition: transform 0.2s;
+    }
+
+    .vcsdetailscontent {}
+
+    .vcssummary .vcsblockset:hover {
+        background: none !important;
+    }
+
+    /*END Details*/
+
+    /*Link Styles*/
+    .vcslinks:link {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .vcslinks:visited {
+        color: #fff;
+    }
+
+    .vcslinks:hover {
+        color: #fff;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+
+    .vcslinks:active {
+        color: #fff;
+    }
+
+    /*END Link Styles*/
+
+    /*Canvas Styles*/
+    #vcscrosshair-cont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    #vcscanvas-crosshair-mini {
+        border: 1px solid white;
+    }
+
+    /*END Canvas Styles*/
+</style>
+
+<div id="vcs"> <!--Complete Overlay-->
+    <div id="vcspanel"><!--Settings Panel-->
+
+        <div class="vcsheader">Venge Client Settings</div> <!--Panel Header-->
+
+        <section class="vcsperf" id="vcsperfsettings"> <!--Performance Settings Section-->
+            <div class="vcsblockheader">Performance Settings</div> <!--Performance Settings Header-->
+        </section>
+        <section class="vcscustom-cont" id="vcscustomuserscripts"><!--Container for all custom scripts-->
+            <div class="vcsblockheader">Custom Userscripts</div> <!--Custom Userscripts Header-->
+        </section>
+    </div>
+</div>
+
+<!-- Client Settings -->
+<script>
+
+</script>
+
+<!-- Userscripts -->
+<script>
+    // Data for custom settings
+    const customSettingsData = [
+        {
+            id: "vmodel", // ID of the setting
+            label: "Viewmodel Adjustments", // Label of the setting
+            subSettings: [ // Sub-settings
+                { id: "togvm", label: "Toggle Viewmodel", type: "toggle" },
+                { id: "hidehands", label: "Hide Viewmodel Hands", type: "toggle" },
+                { id: "hideads", label: "Hide Viewmodel on ADS", type: "toggle" },
+                { id: "hidereload", label: "Hide Viewmodel on Reload", type: "toggle" },
+                { id: "wire", label: "Viewmodel Wireframe", type: "toggle" },
+                { id: "rainbow", label: "Viewmodel Rainbow Textures", type: "toggle" },
+                { id: "posx", label: "Viewmodel PosX", type: "slider" },
+                { id: "posy", label: "Viewmodel PosY", type: "slider" },
+                { id: "posz", label: "Viewmodel PosZ", type: "slider" },
+                { id: "rotx", label: "Viewmodel RotX", type: "slider" },
+                { id: "roty", label: "Viewmodel RotY", type: "slider" },
+                { id: "rotz", label: "Viewmodel RotZ", type: "slider" },
+                { id: "scalex", label: "Viewmodel ScaleX", type: "slider" },
+                { id: "scaley", label: "Viewmodel ScaleY", type: "slider" },
+                { id: "scalez", label: "Viewmodel ScaleZ", type: "slider" }
+            ]
+        },
+        {
+            id: "twitch",
+            label: "Twitch Chat Integration",
+            subSettings: [
+                { id: "twitchuser", label: "Twitch Username", type: "textbox" }
+            ]
+        }
+    ];
+    // Function to generate HTML for sub-settings with input sliders
+    function generateInputSliderHTML(label, id) {
+        return `
+        <div class="vcsfield-range">
+            <label>${label}</label>
+            <div class="vcsinput-slider-wrapper">
+                <div class="vcsinput-slider-text" id="${id}">0</div>
+                <input type="range" min="-100" max="100" value="0" oninput="document.querySelector('#${id}').innerHTML = this.value">
+            </div>
+        </div>
+    `;
+    }
+
+    // Function to generate HTML from JSON data
+    function generateCustomSettingsHTML(settings) {
+        let html = '';
+        settings.forEach(setting => {
+            html += `
+            <div id="vcscustom-${setting.id}">
+                <div class="vcscustom-blockset">
+                    <details class="vcsdetails">
+                        <summary class="vcssummary">
+                            <div class="vcssummarymain">
+                                <div class="vcsblockset">
+                                    <div class="vcsfield vcscheck">
+                                        <label for="vcstwitchchat">${setting.label}</label>
+                                        <div class="vcswrapper">
+                                            <input type="checkbox" id="vcstwitchchat" class="vcstoggle">
+                                            <label for="vcstwitchchat"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vcssummaryside">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </summary>
+                        <div class="vcsdetailscontent">
+                            <hr class="vcshr">
+        `;
+
+            setting.subSettings.forEach(subSetting => {
+                if (subSetting.type === 'slider') {
+                    html += generateInputSliderHTML(subSetting.label, subSetting.id);
+                } else if (subSetting.type === 'textbox') {
+                    html += `
+                    <div class="vcsform-field">
+                        <label for="${subSetting.id}">${subSetting.label}</label>
+                        <input type="text" id="${subSetting.id}" placeholder="">
+                    </div>
+                `;
+                } else {
+                    html += `
+                    <div class="vcsblockset">
+                        <div class="vcsfield vcscheck">
+                            <label for="${subSetting.id}">${subSetting.label}</label>
+                            <div class="vcswrapper">
+                                <input type="checkbox" id="${subSetting.id}" class="vcstoggle">
+                                <label for="${subSetting.id}"></label>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                }
+            });
+
+            html += `
+                        </div>
+                    </details>
+                </div>
+                <div id="vcscustom-footer">Script By <a class="vcslinks" href="https://social.venge.io/#Captain_Cool"
+                        target="_blank" rel="noopener noreferrer">Captain_Cool</a> and <a class="vcslinks"
+                        href="https://social.venge.io/#shady" target="_blank" rel="noopener noreferrer">shady</a></div>
+            </div>
+        `;
+        });
+
+        return html;
+    }
+
+
+    // Generate HTML and append it to the document
+    const customSettingsHTML = generateCustomSettingsHTML(customSettingsData);
+    document.getElementById('vcscustomuserscripts').innerHTML += customSettingsHTML;
+</script>
+
+<script>
+    //Enable Userscripts now toggles visibility of Custom Userscripts container!
+    const checkbox = document.getElementById('vcsperfenableuser');
+
+    const box = document.getElementById('vcscustomuserscripts');
+
+    checkbox.addEventListener('click', function handleClick() {
+        if (checkbox.checked) {
+            vcscustomuserscripts.style.display = 'block';
+        } else {
+            vcscustomuserscripts.style.display = 'none';
+        }
+    });
+    //Toggle userscript END
+</script>

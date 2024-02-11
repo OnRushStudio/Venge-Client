@@ -1,0 +1,21 @@
+// const { app } = require('electron');
+
+// if (process.platform === 'win32') {
+//     const documents = app.getPath('documents');
+//     const scriptFolder = documents + "\\Venge Client\\scripts";
+
+//     if (!fs.existsSync(scriptFolder)) {
+//         fs.mkdirSync(scriptFolder, {recursive: true});
+//     }
+//     try {
+//         fs.readdirSync(scriptFolder).filter(file => path.extname(file).toLowerCase() === '.js').forEach(filename => {
+//             try {
+//                 require(`${scriptFolder}/${filename}`);
+//             } catch (e) {
+//                 console.error("an error occurred while executing userscript: " + filename + " error: " + e);
+//             }
+//         });
+//     } catch (e) {
+//         console.error("an error occurred while loading userscripts: " + e);
+//     }
+// }
