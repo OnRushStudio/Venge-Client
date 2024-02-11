@@ -184,22 +184,48 @@ const initUserscripts = () => {
     // Generate HTML and append it to the document
     const customSettingsHTML = generateCustomSettingsHTML(scriptData);
     document.getElementById('vcscustomuserscripts').innerHTML += customSettingsHTML;
+
+    saveSettings()
+    if (localStorage.getItem('allSettings') != null) {
+        loadSettings2()
+    }
 }
 
 function saveSettings() {
     const allSettings = {};
 
-    additionalSettingsData.forEach(setting => {
+    scriptData.forEach(setting => {
         const subSettingsObj = {};
 
         setting.subSettings.forEach(subSetting => {
-            subSettingsObj[subSetting.id] = document.getElementById(subSetting.id).value;
+            subSettingsObj[subSetting.id] = document.getElementById(subSetting.id).checked;
+
+            document.getElementById(subSetting.id).onchange = () => {
+                saveSettings()
+            }
         });
 
         allSettings[setting.id] = subSettingsObj;
     });
 
     localStorage.setItem('allSettings', JSON.stringify(allSettings));
+}
+
+function loadSettings() {
+    let settingState = localStorage.getItem('allSettings');
+
+    settingState = JSON.parse(settingState);
+
+    // Check if settingState is not null
+    if (settingState) {
+        Object.keys(settingState).forEach(settingId => {
+            const setting = JSON.parse(settingState[settingId]);
+            setting.forEach(subSetting => {
+                document.getElementById(subSetting.id).checked = setting[subSetting.id];
+            });
+        });
+    }
+
 }
 
 const initValues = () => {
