@@ -1,0 +1,52 @@
+body {
+    background-color: #111;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    background: #171717;
+    border-right: 2px solid #333;
+    padding-top: 2rem;
+    overflow-y: auto;
+  }
+  
+  .tabButton {
+    padding: 1rem;
+    margin: 0.3rem;
+    cursor: pointer;
+    background: #222;
+    transition: 0.25s;
+  }
+  .tabButton:hover {
+    background: #333;
+  }
+  .tabButton.active {
+    background: #444;
+  }
+  
+  .main {
+    position: absolute;
+    left: 250px;
+    top: 2rem;
+    width: calc(100vw - 250px);
+  }
+  
+  .mod-cont {
+    background: #131313;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  select,
+  input[type="range"] {
+    width: 200px;
+    margin-top: 0.5rem;
+  }
+  

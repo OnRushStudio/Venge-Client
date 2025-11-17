@@ -1,11 +1,9 @@
-// app/preload/mods-preload.js
 const { ipcRenderer, webFrame } = require("electron");
 const fs = require("fs");
 const path = require("path");
 
 (async function initModLoader() {
   try {
-    // --- Expose pc proxy before any scripts run ---
     const pcShim = `
       (function(){
         if (!Object.getOwnPropertyDescriptor(window, "pc")) {
@@ -24,23 +22,24 @@ const path = require("path");
         }
       })();
     `;
+
     webFrame.executeJavaScriptInIsolatedWorld(
       999,
       [{ code: pcShim }],
       { runAt: "document_start" }
     );
 
-    // --- Load and inject mods after the shim ---
     const documentsPath = await ipcRenderer.invoke("get-documents-path");
     const baseDir = path.join(documentsPath, "Venge Client");
     const userDir = path.join(baseDir, "Userscript");
+
     if (!fs.existsSync(userDir)) fs.mkdirSync(userDir, { recursive: true });
 
     const mods = fs.readdirSync(userDir).filter(f => f.endsWith(".js"));
+
     for (const mod of mods) {
       const code = fs.readFileSync(path.join(userDir, mod), "utf8");
 
-      // Each mod waits for "pc-ready"
       const wrapped = `
         window.addEventListener("pc-ready", function(){
           try {
@@ -56,8 +55,6 @@ const path = require("path");
         [{ code: wrapped }],
         { runAt: "document_start" }
       );
-
-      console.log("[Userscript] Loaded:", mod);
     }
 
   } catch (err) {
