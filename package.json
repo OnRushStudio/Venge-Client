@@ -1,0 +1,67 @@
+{
+  "name": "venge-client",
+  "version": "1.0.0",
+  "description": "A client for Venge.io",
+  "main": "./app/index.js",
+  "author": "OnRush <info@onrush.studio>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OnRushStudio/Venge-Client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OnRushStudio/Venge-Client/issues"
+  },
+  "homepage": "https://github.com/OnRushStudio/Venge-Client#readme",
+  "scripts": {
+    "start": "electron .",
+    "runDebug": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^39.1.1",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.onrush.vengeclient",
+    "productName": "Venge Client",
+    "directories": {
+      "buildResources": "build"
+    },
+    "files": [
+      "app/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "build/icon.icns",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "build/icons",
+      "category": "Game",
+      "target": ["AppImage", "deb"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Venge Client"
+    }
+  }
+}
